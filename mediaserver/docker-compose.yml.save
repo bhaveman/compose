@@ -1,0 +1,577 @@
+version: "3.9"
+
+########################### NETWORKS
+# You may customize the network subnet (192.168.89.0/24) below as you please.
+# Docker Compose version 3.5 or higher required to define networks this way.
+
+networks:
+  default:
+    driver: bridge
+  npm_proxy:
+    name: npm_proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.89.0/24
+
+########################### EXTENSION FIELDS
+# Helps eliminate repetition of sections
+# More Info on how to use this: https://github.com/htpcBeginner/docker-traefik/pull/228
+
+# Common environment values
+x-environment: &default-tz-puid-pgid
+  TZ: $TZ
+  PUID: $PUID
+  PGID: $PGID
+
+# Keys common to some of the core services that we always to automatically restart on failure
+x-common-keys-core: &common-keys-core
+7  networks:
+    - npm_proxy
+  security_opt:
+    - no-new-privileges:true
+  restart: always
+
+# Keys common to some of the dependent services/apps
+x-common-keys-apps: &common-keys-apps
+  networks:
+    - npm_proxy
+  security_opt:
+    - no-new-privileges:true
+  restart: unless-stopped
+
+# Keys common to some of the services in media-services.txt
+x-common-keys-media: &common-keys-media
+  networks:
+    - npm_proxy
+  security_opt:
+    - no-new-privileges:true
+  restart: unless-stopped
+
+########################### SERVICES
+services:
+
+############################# FRONTENDS
+
+  # Nginx Proxy Manager - Reverse Proxy with LetsEncrypt
+  npm:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    container_name: nginx-proxy-manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    # For Static IP
+    networks:
+    # For Static IP
+      npm_proxy:
+        ipv4_address: 192.168.89.254 # You can specify a static IP
+    # For Dynamic IP
+    # networks:
+    #  - npm_proxy
+    ports:
+      - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
+      - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
+      - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
+    volumes:
+      - $DOCKERDIR/appdata/npm/config:/config
+      - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
+      - $DOCKERDIR/appdata/npm/data:/data
+    environment:
+      DB_SQLITE_FILE: "/config/database.sqlite"
+      DISABLE_IPV6: 'true'
+
+
+  # Portainer - WebUI for Containers
+  portainer:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    container_name: portainer
+    image: portainer/portainer-ee:latest
+    command: -H unix:///var/run/docker.sock # Use Docker Socket Proxy and comment this line out, for improved security.
+    # command: -H tcp://socket-proxy:2375 # Use this instead, if you have Socket Proxy enabled.
+    networks:
+      - npm_proxy
+    #ports: # Comment out if using Nginx Proxy Manager to access portainer WebUI.
+    #  - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Use Docker Socket Proxy and comment this line out, for improved security.
+      - $DOCKERDIR/appdata/portainer/data:/data # Change to local directory if you want to save/transfer config locally.
+    environment:
+      - TZ=$TZ
+
+########################## DOWNLOADERS
+
+  # nzbget - Binary newsgrabber (NZB downloader)
+  nzbget:
+    <<: *common-keys-apps # See EXTENSION FIELDS at the top
+    image: jscottelblein/nzbget
+    container_name: nzbget
+    networks:
+      npm_proxy:
+        ipv4_address: 192.168.89.216
+    ports:
+      - "6789:6789"
+    volumes:
+      - $DOCKERDIR/appdata/nzbget:/config
+      - $DATADIR/downloads:/downloads
+    environment:
+      <<: *default-tz-puid-pgid
+
+  # TransmissionBT - Torrent Downloader
+  # transmission-openvpn:
+  #     cap_add:
+  #         - NET_ADMIN
+  #     volumes:
+  #         - $DATADIR/downloads/transmission:/data
+  #         - $DOCKERDIR/appdata/transmission-openvpn:/config
+  #         - $DOCKERDIR/privadovpn:/etc/openvpn/custom
+  #     environment:
+  #         OPENVPN_PROVIDER: custom
+  #         OPENVPN_CONFIG: yvr-001
+  #         OPENVPN_USERNAME: $PRIVADO_USERNAME
+  #         OPENVPN_PASSWORD: $PRIVADO_PASSWORD
+  #         LOCAL_NETWORK: 192.168.0.0/16
+  #         TRANSMISSION_WEB_UI: combustion
+  #     logging:
+  #         driver: json-file
+  #         options:
+  #             max-size: 10m
+  #     ports:
+  #         - '9091:9091'
+  #         - '61234:61234'
+  #     image: haugene/transmission-openvpn
+
+  # mam_cookie:
+  #   image: alpine
+  #   network_mode: "service:transmission"
+  #   command: /bin/sh -c "apk add curl && apk add python3 && curl -c /mam.cookie -b 'mam_id=${MAM_ID}' https://t.myanonamouse.net/json/dynamicSeedbox.php | python3 -c \"import sys,json; sys.exit(not json.load(sys.stdin)['Success'])\""
+  #   restart: "on-failure"
+
+  transmission:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      <<: *default-tz-puid-pgid
+      #- TRANSMISSION_WEB_HOME= #optional
+      USER: brad
+      PASS: BtroyhTrans
+      #- WHITELIST= #optional
+      #- PEERPORT= #optional
+      #- HOST_WHITELIST= #optional
+    volumes:
+      - $DOCKERDIR/appdata/transmission:/config
+      - $DATADIR/downloads/transmission:/downloads
+      - $DATADIR/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+
+
+########################## PVRs
+
+  # Radarr - Movie management
+  radarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/radarr:nightly # latest tag was causing "Error parsing column 45"
+    container_name: radarr
+    networks:
+      npm_proxy:
+    ports:
+      - "7878:7878"
+    volumes:
+      - $DOCKERDIR/appdata/radarr:/config
+      - $DATADIR/downloads:/downloads/
+      - $DATADIR:/movies
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+
+  # Radarr 4K - Movie management
+  radarr4k:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/radarr:nightly # latest tag was causing "Error parsing column 45"
+    container_name: radarr4k
+    networks:
+      npm_proxy:
+    ports:
+      - "7879:7878"
+    volumes:
+      - $DOCKERDIR/appdata/radarr4k:/config
+      - $DATADIR/downloads:/downloads/
+      - $DATADIR:/movies
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+
+  # Sonarr - TV Shows management
+  sonarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/sonarr:develop
+    container_name: sonarr
+    networks:
+      npm_proxy:
+        ipv4_address: 192.168.89.167
+    ports:
+      - "8989:8989"
+    volumes:
+      - $DOCKERDIR/appdata/sonarr:/config
+      - $DATADIR/downloads:/downloads
+      - $DATADIR:/tv
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+
+  # Sonarr - TV Shows management
+  sonarr-anime:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/sonarr:develop
+    container_name: sonarr-anime
+    networks:
+      npm_proxy:
+    ports:
+      - "8990:8989"
+    volumes:
+      - $DOCKERDIR/appdata/sonarr-anime:/config
+      - $DATADIR/downloads:/downloads
+      - $DATADIR:/tv
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+
+  jellyfin:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    user: 1000:1000
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    volumes:
+      - $DOCKERDIR/appdata/jellyfin:/config
+      - $DATADIR:/data/tvshows
+      - $DATADIR:/data/movies
+      - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
+    ports:
+      - 8096:8096
+    environment:
+      #<<: *default-tz-puid-pgid
+      NVIDIA_VISIBLE_DEVICES: all
+      JELLYFIN_PublishedServerUrl: https://jellyfin.bradserver.dev
+      JELLYFIN_DATA_DIR: /config/data
+      JELLYFIN_CONFIG_DIR: /config
+      JELLYFIN_LOG_DIR: /config/log
+      JELLYFIN_CACHE_DIR: /config/cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+    #runtime: nvidia
+
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu]
+
+  # Recyclarr - handle trash-guides
+  # recyclarr:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: ghcr.io/recyclarr/recyclarr:latest
+  #   container_name: recyclarr
+  #   volumes:
+  #     - $DOCKERDIR/appdata/recyclarr:/config
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+
+
+  # Bazarr - Subtitle Management
+  bazarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      <<: *default-tz-puid-pgid
+    ports:
+      - "6767:6767"
+    volumes:
+      - $DOCKERDIR/appdata/bazarr:/config
+      - $DATADIR:/movies
+      - $DATADIR:/tv
+
+  prowlarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      <<: *default-tz-puid-pgid
+    volumes:
+      - $DOCKERDIR/appdata/prowlarr:/config
+    ports:
+      - 9696:9696
+
+  unpackerr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: golift/unpackerr
+    container_name: unpackerr
+    volumes:
+      # You need at least this one volume mapped so Unpackerr can find your files to extract.
+      # Make sure this matches your Starr apps; the folder mount (/downloads or /data) should be identical.
+      - $DATADIR/downloads:/downloads
+      - $DATADIR/downloads/transmission/completed/books:/downloads/completed/books
+
+    # What you see below are defaults for this compose. You only need to modify things specific to your environment.
+    # Remove apps and feature configs you do not use or need.
+    # ie. Remove all lines that begin with UN_CMDHOOK, UN_WEBHOOK, UN_FOLDER, UN_WEBSERVER, and other apps you do not use.
+    environment:
+      <<: *default-tz-puid-pgid
+      PUID: root
+      PGID: root
+
+      # Sonarr Config
+      UN_SONARR_0_URL: http://sonarr:8989
+      UN_SONARR_0_API_KEY: ad3d1e9d85b447e0beaae4277f6252c4
+      UN_SONARR_0_PATHS_0: /downloads
+      UN_SONARR_0_PROTOCOLS: torrent,usenet
+      UN_SONARR_0_TIMEOUT: 10s
+      UN_SONARR_0_DELETE_ORIG: false
+      UN_SONARR_0_DELETE_DELAY: 5m
+      # Radarr Config
+      UN_RADARR_0_URL: http://radarr:7878
+      UN_RADARR_0_API_KEY: c9cd731026664a80901426a6e144b662
+      UN_RADARR_0_PATHS_0: /downloads
+      UN_RADARR_0_PROTOCOLS: torrent,usenet
+      UN_RADARR_0_TIMEOUT: 10s
+      UN_RADARR_0_DELETE_ORIG: false
+      UN_RADARR_0_DELETE_DELAY: 5m
+      # Readarr Config
+      UN_READARR_0_URL: http://readarr:8787
+      UN_READARR_0_API_KEY: 79e4c9d607444db0a8fc0b0680839b77
+      UN_READARR_0_PATHS_0: /downloads
+      UN_READARR_0_PROTOCOLS: torrent,usenet
+      UN_READARR_0_TIMEOUT: 10s
+      UN_READARR_0_DELETE_ORIG: false
+      UN_READARR_0_DELETE_DELAY: 5m
+      # # Folder Config
+      # UN_FOLDER_0_PATH:
+      # UN_FOLDER_0_EXTRACT_PATH:
+      # UN_FOLDER_0_DELETE_AFTER: 10m
+      # UN_FOLDER_0_DELETE_ORIGINAL: false
+      # UN_FOLDER_0_DELETE_FILES: false
+      # UN_FOLDER_0_MOVE_BACK: false
+      # # Webhook Config
+      # UN_WEBHOOK_0_URL:
+      # UN_WEBHOOK_0_NAME:
+      # UN_WEBHOOK_0_NICKNAME: Unpackerr
+      # UN_WEBHOOK_0_CHANNEL:
+      # UN_WEBHOOK_0_TIMEOUT: 10s
+      # UN_WEBHOOK_0_SILENT: false
+      # UN_WEBHOOK_0_IGNORE_SSL: false
+      # UN_WEBHOOK_0_EXCLUDE_0:
+      # UN_WEBHOOK_0_EVENTS_0: 0
+      # UN_WEBHOOK_0_TEMPLATE_PATH:
+      # UN_WEBHOOK_0_CONTENT_TYPE: application/json
+      # # Command Hook Config
+      # UN_CMDHOOK_0_COMMAND:
+      # UN_CMDHOOK_0_NAME:
+      # UN_CMDHOOK_0_TIMEOUT: 10s
+      # UN_CMDHOOK_0_SILENT: false
+      # UN_CMDHOOK_0_SHELL: false
+      # UN_CMDHOOK_0_EXCLUDE_0:
+      # UN_CMDHOOK_0_EVENTS_0: 0
+
+
+#################### Books
+
+  readarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: hotio/readarr:nightly
+    container_name: readarr
+    ports:
+      - "8787:8787"
+    volumes:
+      - $DOCKERDIR/appdata/readarr:/config
+      - '$DATADIR/ssd2tb/books:/config/Calibre Library'
+      - $DATADIR/downloads/transmission/completed/books:/downloads/completed/books
+      - $DATADIR/downloads:/downloads
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+      UMASK: 002
+      #ARGS: ""
+
+  readarr-audio:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: hotio/readarr:nightly
+    container_name: readarr-audio
+    ports:
+      - "8788:8787"
+    volumes:
+      - $DOCKERDIR/appdata/readarr-audio:/config
+      - $DATADIR/ssd2tb/audiobooks:/audiobooks
+      - $DATADIR/media3/audiobooks:/audiobooks2
+      - $DATADIR/downloads/transmission/completed/audiobooks:/downloads/completed/books
+      - $DATADIR/downloads:/downloads
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+      UMASK: 002
+      #ARGS: ""
+
+  # lazylibrarian:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: lscr.io/linuxserver/lazylibrarian:latest
+  #   container_name: lazylibrarian
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+  #     DOCKER_MODS: linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
+  #   volumes:
+  #     - $DOCKERDIR/appdata/lazylibrarian:/config
+  #     - $DATADIR/downloads:/downloads
+  #     - $DATADIR/ssd2tb/books:/books #optional
+  #   ports:
+  #     - 5299:5299
+  #   restart: unless-stopped
+
+
+  calibre:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      <<: *default-tz-puid-pgid
+#      PASSWORD: Btroyh123
+#      CLI_ARGS: #optional
+    volumes:
+      - '$DATADIR/ssd2tb/books:/config/Calibre Library'
+      - $DOCKERDIR/appdata/calibre:/config
+      - $DATADIR/calibreimport:/media/import
+    ports:
+      - 8380:8080
+#      - 8181:8181
+      - 8381:8081
+#    restart: unless-stopped
+
+
+
+  calibre-web:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: linuxserver/calibre-web:latest
+    container_name: calibre-web
+    ports:
+      - "8083:8083"
+    volumes:
+      - $DOCKERDIR/appdata/calibre-web:/config
+      - $DATADIR/ssd2tb/books:/books
+    environment:
+      <<: *default-tz-puid-pgid
+      #DOCKER_MODS: DOCKER_MODS=linuxserver/mods:universal-calibre
+    #  OAUTHLIB_RELAX_TOKEN_SCOPE: 1 #optional
+
+  # Dozzle - Real-time Docker Log Viewer
+  dozzle:
+    <<: *common-keys-apps # See EXTENSION FIELDS at the top
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    networks:
+      - npm_proxy
+    ports:
+      - "8081:8080" # qBittorrent is using port 8080.
+    environment:
+      DOZZLE_LEVEL: info
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_FILTER: "status=running"
+      # DOZZLE_FILTER: "label=log_me" # limits logs displayed to containers with this label.
+      # DOCKER_HOST: tcp://socket-proxy:2375 # Use this instead if you have Socket Proxy enabled.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Use Docker Socket Proxy and comment this line for improved security.
+
+
+
+  # File Browser - Explorer
+  filebrowser:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    ports:
+      - "82:80" # 80 and 81 are used by Nginx Proxy Manager
+    volumes:
+      - $DOCKERDIR/appdata/filebrowser:/config
+      - $USERDIR:/srv
+    environment:
+      <<: *default-tz-puid-pgid
+
+  audiobookshelf:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - "13378:80"
+    volumes:
+      - $DATADIR/ssd2tb/audiobooks:/audiobooks
+      - $DATADIR/media3/audiobooks:/audiobooks2
+      #- </path/to/podcasts>:/podcasts
+      - $DOCKERDIR/appdata/audiobookshelf/config:/config
+      - $DOCKERDIR/appdata/audiobookshelf/metadata:/metadata
+    environment:
+      <<: *default-tz-puid-pgid
+
+
+
+
+  code-server:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    volumes:
+      - /$DOCKERDIR/appdata/code-server:/config
+      - $USERDIR:/workspace
+    ports:
+      - "8443:8443"
+    environment:
+      <<: *default-tz-puid-pgid
+      DEFAULT_WORKSPACE: /workspace #optional
+
+  heimdall:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/heimdall
+    container_name: heimdall
+    ports:
+      - "83:80" # 80 to 82 already taken by other services
+      # - "444:443" # 443 used by Nginx Proxy Manager. Disabled because we will put Heimdall behind proxy.
+    volumes:
+      - $DOCKERDIR/appdata/heimdall:/config
+    environment:
+      <<: *default-tz-puid-pgid
+
+  organizr:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: organizr/organizr:latest
+    container_name: organizr
+    volumes:
+      - $DOCKERDIR/appdata/organizr:/config
+    ports:
+      - "84:80"
+    environment:
+      <<: *default-tz-puid-pgid
+      #BRANCH: "v2-master" #optional v2-master, master, v2-develop, develop, dev
+      #FPM: false  #optional enable php to use the socket rather than TCP
+
+
+  minecraft:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: marctv/minecraft-papermc-server:latest
+    container_name: minecraft
+    volumes:
+      - $DOCKERDIR/appdata/minecraft:/data
+      # - $DOCKERDIR/appdata/minecraft/plugins:/minecraft/plugins
+      # - $DOCKERDIR/appdata/minecraft/world:/minecraft/world
+      # - $DOCKERDIR/appdata/minecraft/world_nether:/minecraft/world_nether
+      # - $DOCKERDIR/appdata/minecraft/world_the_end:/minecraft/world_the_end
+    ports:
+      - "25565:25565"
+    environment:
+      <<: *default-tz-puid-pgid
+      MEMORYSIZE: 4G
+      #PAPERMC_FLAGS:
+      EULA: true
+    stdin_open: true 
+    tty: true

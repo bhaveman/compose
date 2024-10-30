@@ -1,0 +1,22 @@
+
+networks:
+  default:
+    driver: bridge
+  npm_proxy:
+    name: npm_proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.89.0/24
+
+services:
+
+  cloveanddagger:
+    container_name: cloveanddagger-test
+    networks:
+      - npm_proxy
+    ports:
+      - "8884:5000"
+    image: swiftb3/cloveanddagger:latest
+
+

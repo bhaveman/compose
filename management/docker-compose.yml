@@ -1,0 +1,82 @@
+include:
+  - ~/docker/compose/shared-compose-head.yml
+
+
+services:
+
+  # Portainer - WebUI for Containers
+  portainer:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    container_name: portainer
+    image: portainer/portainer-ee:latest
+    command: -H unix:///var/run/docker.sock # Use Docker Socket Proxy and comment this line out, for improved security.
+    # command: -H tcp://socket-proxy:2375 # Use this instead, if you have Socket Proxy enabled.
+    networks:
+      - npm_proxy
+    #ports: # Comment out if using Nginx Proxy Manager to access portainer WebUI.
+    #  - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Use Docker Socket Proxy and comment this line out, for improved security.
+      - $DOCKERDIR/appdata/portainer/data:/data # Change to local directory if you want to save/transfer config locally.
+    environment:
+      - TZ=$TZ
+
+ heimdall:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/heimdall
+    container_name: heimdall
+    ports:
+      - "83:80" # 80 to 82 already taken by other services
+      # - "444:443" # 443 used by Nginx Proxy Manager. Disabled because we will put Heimdall behind proxy.
+    volumes:
+      - $DOCKERDIR/appdata/heimdall:/config
+    environment:
+      <<: *default-tz-puid-pgid
+
+  organizr:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: organizr/organizr:latest
+    container_name: organizr
+    volumes:
+      - $DOCKERDIR/appdata/organizr:/config
+    ports:
+      - "84:80"
+    environment:
+      <<: *default-tz-puid-pgid
+      #BRANCH: "v2-master" #optional v2-master, master, v2-develop, develop, dev
+      #FPM: false  #optional enable php to use the socket rather than TCP
+
+
+  # Dozzle - Real-time Docker Log Viewer
+  dozzle:
+    <<: *common-keys-apps # See EXTENSION FIELDS at the top
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    networks:
+      - npm_proxy
+    ports:
+      - "8081:8080" # qBittorrent is using port 8080.
+    environment:
+      DOZZLE_LEVEL: info
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_FILTER: "status=running"
+      DOZZLE_AUTH_PROVIDER: simple
+      DOZZLE_AUTH_TTL: 48h
+      # DOZZLE_FILTER: "label=log_me" # limits logs displayed to containers with this label.
+      # DOCKER_HOST: tcp://socket-proxy:2375 # Use this instead if you have Socket Proxy enabled.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Use Docker Socket Proxy and comment this line for improved security.
+      - $DOCKERDIR/appdata/dozzle:/data
+
+  # File Browser - Explorer
+  filebrowser:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    ports:
+      - "82:80" # 80 and 81 are used by Nginx Proxy Manager
+    volumes:
+      - $DOCKERDIR/appdata/filebrowser:/config
+      - $USERDIR:/srv
+    environment:
+      <<: *default-tz-puid-pgid
