@@ -1,0 +1,20 @@
+
+services:
+  caddy:
+    image: serfriz/caddy-porkbun-dockerproxy:latest  # replace with the desired Caddy build name
+    container_name: caddy  # feel free to choose your own container name
+    restart: "unless-stopped"  # run container unless stopped by user (optional) 
+    ports:
+      - "80:80"  # HTTP port
+      - "443:443"  # HTTPS port
+      - "443:443/udp"  # HTTP/3 port (optional)
+    volumes:
+      - $DOCKERDIR/appdata/caddy/data:/data  # volume mount for certificates data
+      - $DOCKERDIR/appdata/caddy/config:/config  # volume mount for configuration data
+      - $DOCKERDIR/appdata/caddy/Caddyfile:/etc/caddy/Caddyfile  # to use your own Caddyfile
+      - $DOCKERDIR/appdata/caddy/log:/var/log  # bind mount for the log directory (optional)
+      - $DOCKERDIR/appdata/caddy/srv:/srv  # bind mount to serve static sites or files (optional)
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - PORKBUN_API_KEY=$PORKBUN_API_KEY  # Porkbun API key (if applicable)
+      - PORKBUN_API_SECRET_KEY=$PORKBUN_SECRET_KEY  # Porkbun API secret key (if applicable)
