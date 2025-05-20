@@ -1,0 +1,25 @@
+services:
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      #- "443:443/udp"
+      - "2019:2019"
+    environment:
+      - CADDY_INGRESS_NETWORKS=proxy-net
+    networks:
+      - proxy-net
+    volumes:
+#      - $APPDATA/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /var/run/docker.sock:/var/run/docker.sock
+#      - $APPDATA/caddy/site:/srv
+      - $APPDATA/caddy/data:/data
+#      - $APPDATA/caddy/config:/config
+
+networks:
+  proxy-net:
+    name: proxy-net
+    external: true

@@ -1,0 +1,86 @@
+
+networks:
+  proxy-net:
+    name: proxy-net
+    external: true
+
+services:
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    ports:
+      - 3000:3000
+    volumes:
+      - $APPDATA/homepage:/app/config # Make sure your local config directory exists
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: 192.168.0.5:3000 # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+
+
+  db_recipes:
+    image: postgres:16-alpine
+    container_name: tandoor_db
+    restart: unless-stopped
+    #expose:
+    #  - 5432
+    volumes:
+      - $APPDATA/tandoor/data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+      - ./.env-tandoor
+    networks:
+      - proxy-net
+
+  web_recipes:
+    image: vabene1111/recipes:latest
+    container_name: tandoor
+    restart: unless-stopped
+    ports:
+      - 10380:8080
+    env_file:
+      - ./.env
+      - ./.env-tandoor      
+    volumes:
+      - staticfiles:/opt/recipes/staticfiles
+      # Do not make this a bind mount, see https://docs.tandoor.dev/install/docker/#volumes-vs-bind-mounts
+      #- nginx_config:/opt/recipes/nginx/conf.d
+      - $APPDATA/tandoor/mediafiles:/opt/recipes/mediafiles
+    depends_on:
+      - db_recipes
+    networks:
+      - proxy-net
+    labels:
+      caddy: recipes.bradserver.dev
+      # caddy.handle_path: /media/* |
+        # root * /opt/recipes/mediafiles
+        # file_server
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+    # labels:
+      # caddy: recipes.bradserver.dev
+      # caddy.handle_path: /media/*
+      # caddy.handle_path.root: * "%APPDATA/tandoor/mediafiles/"
+      # caddy.handle.file_server:
+      # caddy.reverse_proxy: "{{upstreams 8080}}"
+      # 
+  # nginx_recipes:
+    # image: nginx:mainline-alpine
+    # restart: always
+    # ports:
+      # - 8045:80
+    # env_file:
+      # - ./.env
+    # depends_on:
+      # - web_recipes
+    # volumes:
+      # # Do not make this a bind mount, see https://docs.tandoor.dev/install/docker/#volumes-vs-bind-mounts
+      # - nginx_config:/etc/nginx/conf.d:ro
+      # - staticfiles:/static:ro
+      # - $APPDATA/tandoor/mediafiles:/media:ro
+
+
+volumes:
+    staticfiles:
+    #nginx_config:
+

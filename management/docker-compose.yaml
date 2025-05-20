@@ -1,0 +1,360 @@
+########################### NETWORKS
+# You may customize the network subnet (192.168.89.0/24) below as you please.
+# Docker Compose version 3.5 or higher required to define networks this way.
+
+networks:
+  proxy-net:
+    name: proxy-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.89.0/24
+
+services:
+#
+#   watchtower:
+#     container_name: watchtower
+#     image: containrrr/watchtower
+#     environment:
+#       - TZ=America/Edmonton # Set container timezone for cron schedules
+#       - WATCHTOWER_SHEDULE="0 3 * * *" # 3am
+#       #- WATCHTOWER_NOTIFICATIONS_DELAY=21600  # +6 hours - 9am
+#       #- WATCHTOWER_NOTIFICATIONS=""
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#
+#
+#   homepage:
+#     image: ghcr.io/gethomepage/homepage:latest
+#     container_name: homepage
+#     networks:
+#         - proxy-net
+#     environment:
+#       PUID: 1000 # optional, your user id
+#       PGID: 1000 # optional, your group id
+#     ports:
+#       - 3006:3000
+#     volumes:
+#       - $APPDATA/homepage:/app/config # Make sure your local config directory exists
+#       - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
+#     restart: unless-stopped
+#     labels:
+#         caddy: admin.bradserver.dev
+#         caddy.reverse_proxy: "{{upstreams 3000}}"
+#
+#
+#   heimdall:
+#     image: lscr.io/linuxserver/heimdall
+#     container_name: heimdall
+#     ports:
+#       - "83:80"  # 80 to 82 already taken by other services
+#       # - "444:443" # 443 used by Nginx Proxy Manager. Disabled because we will put Heimdall behind proxy.
+#     volumes:
+#       - $APPDATA/heimdall:/config
+#     extends:
+#       file: $SHARED_IMPORTS
+#       service: core
+#     labels:
+#       caddy: home.bradserver.dev
+#       caddy.reverse_proxy: "{{upstreams 80}}"
+#
+#
+#
+#   organizr:
+#     extends:
+#       file: $SHARED_IMPORTS
+#       service: core
+#
+#     image: organizr/organizr:latest
+#     container_name: organizr
+#     volumes:
+#       - $APPDATA/organizr:/config
+#     ports:
+#       - "84:80"
+#       #BRANCH: "v2-master" #optional v2-master, master, v2-develop, develop, dev
+#       #FPM: false  #optional enable php to use the socket rather than TCP
+#     labels:
+#       caddy: menu.bradserver.dev
+#       caddy.reverse_proxy: "{{upstreams 80}}"
+
+  dozzle:
+    extends:
+      file: $SHARED_IMPORTS
+      service: core
+
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    ports:
+      - "8081:8080"  # qBittorrent is using port 8080.
+    environment:
+      DOZZLE_LEVEL: info
+      DOZZLE_TAILSIZE: 300
+      DOZZLE_FILTER: "status=running"
+      DOZZLE_AUTH_PROVIDER: simple
+      DOZZLE_AUTH_TTL: 48h
+      # DOZZLE_FILTER: "label=log_me" # limits logs displayed to containers with this label.
+      # DOCKER_HOST: tcp://socket-proxy:2375 # Use this instead if you have Socket Proxy enabled.
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Use Docker Socket Proxy and comment this line for improved security
+      - $APPDATA/dozzle:/data
+    labels:
+      caddy: dozzle.bradserver.dev, logs.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+  #
+  # filebrowser:
+  #   extends:
+  #     file: $SHARED_IMPORTS
+  #     service: core
+  #
+  #   image: filebrowser/filebrowser:latest
+  #   container_name: filebrowser
+  #   ports:
+  #     - "82:80"  # 80 and 81 are used by Nginx Proxy Manager
+  #   volumes:
+  #     - $APPDATA/filebrowser:/config
+  #     - $USERDIR:/srv
+  #   labels:
+  #     caddy: filebrowser.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 80}}"
+
+  # portainer:
+  #   extends:
+  #     file: $SHARED_IMPORTS
+  #     service: core
+  #   image: portainer/portainer-ee:latest
+  #   container_name: portainer
+  #   ports:
+  #     - "9443:9443"
+  #     - "9000:9000"
+  #   volumes:
+  #     - $APPDATA/portainer/data:/data
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   labels:
+  #     caddy: portainer.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 9000}}"      
+
+  dockge:
+    image: louislam/dockge:1
+    container_name: dockge
+    restart: unless-stopped
+    networks:
+      - proxy-net
+    ports:
+      # Host Port : Container Port
+      - 5001:5001
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $APPDATA/dockge:/app/data
+        
+      # If you want to use private registries, you need to share the auth file with Dockge:
+      # - /root/.docker/:/root/.docker
+
+      # Your stacks directory in the host (The paths inside container must be the same as the host)
+      # ⚠️⚠️ If you did it wrong, your data could end up be written into a wrong path.
+      # ✔️✔️✔️✔️ CORRECT: - /my-stacks:/my-stacks (Both paths match)
+      # ❌❌❌❌ WRONG: - /docker:/my-stacks (Both paths do not match)
+      - $DOCKERDIR/compose:$DOCKERDIR/compose
+    environment:
+      # Tell Dockge where is your stacks directory
+      - DOCKGE_STACKS_DIR=$DOCKERDIR/compose
+    labels:
+      caddy: docker.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 5001}}"
+
+  upsnap:
+    container_name: upsnap
+    image: ghcr.io/seriousm4x/upsnap:5 # images are also available on docker hub: seriousm4x/upsnap:4
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - $APPDATA/upsnap/data:/app/pb_data
+    # # To use a non-root user, create the mountpoint first (mkdir data) so that it has the right permission.
+    # user: 0:0
+    environment:
+      - TZ=America/Edmonton # Set container timezone for cron schedules
+      - UPSNAP_INTERVAL=*/10 * * * * * # Sets the interval in which the devices are pinged
+      - UPSNAP_SCAN_RANGE=192.168.0.0/24 # Scan range is used for device discovery on local network
+    #   - UPSNAP_SCAN_TIMEOUT=500ms # Scan timeout is nmap's --host-timeout value to wait for devices (https://nmap.org/book/man-performance.html)
+      - UPSNAP_PING_PRIVILEGED=true # Set to false if you don't have root user permissions
+    #   - UPSNAP_WEBSITE_TITLE=Custom name # Custom website title
+    # # dns is used for name resolution during network scan
+    dns:
+      - 192.168.0.1
+    #   - 192.18.0.2
+    # # you can change the listen ip:port inside the container like this:
+    entrypoint: /bin/sh -c "./upsnap serve --http 0.0.0.0:9120"
+    healthcheck:
+      test: curl -fs "http://172.17.0.1:9120/api/health" || exit 1
+      interval: 10s
+    # # or install custom packages for shutdown
+    # entrypoint: /bin/sh -c "apk update && apk add --no-cache <YOUR_PACKAGE> && rm -rf /var/cache/apk/* && ./upsnap serve --http 0.0.0.0:8090"
+    labels:
+      caddy: upsnap.bradserver.dev
+      caddy.reverse_proxy: 172.17.0.1:9120
+
+
+######### Scrutiny ###############
+  influxdb:
+    image: influxdb:2.2
+    container_name: scrutinydb
+    networks:
+        - proxy-net
+    ports:
+      - '18086:8086'
+    volumes:
+      - $APPDATA/scrutinydb:/var/lib/influxdb2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+  scrutiny:
+    image: 'ghcr.io/analogj/scrutiny:master-web'
+    container_name: scrutiny
+    networks:
+        - proxy-net
+    ports:
+      - '18080:8080'
+    volumes:
+      - $APPDATA/scrutiny:/opt/scrutiny/config
+    environment:
+      SCRUTINY_WEB_INFLUXDB_HOST: 'influxdb'
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
+    labels:
+      caddy: scrutiny.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+  collector:
+    image: 'ghcr.io/analogj/scrutiny:master-collector'
+    networks:
+        - proxy-net
+    container_name: scrutiny-collector
+    cap_add:
+      - SYS_RAWIO
+      - SYS_ADMIN
+    volumes:
+      - '/run/udev:/run/udev:ro'
+    environment:
+      COLLECTOR_API_ENDPOINT: 'http://scrutiny:8080'
+      COLLECTOR_HOST_ID: 'media-server'
+    depends_on:
+      scrutiny:
+        condition: service_healthy
+    devices:
+      - "/dev/sda"
+      - "/dev/sdb"
+      - "/dev/sdc"
+      - "/dev/sdd"
+      - "/dev/sde"
+      - "/dev/sdf"
+      - "/dev/nvme0"
+    ############################
+
+############## Authentik ###################
+
+  postgresql:
+    image: docker.io/library/postgres:16-alpine
+    container_name: authentik-postresgql
+    restart: unless-stopped
+    networks:
+        - proxy-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 5s
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${PG_PASS:?database password required}
+      POSTGRES_USER: ${PG_USER:-authentik}
+      POSTGRES_DB: ${PG_DB:-authentik}
+    env_file:
+      - .env
+  redis:
+    image: docker.io/library/redis:alpine
+    container_name: authentik-redis
+    command: --save 60 1 --loglevel warning
+    networks:
+        - proxy-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 3s
+    volumes:
+      - redis:/data
+  server:
+    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2024.10.4}
+    container_name: authentik-server
+    restart: unless-stopped
+    networks:
+        - proxy-net
+    command: server
+    environment:
+      AUTHENTIK_REDIS__HOST: redis
+      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+    volumes:
+      - $APPDATA/authentik/media:/media
+      - $APPDATA/authentik/custom-templates:/templates
+    env_file:
+      - .env
+    ports:
+      - "${COMPOSE_PORT_HTTP:-9000}:9000"
+      - "${COMPOSE_PORT_HTTPS:-9443}:9443"
+    depends_on:
+      - postgresql
+      - redis
+    labels:
+      caddy: auth.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 9000}}"
+  worker:
+    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2024.10.4}
+    container_name: authentik-worker
+    restart: unless-stopped
+    networks:
+        - proxy-net
+    command: worker
+    environment:
+      AUTHENTIK_REDIS__HOST: redis
+      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+    # `user: root` and the docker socket volume are optional.
+    # See more for the docker socket integration here:
+    # https://goauthentik.io/docs/outposts/integrations/docker
+    # Removing `user: root` also prevents the worker from fixing the permissions
+    # on the mounted folders, so when removing this make sure the folders have the correct UID/GID
+    # (1000:1000 by default)
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $APPDATA/authentik/media:/media
+      - $APPDATA/authentik/certs:/certs
+      - $APPDATA/authentik/custom-templates:/templates
+    env_file:
+      - .env
+    depends_on:
+      - postgresql
+      - redis
+
+volumes:
+  database:
+    driver: local
+  redis:
+    driver: local

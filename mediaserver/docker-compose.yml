@@ -5,12 +5,15 @@
 networks:
   default:
     driver: bridge
-  npm_proxy:
-    name: npm_proxy
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.89.0/24
+  # npm_proxy:
+  #   name: npm_proxy
+  #   driver: bridge
+  #   ipam:
+  #     config:
+  #       - subnet: 192.168.89.0/24
+  proxy-net:
+    name: proxy-net
+    external: true
 
 ########################### EXTENSION FIELDS
 # Helps eliminate repetition of sections
@@ -25,7 +28,7 @@ x-environment: &default-tz-puid-pgid
 # Keys common to some of the core services that we always to automatically restart on failure
 x-common-keys-core: &common-keys-core
   networks:
-    - npm_proxy
+    - proxy-net
   security_opt:
     - no-new-privileges:true
   restart: always
@@ -33,7 +36,7 @@ x-common-keys-core: &common-keys-core
 # Keys common to some of the dependent services/apps
 x-common-keys-apps: &common-keys-apps
   networks:
-    - npm_proxy
+    - proxy-net
   security_opt:
     - no-new-privileges:true
   restart: unless-stopped
@@ -41,7 +44,7 @@ x-common-keys-apps: &common-keys-apps
 # Keys common to some of the services in media-services.txt
 x-common-keys-media: &common-keys-media
   networks:
-    - npm_proxy
+    - proxy-net
   security_opt:
     - no-new-privileges:true
   restart: unless-stopped
@@ -50,40 +53,40 @@ services:
 
 ############################# FRONTENDS
 
-  # Nginx Proxy Manager - Reverse Proxy with LetsEncrypt
-  npm:
-    <<: *common-keys-core # See EXTENSION FIELDS at the top
-    container_name: nginx-proxy-manager
-    image: 'jc21/nginx-proxy-manager:latest'
-    # For Static IP
-    networks:
-    # For Static IP
-      npm_proxy:
-        ipv4_address: 192.168.89.254 # You can specify a static IP
-    # For Dynamic IP
-    # networks:
-    #  - npm_proxy
-    ports:
-      - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
-      - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
-      - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
-    volumes:
-      - $DOCKERDIR/appdata/npm/config:/config
-      - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
-      - $DOCKERDIR/appdata/npm/data:/data
-    environment:
-      DB_SQLITE_FILE: "/config/database.sqlite"
-      DISABLE_IPV6: 'true'
+  # # Nginx Proxy Manager - Reverse Proxy with LetsEncrypt
+  # npm:
+  #   <<: *common-keys-core # See EXTENSION FIELDS at the top
+  #   container_name: nginx-proxy-manager
+  #   image: 'jc21/nginx-proxy-manager:latest'
+  #   # For Static IP
+  #   networks:
+  #   # For Static IP
+  #     npm_proxy:
+  #       ipv4_address: 192.168.89.254 # You can specify a static IP
+  #   # For Dynamic IP
+  #   # networks:
+  #   #  - npm_proxy
+  #   ports:
+  #     - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
+  #     - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
+  #     - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
+  #   volumes:
+  #     - $DOCKERDIR/appdata/npm/config:/config
+  #     - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
+  #     - $DOCKERDIR/appdata/npm/data:/data
+  #   environment:
+  #     DB_SQLITE_FILE: "/config/database.sqlite"
+  #     DISABLE_IPV6: 'true'
 
 ########################## DOWNLOADERS
 
   # nzbget - Binary newsgrabber (NZB downloader)
   nzbget:
     <<: *common-keys-apps # See EXTENSION FIELDS at the top
-    image: jscottelblein/nzbget
+    image: nzbgetcom/nzbget:latest
     container_name: nzbget
     networks:
-      npm_proxy:
+      proxy-net:
         ipv4_address: 192.168.89.216
     ports:
       - "6789:6789"
@@ -92,6 +95,9 @@ services:
       - $DATADIR/downloads:/downloads
     environment:
       <<: *default-tz-puid-pgid
+    labels:
+      caddy: nzbget.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 6789}}"
 
   # TransmissionBT - Torrent Downloader
   # transmission-openvpn:
@@ -122,27 +128,105 @@ services:
   #   network_mode: "service:transmission"
   #   command: /bin/sh -c "apk add curl && apk add python3 && curl -c /mam.cookie -b 'mam_id=${MAM_ID}' https://t.myanonamouse.net/json/dynamicSeedbox.php | python3 -c \"import sys,json; sys.exit(not json.load(sys.stdin)['Success'])\""
   #   restart: "on-failure"
+# 
+#   transmission:
+#     <<: *common-keys-media # See EXTENSION FIELDS at the top
+#     image: lscr.io/linuxserver/transmission:4.0.4
+#     container_name: transmission
+#     environment:
+#       <<: *default-tz-puid-pgid
+#       #- TRANSMISSION_WEB_HOME= #optional
+#       USER: $TRANSMISSION_USER
+#       PASS: $TRANSMISSION_PASS
+#       #- WHITELIST= #optional
+#       #- PEERPORT= #optional
+#       #- HOST_WHITELIST= #optional
+#     volumes:
+#       - $DOCKERDIR/appdata/transmission:/config
+#       - $DATADIR/downloads/torrents:/downloads
+#       - $DATADIR/watch:/watch
+#     ports:
+#       - 9091:9091
+#       - 51413:51413
+#       - 51413:51413/udp
+#     labels:
+#       caddy: transmission.bradserver.dev
+#       caddy.reverse_proxy: "{{upstreams 9091}}"
 
-  transmission:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: lscr.io/linuxserver/transmission:4.0.4
-    container_name: transmission
+  qbittorrent:
+    #<<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/qbittorrent:latest
+    network_mode: "container:gluetun"
+    container_name: qbittorrent
     environment:
-      <<: *default-tz-puid-pgid
-      #- TRANSMISSION_WEB_HOME= #optional
-      USER: $TRANSMISSION_USER
-      PASS: $TRANSMISSION_PASS
-      #- WHITELIST= #optional
-      #- PEERPORT= #optional
-      #- HOST_WHITELIST= #optional
+      - PUID=1000
+      - PGID=1000
+      - WEBUI_PORT=8091
+      - TORRENTING_PORT=51413
     volumes:
-      - $DOCKERDIR/appdata/transmission:/config
-      - $DATADIR/downloads/transmission:/downloads
-      - $DATADIR/watch:/watch
+      - $APPDATA/qbittorrent:/config
+      - /home/brad/media/downloads/torrents:/downloads #optional
+    # ports:
+    #   - 8091:8080
+    #   - 6881:6881
+    #   - 51413:51413
+    #   - 51413:51413/udp
+    restart: unless-stopped
+    labels:
+        caddy: torrent.bradserver.dev
+        #caddy.reverse_proxy: "{{upstreams 8091}}"
+        caddy.reverse_proxy: "192.168.0.5:8091"
+
+# VPN
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    # line above must be uncommented to allow external containers to connect.
+    # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
     ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - 8091:8091         # qBittorrent WebUI
+      - 51413:51413       # qBittorrent Torrent port (TCP)
+      - 51413:51413/udp   # qBittorrent Torrent port (UDP)
+      - 8888:8888/tcp # HTTP proxy
+      - 8388:8388/tcp # Shadowsocks
+      - 8388:8388/udp # Shadowsocks
+    volumes:
+      - $APPDATA/gluetun:/gluetun
+    environment:
+      # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
+      - VPN_SERVICE_PROVIDER=privado
+      - VPN_TYPE=openvpn
+      # OpenVPN:
+      - OPENVPN_USER=enowlqdzqe
+      - OPENVPN_PASSWORD=Uj@knW6fz$4yG
+      #- SERVER_CITIES=Seattle,Montreal
+      # Wireguard:
+      # - WIREGUARD_PRIVATE_KEY=6OrjNrASgnCswKndrQnwikll4+KA0HaspyGzfI2d5FI=
+      # - WIREGUARD_ADDRESSES=100.64.11.191/32
+      # - WIREGUARD_PUBLIC_KEY=KgTUh3KLijVluDvNpzDCJJfrJ7EyLzYLmdHCksG4sRg=
+      # - WIREGUARD_ENDPOINT_IP=45.38.15.64
+      # - WIREGUARD_ENDPOINT_PORT=51820
+
+      # Server list updater
+      # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
+      #- UPDATER_PERIOD=
+
+
+  seedboxapi:
+    image: myanonamouse/seedboxapi:latest
+    user: 1001:1001 # Run as a non-root user.
+    container_name: seedboxapi
+    network_mode: "container:gluetun"
+    volumes:
+      - ./seedboxapi:/config
+    environment:
+      - DEBUG=1
+      - mam_id=lQR8dI4nfu6O_EbBsTCgI95bqkG6zxKW3c25eequI38MWmG7MeGPZiwoOysJoKHAIPix2G20Rx_0CSVYiDC5g8g5s6RGF1v_6UACLMWb3YKEgYivZI4L-Vx2OX5CVYCTgP0eQA5ODZnjgpPQITcxyu1lCFB3Dh2YlZRXlYG_pPzhjmJ9zuKeSQQBtujXjo2h3baYP8LZryiJesUeGYR_B_kS7cLgZS124l2bx16nxi4VSHW7PO2TscQzxp9qzN9D9aekRJxpW51N95gJCd6_mWmDGK8hJ4M4OeZ-
+      - interval=1
 
 
 ########################## PVRs
@@ -153,7 +237,7 @@ services:
     image: lscr.io/linuxserver/radarr:nightly # latest tag was causing "Error parsing column 45"
     container_name: radarr
     networks:
-      npm_proxy:
+      proxy-net:
     ports:
       - "7878:7878"
     volumes:
@@ -163,6 +247,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
+    labels:
+      caddy: radarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 7878}}"
 
   # Radarr 4K - Movie management
   radarr4k:
@@ -170,7 +257,7 @@ services:
     image: lscr.io/linuxserver/radarr:nightly # latest tag was causing "Error parsing column 45"
     container_name: radarr4k
     networks:
-      npm_proxy:
+      proxy-net:
     ports:
       - "7879:7878"
     volumes:
@@ -180,6 +267,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
+    labels:
+      caddy: radarr4k.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 7878}}"
 
   # Sonarr - TV Shows management
   sonarr:
@@ -187,7 +277,7 @@ services:
     image: lscr.io/linuxserver/sonarr:develop
     container_name: sonarr
     networks:
-      npm_proxy:
+      proxy-net:
         ipv4_address: 192.168.89.167
     ports:
       - "8989:8989"
@@ -200,6 +290,10 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
+    labels:
+      caddy: sonarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8989}}"
+
 
   # Sonarr - TV Shows management
   sonarr-anime:
@@ -207,7 +301,7 @@ services:
     image: lscr.io/linuxserver/sonarr:develop
     container_name: sonarr-anime
     networks:
-      npm_proxy:
+      proxy-net:
     ports:
       - "8990:8989"
     volumes:
@@ -217,28 +311,9 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
-
-  jellyfin:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    user: 1000:1000
-    image: jellyfin/jellyfin:latest
-    container_name: jellyfin
-    volumes:
-      - $DOCKERDIR/appdata/jellyfin:/config
-      - $DATADIR:/data/tvshows
-      - $DATADIR:/data/movies
-      - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
-    ports:
-      - 8096:8096
-    environment:
-      #<<: *default-tz-puid-pgid
-      NVIDIA_VISIBLE_DEVICES: all
-      JELLYFIN_PublishedServerUrl: https://jellyfin.bradserver.dev
-      JELLYFIN_DATA_DIR: /config/data
-      JELLYFIN_CONFIG_DIR: /config
-      JELLYFIN_LOG_DIR: /config/log
-      JELLYFIN_CACHE_DIR: /config/cache
-    runtime: nvidia
+    labels:
+      caddy: sonarr-anime.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8989}}"
 
 
   # Recyclarr - handle trash-guides
@@ -276,6 +351,9 @@ services:
       - $DOCKERDIR/appdata/prowlarr:/config
     ports:
       - 9696:9696
+    labels:
+      caddy: prowlarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 9696}}"      
 
   unpackerr:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -292,8 +370,6 @@ services:
     # ie. Remove all lines that begin with UN_CMDHOOK, UN_WEBHOOK, UN_FOLDER, UN_WEBSERVER, and other apps you do not use.
     environment:
       <<: *default-tz-puid-pgid
-      PUID: root
-      PGID: root
 
       # Sonarr Config
       UN_SONARR_0_URL: http://sonarr:8989
@@ -319,6 +395,14 @@ services:
       UN_READARR_0_TIMEOUT: 10s
       UN_READARR_0_DELETE_ORIG: false
       UN_READARR_0_DELETE_DELAY: 5m
+    ## Lidarr Settings
+      UN_LIDARR_0_URL: http://lidarr:8686
+      UN_LIDARR_0_API_KEY: $LIDARR_API_KEY
+      UN_LIDARR_0_PATHS_0: /downloads/torrents
+      UN_LIDARR_0_PROTOCOLS: torrent,usenet
+      UN_LIDARR_0_TIMEOUT: 10s
+      UN_LIDARR_0_DELETE_DELAY: 5m
+      UN_LIDARR_0_DELETE_ORIG: false
       # # Folder Config
       # UN_FOLDER_0_PATH:
       # UN_FOLDER_0_EXTRACT_PATH:
@@ -359,8 +443,8 @@ services:
     volumes:
       - $DOCKERDIR/appdata/readarr:/config
       - '$DATADIR/ssd2tb/books:/config/Calibre Library'
-      - $DATADIR/downloads/transmission/completed/books:/downloads/completed/books
-      - $DATADIR/downloads/transmission:/downloads
+      #- $DATADIR/downloads/torrents/completed/books:/downloads/completed/books
+      - $DATADIR/downloads/torrents:/downloads
       - $DATADIR/downloads/completed/eBooks:/downloads/completed/eBooks
       - $DATADIR/downloads/
       - "/etc/localtime:/etc/localtime:ro"
@@ -368,6 +452,9 @@ services:
       <<: *default-tz-puid-pgid
       UMASK: 002
       #ARGS: ""
+    labels:
+      caddy: readarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8787}}"
 
   readarr-audio:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -379,14 +466,57 @@ services:
       - $DOCKERDIR/appdata/readarr-audio:/config
       - $DATADIR/ssd2tb/audiobooks:/audiobooks
       - $DATADIR/media3/audiobooks:/audiobooks2
-      - $DATADIR/downloads/transmission/completed/audiobooks:/downloads/completed/audiobooks
-      - $DATADIR/downloads/completed/Audiobooks:/downloads/completed/Audiobooks
-      - $DATADIR/downloads:/downloads
+      - $DATADIR/downloads/torrents/completed/audiobooks:/downloads/completed/audiobooks
+      - $DATADIR/downloads/torrents/Audiobooks:/downloads/completed/Audiobooks
+      - $DATADIR/downloads/torrents:/downloads
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
       UMASK: 002
       #ARGS: ""
+    labels:
+      caddy: readarr-audio.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8787}}"
+
+  lidarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      <<: *default-tz-puid-pgid
+    volumes:
+      - $APPDATA/lidarr:/config
+      - $DATADIR/ssd128/music:/music #optional
+      - $DATADIR/downloads/completed/Music/:/downloads/completed/Music #optional
+      - $DATADIR/downloads/torrents:/downloads #optional
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+    labels:
+      caddy: lidarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8686}}"
+
+  soulseek:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: slskd/slskd
+    container_name: soulseek
+    ports:
+      - "5030:5030"
+      - "5031:5031"
+      - "50300:50300"
+    environment:
+      - SLSKD_REMOTE_CONFIGURATION=true
+    volumes:
+      - $APPDATA/slskd:/app
+      - $DATADIR/ssd128/music/:/music
+      - $DATADIR/downloads/music:/incomplete
+    restart: unless-stopped
+    labels:
+      caddy: soulseek.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 5030}}" 
+      caddy.reverse_proxy.0_header_up: Upgrade websocket 
+      caddy.reverse_proxy.1_header_up: Connection Upgrade
+
 
   # lazylibrarian:
   #   <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -402,6 +532,32 @@ services:
   #   ports:
   #     - 5299:5299
   #   restart: unless-stopped
+
+
+  jellyfin:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    user: 1000:1000
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    volumes:
+      - $DOCKERDIR/appdata/jellyfin:/config
+      - $DATADIR:/data/tvshows
+      - $DATADIR:/data/movies
+      - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
+    ports:
+      - 8096:8096
+    environment:
+      #<<: *default-tz-puid-pgid
+      NVIDIA_VISIBLE_DEVICES: all
+      JELLYFIN_PublishedServerUrl: https://jellyfin.bradserver.dev
+      JELLYFIN_DATA_DIR: /config/data
+      JELLYFIN_CONFIG_DIR: /config
+      JELLYFIN_LOG_DIR: /config/log
+      JELLYFIN_CACHE_DIR: /config/cache
+    runtime: nvidia
+    labels:
+      caddy: jellyfin.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8096}}"
 
 
   calibre:
@@ -424,6 +580,9 @@ services:
       - 8380:8080
       - 8381:8081
 #    restart: unless-stopped
+    labels:
+      caddy: calibre.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8080}}"
 
   calibre-web:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -438,6 +597,10 @@ services:
       <<: *default-tz-puid-pgid
       #DOCKER_MODS: DOCKER_MODS=linuxserver/mods:universal-calibre
     #  OAUTHLIB_RELAX_TOKEN_SCOPE: 1 #optional
+    labels:
+      caddy: calibre-web.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8083}}"
+
 
   audiobookshelf:
     <<: *common-keys-core # See EXTENSION FIELDS at the top
@@ -453,4 +616,71 @@ services:
       - $DOCKERDIR/appdata/audiobookshelf/metadata:/metadata
     environment:
       <<: *default-tz-puid-pgid
+    labels:
+      caddy: audiobooks.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 80}}"
 
+  navidrome:
+    <<: *common-keys-core # See EXTENSION FIELDS at the top
+    container_name: navidrome
+    image: deluan/navidrome:latest
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
+    environment:
+      # Optional: put your config options customization here. Examples:
+      ND_SCANSCHEDULE: 1h
+      ND_LOGLEVEL: info  
+      ND_SESSIONTIMEOUT: 24h
+      ND_BASEURL: ""
+      ND_SPOTIFY_ID: $SPOTIFY_ID
+      ND_SPOTIFY_SECRET: $SPOTIFY_SECRET
+    volumes:
+      - $APPDATA/navidrome:/data
+      - $DATADIR/ssd128/music:/music:ro
+    labels:
+      caddy: music.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 4533}}"
+
+
+#   jellystat-db:
+#     <<: *common-keys-media # See EXTENSION FIELDS at the top
+#     image: postgres:15.2
+#     container_name: jellystat-db
+#     restart: unless-stopped
+#     environment:
+#       POSTGRES_USER: $POSTGRES_USER
+#       POSTGRES_PASSWORD: POSTGRES_PASSWORD
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+
+#   jellystat:
+#     <<: *common-keys-media # See EXTENSION FIELDS at the top
+#     image: cyfershepard/jellystat:latest
+#     container_name: jellystat
+#     restart: unless-stopped
+#     environment:
+#       POSTGRES_USER: $POSTGRES_USER
+#       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+#       POSTGRES_IP: jellystat-db
+#       POSTGRES_PORT: 5432
+#       JWT_SECRET: $POSTGRES_JWTKEY
+#       TZ: mytimezone # timezone (ex: Europe/Paris)
+#     volumes:
+#       - jellystat-backup-data:/app/backend/backup-data
+#     ports:
+#       - "3001:3000"
+#     depends_on:
+#       - jellystat-db
+#     labels:
+#       caddy: jellystat.bradserver.dev
+#       caddy.reverse_proxy: "{{upstreams 3000}}"      
+# volumes:
+#   postgres-data:
+#   jellystat-backup-data:
+
+# logging:
+#   driver: "json-file"
+#   options:
+#     max-file: "5" # number of files or file count
+#     max-size: "10m" # file size

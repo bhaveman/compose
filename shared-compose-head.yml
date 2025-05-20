@@ -6,7 +6,7 @@ networks:
   default:
     driver: bridge
   npm_proxy:
-    name: npm_proxy
+    name: proxy-net
     driver: bridge
     ipam:
       config:
@@ -25,7 +25,7 @@ services:
       - TZ=Canada/Mountain
     restart: unless-stopped
     networks:
-      - npm_proxy
+      - proxy-net
     security_opt:
       - no-new-privileges:true
 
