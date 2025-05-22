@@ -19,11 +19,9 @@ services:
 
 
   db_recipes:
-    image: postgres:16-alpine
     container_name: tandoor_db
-    restart: unless-stopped
-    #expose:
-    #  - 5432
+    restart: always
+    image: postgres:16-alpine
     volumes:
       - $APPDATA/tandoor/data:/var/lib/postgresql/data
     env_file:
@@ -33,18 +31,18 @@ services:
       - proxy-net
 
   web_recipes:
-    image: vabene1111/recipes:latest
     container_name: tandoor
-    restart: unless-stopped
+    restart: always
+    image: vabene1111/recipes
     ports:
       - 10380:8080
     env_file:
       - ./.env
-      - ./.env-tandoor      
+      - ./.env-tandoor
     volumes:
       - staticfiles:/opt/recipes/staticfiles
       # Do not make this a bind mount, see https://docs.tandoor.dev/install/docker/#volumes-vs-bind-mounts
-      #- nginx_config:/opt/recipes/nginx/conf.d
+     # - nginx_config:/opt/recipes/nginx/conf.d
       - $APPDATA/tandoor/mediafiles:/opt/recipes/mediafiles
     depends_on:
       - db_recipes
@@ -52,23 +50,14 @@ services:
       - proxy-net
     labels:
       caddy: recipes.bradserver.dev
-      # caddy.handle_path: /media/* |
-        # root * /opt/recipes/mediafiles
-        # file_server
       caddy.reverse_proxy: "{{upstreams 8080}}"
 
-    # labels:
-      # caddy: recipes.bradserver.dev
-      # caddy.handle_path: /media/*
-      # caddy.handle_path.root: * "%APPDATA/tandoor/mediafiles/"
-      # caddy.handle.file_server:
-      # caddy.reverse_proxy: "{{upstreams 8080}}"
-      # 
   # nginx_recipes:
+    # container_name: tandoor_imagehosting
     # image: nginx:mainline-alpine
     # restart: always
     # ports:
-      # - 8045:80
+      # - 8321:80
     # env_file:
       # - ./.env
     # depends_on:
@@ -79,8 +68,7 @@ services:
       # - staticfiles:/static:ro
       # - $APPDATA/tandoor/mediafiles:/media:ro
 
-
 volumes:
-    staticfiles:
-    #nginx_config:
+  nginx_config:
+  staticfiles:
 
