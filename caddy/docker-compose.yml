@@ -15,9 +15,10 @@ services:
     volumes:
 #      - $APPDATA/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /var/run/docker.sock:/var/run/docker.sock
-#      - $APPDATA/caddy/site:/srv
-      - $APPDATA/caddy/data:/data
-#      - $APPDATA/caddy/config:/config
+#      - $APPDATAPERFORMANCE/caddy/site:/srv
+      - $APPDATAPERFORMANCE/caddy/data:/data
+#      - $APPDATAPERFORMANCE/caddy/config:/config
+
 
 networks:
   proxy-net:

@@ -49,36 +49,8 @@ x-common-keys-media: &common-keys-media
     - no-new-privileges:true
   restart: unless-stopped
 ########################### SERVICES
+
 services:
-
-############################# FRONTENDS
-
-  # # Nginx Proxy Manager - Reverse Proxy with LetsEncrypt
-  # npm:
-  #   <<: *common-keys-core # See EXTENSION FIELDS at the top
-  #   container_name: nginx-proxy-manager
-  #   image: 'jc21/nginx-proxy-manager:latest'
-  #   # For Static IP
-  #   networks:
-  #   # For Static IP
-  #     npm_proxy:
-  #       ipv4_address: 192.168.89.254 # You can specify a static IP
-  #   # For Dynamic IP
-  #   # networks:
-  #   #  - npm_proxy
-  #   ports:
-  #     - '80:80' # Public HTTP Port. Port Forwarding on Router is ON.
-  #     - '443:443' # Public HTTPS Port. Port Forwarding on Router is ON.
-  #     - '81:81' # Admin Web Port. Port Forwarding on Router is OFF. Internal Home Network Access only - 192.168.89.254:81.
-  #   volumes:
-  #     - $DOCKERDIR/appdata/npm/config:/config
-  #     - $DOCKERDIR/appdata/npm/letsencrypt:/etc/letsencrypt
-  #     - $DOCKERDIR/appdata/npm/data:/data
-  #   environment:
-  #     DB_SQLITE_FILE: "/config/database.sqlite"
-  #     DISABLE_IPV6: 'true'
-
-########################## DOWNLOADERS
 
   # nzbget - Binary newsgrabber (NZB downloader)
   nzbget:
@@ -91,7 +63,7 @@ services:
     ports:
       - "6789:6789"
     volumes:
-      - $DOCKERDIR/appdata/nzbget:/config
+      - $APPDATA/nzbget:/config
       - $DATADIR/downloads:/downloads
     environment:
       <<: *default-tz-puid-pgid
@@ -156,7 +128,8 @@ services:
   qbittorrent:
     #<<: *common-keys-media # See EXTENSION FIELDS at the top
     image: lscr.io/linuxserver/qbittorrent:latest
-    network_mode: "container:gluetun"
+    networks:
+      proxy-net:
     container_name: qbittorrent
     environment:
       - PUID=1000
@@ -166,67 +139,67 @@ services:
     volumes:
       - $APPDATA/qbittorrent:/config
       - /home/brad/media/downloads/torrents:/downloads #optional
-    # ports:
-    #   - 8091:8080
-    #   - 6881:6881
-    #   - 51413:51413
-    #   - 51413:51413/udp
+    ports:
+      #- 8091:8080
+      - 6881:6881
+      - 51413:51413
+      - 51413:51413/udp
     restart: unless-stopped
     labels:
         caddy: torrent.bradserver.dev
-        #caddy.reverse_proxy: "{{upstreams 8091}}"
-        caddy.reverse_proxy: "192.168.0.5:8091"
+        caddy.reverse_proxy: "{{upstreams 8091}}"
+        #caddy.reverse_proxy: "192.168.0.5:8091"
 
 # VPN
-  gluetun:
-    image: qmcgaw/gluetun
-    container_name: gluetun
-    # line above must be uncommented to allow external containers to connect.
-    # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    ports:
-      - 8091:8091         # qBittorrent WebUI
-      - 51413:51413       # qBittorrent Torrent port (TCP)
-      - 51413:51413/udp   # qBittorrent Torrent port (UDP)
-      - 8888:8888/tcp # HTTP proxy
-      - 8388:8388/tcp # Shadowsocks
-      - 8388:8388/udp # Shadowsocks
-    volumes:
-      - $APPDATA/gluetun:/gluetun
-    environment:
-      # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
-      - VPN_SERVICE_PROVIDER=privado
-      - VPN_TYPE=openvpn
-      # OpenVPN:
-      - OPENVPN_USER=enowlqdzqe
-      - OPENVPN_PASSWORD=Uj@knW6fz$4yG
-      #- SERVER_CITIES=Seattle,Montreal
-      # Wireguard:
-      # - WIREGUARD_PRIVATE_KEY=6OrjNrASgnCswKndrQnwikll4+KA0HaspyGzfI2d5FI=
-      # - WIREGUARD_ADDRESSES=100.64.11.191/32
-      # - WIREGUARD_PUBLIC_KEY=KgTUh3KLijVluDvNpzDCJJfrJ7EyLzYLmdHCksG4sRg=
-      # - WIREGUARD_ENDPOINT_IP=45.38.15.64
-      # - WIREGUARD_ENDPOINT_PORT=51820
+  # gluetun:
+  #   image: qmcgaw/gluetun
+  #   container_name: gluetun
+  #   # line above must be uncommented to allow external containers to connect.
+  #   # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
+  #   cap_add:
+  #     - NET_ADMIN
+  #   devices:
+  #     - /dev/net/tun:/dev/net/tun
+  #   ports:
+  #     - 8091:8091         # qBittorrent WebUI
+  #     - 51413:51413       # qBittorrent Torrent port (TCP)
+  #     - 51413:51413/udp   # qBittorrent Torrent port (UDP)
+  #     - 8888:8888/tcp # HTTP proxy
+  #     - 8388:8388/tcp # Shadowsocks
+  #     - 8388:8388/udp # Shadowsocks
+  #   volumes:
+  #     - $APPDATA/gluetun:/gluetun
+  #   environment:
+  #     # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
+  #     - VPN_SERVICE_PROVIDER=privado
+  #     - VPN_TYPE=openvpn
+  #     # OpenVPN:
+  #     - OPENVPN_USER=enowlqdzqe
+  #     - OPENVPN_PASSWORD=Uj@knW6fz$4yG
+  #     #- SERVER_CITIES=Seattle,Montreal
+  #     # Wireguard:
+  #     # - WIREGUARD_PRIVATE_KEY=6OrjNrASgnCswKndrQnwikll4+KA0HaspyGzfI2d5FI=
+  #     # - WIREGUARD_ADDRESSES=100.64.11.191/32
+  #     # - WIREGUARD_PUBLIC_KEY=KgTUh3KLijVluDvNpzDCJJfrJ7EyLzYLmdHCksG4sRg=
+  #     # - WIREGUARD_ENDPOINT_IP=45.38.15.64
+  #     # - WIREGUARD_ENDPOINT_PORT=51820
 
-      # Server list updater
-      # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
-      #- UPDATER_PERIOD=
+  #     # Server list updater
+  #     # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
+  #     #- UPDATER_PERIOD=
 
 
-  seedboxapi:
-    image: myanonamouse/seedboxapi:latest
-    user: 1001:1001 # Run as a non-root user.
-    container_name: seedboxapi
-    network_mode: "container:gluetun"
-    volumes:
-      - ./seedboxapi:/config
-    environment:
-      - DEBUG=1
-      - mam_id=lQR8dI4nfu6O_EbBsTCgI95bqkG6zxKW3c25eequI38MWmG7MeGPZiwoOysJoKHAIPix2G20Rx_0CSVYiDC5g8g5s6RGF1v_6UACLMWb3YKEgYivZI4L-Vx2OX5CVYCTgP0eQA5ODZnjgpPQITcxyu1lCFB3Dh2YlZRXlYG_pPzhjmJ9zuKeSQQBtujXjo2h3baYP8LZryiJesUeGYR_B_kS7cLgZS124l2bx16nxi4VSHW7PO2TscQzxp9qzN9D9aekRJxpW51N95gJCd6_mWmDGK8hJ4M4OeZ-
-      - interval=1
+  # seedboxapi:
+  #   image: myanonamouse/seedboxapi:latest
+  #   user: 1001:1001 # Run as a non-root user.
+  #   container_name: seedboxapi
+  #   network_mode: "container:gluetun"
+  #   volumes:
+  #     - ./seedboxapi:/config
+  #   environment:
+  #     - DEBUG=1
+  #     - mam_id=lQR8dI4nfu6O_EbBsTCgI95bqkG6zxKW3c25eequI38MWmG7MeGPZiwoOysJoKHAIPix2G20Rx_0CSVYiDC5g8g5s6RGF1v_6UACLMWb3YKEgYivZI4L-Vx2OX5CVYCTgP0eQA5ODZnjgpPQITcxyu1lCFB3Dh2YlZRXlYG_pPzhjmJ9zuKeSQQBtujXjo2h3baYP8LZryiJesUeGYR_B_kS7cLgZS124l2bx16nxi4VSHW7PO2TscQzxp9qzN9D9aekRJxpW51N95gJCd6_mWmDGK8hJ4M4OeZ-
+  #     - interval=1
 
 
 ########################## PVRs
@@ -241,7 +214,7 @@ services:
     ports:
       - "7878:7878"
     volumes:
-      - $DOCKERDIR/appdata/radarr:/config
+      - $APPDATA/radarr:/config
       - $DATADIR/downloads:/downloads/
       - $DATADIR:/movies
       - "/etc/localtime:/etc/localtime:ro"
@@ -261,7 +234,7 @@ services:
     ports:
       - "7879:7878"
     volumes:
-      - $DOCKERDIR/appdata/radarr4k:/config
+      - $APPDATA/radarr4k:/config
       - $DATADIR/downloads:/downloads/
       - $DATADIR:/movies
       - "/etc/localtime:/etc/localtime:ro"
@@ -282,7 +255,7 @@ services:
     ports:
       - "8989:8989"
     volumes:
-      - $DOCKERDIR/appdata/sonarr:/config
+      - $APPDATA/sonarr:/config
       - $DATADIR/downloads:/downloads
       - $DATADIR:/tv
       - $DATADIR/downloads/transmission/completed/tv-shows:/downloads/completed/tv-shows
@@ -305,7 +278,7 @@ services:
     ports:
       - "8990:8989"
     volumes:
-      - $DOCKERDIR/appdata/sonarr-anime:/config
+      - $APPDATA/sonarr-anime:/config
       - $DATADIR/downloads:/downloads
       - $DATADIR:/tv
       - "/etc/localtime:/etc/localtime:ro"
@@ -317,15 +290,16 @@ services:
 
 
   # Recyclarr - handle trash-guides
-  # recyclarr:
-  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
-  #   image: ghcr.io/recyclarr/recyclarr:latest
-  #   container_name: recyclarr
-  #   volumes:
-  #     - $DOCKERDIR/appdata/recyclarr:/config
-  #   environment:
-  #     <<: *default-tz-puid-pgid
-
+  recyclarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: ghcr.io/recyclarr/recyclarr
+    container_name: recyclarr
+    networks:
+      proxy-net:
+    volumes:
+      - $APPDATA/recyclarr:/config
+    environment:
+      <<: *default-tz-puid-pgid
 
   # Bazarr - Subtitle Management
 #  bazarr:
@@ -348,7 +322,7 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     volumes:
-      - $DOCKERDIR/appdata/prowlarr:/config
+      - $APPDATA/prowlarr:/config
     ports:
       - 9696:9696
     labels:
@@ -396,13 +370,13 @@ services:
       UN_READARR_0_DELETE_ORIG: false
       UN_READARR_0_DELETE_DELAY: 5m
     ## Lidarr Settings
-      UN_LIDARR_0_URL: http://lidarr:8686
-      UN_LIDARR_0_API_KEY: $LIDARR_API_KEY
-      UN_LIDARR_0_PATHS_0: /downloads/torrents
-      UN_LIDARR_0_PROTOCOLS: torrent,usenet
-      UN_LIDARR_0_TIMEOUT: 10s
-      UN_LIDARR_0_DELETE_DELAY: 5m
-      UN_LIDARR_0_DELETE_ORIG: false
+      # UN_LIDARR_0_URL: http://lidarr:8686
+      # UN_LIDARR_0_API_KEY: $LIDARR_API_KEY
+      # UN_LIDARR_0_PATHS_0: /downloads/torrents
+      # UN_LIDARR_0_PROTOCOLS: torrent,usenet
+      # UN_LIDARR_0_TIMEOUT: 10s
+      # UN_LIDARR_0_DELETE_DELAY: 5m
+      # UN_LIDARR_0_DELETE_ORIG: false
       # # Folder Config
       # UN_FOLDER_0_PATH:
       # UN_FOLDER_0_EXTRACT_PATH:
@@ -434,89 +408,148 @@ services:
 
 #################### Books
 
-  readarr:
+  # readarr:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: lscr.io/linuxserver/readarr:0.4.19-nightly
+  #   container_name: readarr
+  #   ports:
+  #     - "8787:8787"
+  #   volumes:
+  #     - $APPDATA/readarr:/config
+  #     - '$DATADIR/ssd2tb/books:/config/Calibre Library'
+  #     #- $DATADIR/downloads/torrents/completed/books:/downloads/completed/books
+  #     - $DATADIR/downloads/torrents:/downloads
+  #     - $DATADIR/downloads/completed/eBooks:/downloads/completed/eBooks
+  #     - $DATADIR/downloads/
+  #     - "/etc/localtime:/etc/localtime:ro"
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+  #     UMASK: 002
+  #     #ARGS: ""
+  #   labels:
+  #     caddy: readarr.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 8787}}"
+
+  # readarr-audio:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: lscr.io/linuxserver/readarr:0.4.19-nightly
+  #   container_name: readarr-audio
+  #   ports:
+  #     - "8788:8787"
+  #   volumes:
+  #     - $APPDATA/readarr-audio:/config
+  #     - $DATADIR/ssd2tb/audiobooks:/audiobooks
+  #     - $DATADIR/media3/audiobooks:/audiobooks2
+  #     - $DATADIR/downloads/torrents/completed/audiobooks:/downloads/completed/audiobooks
+  #     - $DATADIR/downloads/torrents/Audiobooks:/downloads/completed/Audiobooks
+  #     - $DATADIR/downloads/torrents:/downloads
+  #     - "/etc/localtime:/etc/localtime:ro"
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+  #     UMASK: 002
+  #     #ARGS: ""
+  #   labels:
+  #     caddy: readarr-audio.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 8787}}"
+
+  # rreading-glasses:
+  #   depends_on:
+  #     rreading-glasses-db:
+  #       condition: service_started  
+  #   image: blampe/rreading-glasses:hardcover
+  #   pull_policy: always
+  #   container_name: rreading-glasses
+  #   hostname: rreading-glasses
+  #   entrypoint: ["/main", "serve"]
+  #   command:
+  #     - --verbose
+  #   restart: unless-stopped
+  #   networks:
+  #     proxy-net:
+  #   mem_limit: 128m
+  #   environment:
+  #     HARDCOVER_AUTH: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXJkY292ZXIiLCJ2ZXJzaW9uIjoiOCIsImp0aSI6IjlhYjQ4MGFmLWI4NTMtNDk3ZS1hYzliLWQ5NzEyYjJjOGEyMyIsImFwcGxpY2F0aW9uSWQiOjIsInN1YiI6IjQ1ODUyIiwiYXVkIjoiMSIsImlkIjoiNDU4NTIiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzYxNjYxNzY3LCJleHAiOjE3OTMxOTc3NjcsImh0dHBzOi8vaGFzdXJhLmlvL2p3dC9jbGFpbXMiOnsieC1oYXN1cmEtYWxsb3dlZC1yb2xlcyI6WyJ1c2VyIl0sIngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1yb2xlIjoidXNlciIsIlgtaGFzdXJhLXVzZXItaWQiOiI0NTg1MiJ9LCJ1c2VyIjp7ImlkIjo0NTg1Mn19.ULM2eFq4dYNHnYGNKoArZA5R_Wccuaofj751e_A0g34"
+  #     POSTGRES_HOST: rreading-glasses-db
+  #     POSTGRES_DATABASE: rreading-glasses
+  #     POSTGRES_USER: rreading-glasses
+  #     POSTGRES_PASSWORD: $READINGGLASSES_DB_PASS
+  #   ports:
+  #     - "8791:8788"
+  #   labels:
+  #     caddy: readingglasses.bradserver.dev
+  #     caddy.reverse_proxy: "rreading-glasses:8788"
+
+  # rreading-glasses-db:
+  #   image: postgres:17
+  #   container_name: rreading-glasses-db
+  #   hostname: rreading-glasses-db
+  #   restart: unless-stopped
+  #   networks:
+  #     proxy-net:
+  #   environment:
+  #     POSTGRES_USER: rreading-glasses
+  #     POSTGRES_PASSWORD: $READINGGLASSES_DB_PASS
+  #     POSTGRES_DB: rreading-glasses
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - rreading_glasses_data:/var/lib/postgresql/data
+
+  bookshelf:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: hotio/readarr:nightly
-    container_name: readarr
+    image: ghcr.io/pennydreadful/bookshelf:softcover 
+    container_name: bookshelf
     ports:
-      - "8787:8787"
+      - "8987:8787"
     volumes:
-      - $DOCKERDIR/appdata/readarr:/config
-      - '$DATADIR/ssd2tb/books:/config/Calibre Library'
+      - $APPDATA/bookshelf:/config
+      - '$DATADIR/media3/books:/config/Calibre Library'
       #- $DATADIR/downloads/torrents/completed/books:/downloads/completed/books
       - $DATADIR/downloads/torrents:/downloads
       - $DATADIR/downloads/completed/eBooks:/downloads/completed/eBooks
       - $DATADIR/downloads/
-      - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
-      UMASK: 002
-      #ARGS: ""
     labels:
       caddy: readarr.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8787}}"
 
-  readarr-audio:
+  bookshelf-audio:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: hotio/readarr:nightly
-    container_name: readarr-audio
+    image: ghcr.io/pennydreadful/bookshelf:hardcover 
+    container_name: bookshelf-audio
     ports:
-      - "8788:8787"
+      - "8988:8787"
     volumes:
-      - $DOCKERDIR/appdata/readarr-audio:/config
+      - $APPDATA/bookshelf-audio:/config
       - $DATADIR/ssd2tb/audiobooks:/audiobooks
       - $DATADIR/media3/audiobooks:/audiobooks2
       - $DATADIR/downloads/torrents/completed/audiobooks:/downloads/completed/audiobooks
       - $DATADIR/downloads/torrents/Audiobooks:/downloads/completed/Audiobooks
       - $DATADIR/downloads/torrents:/downloads
-      - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
-      UMASK: 002
-      #ARGS: ""
     labels:
       caddy: readarr-audio.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8787}}"
 
-  lidarr:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: lscr.io/linuxserver/lidarr:latest
-    container_name: lidarr
-    environment:
-      <<: *default-tz-puid-pgid
-    volumes:
-      - $APPDATA/lidarr:/config
-      - $DATADIR/ssd128/music:/music #optional
-      - $DATADIR/downloads/completed/Music/:/downloads/completed/Music #optional
-      - $DATADIR/downloads/torrents:/downloads #optional
-    ports:
-      - 8686:8686
-    restart: unless-stopped
-    labels:
-      caddy: lidarr.bradserver.dev
-      caddy.reverse_proxy: "{{upstreams 8686}}"
 
-  soulseek:
+  lazylibrarian:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: slskd/slskd
-    container_name: soulseek
-    ports:
-      - "5030:5030"
-      - "5031:5031"
-      - "50300:50300"
+    image: lscr.io/linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian
     environment:
-      - SLSKD_REMOTE_CONFIGURATION=true
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - DOCKER_MODS=linuxserver/mods:universal-calibre #|linuxserver/mods:lazylibrarian-ffmpeg #optional
     volumes:
-      - $APPDATA/slskd:/app
-      - $DATADIR/ssd128/music/:/music
-      - $DATADIR/downloads/music:/incomplete
+      -  $APPDATA/lazylibrarian/data:/config
+      - $DATADIR/downloads/torrents:/downloads
+      - $DATADIR/ssd2tb/books:/books #optional
+    ports:
+      - 5299:5299
     restart: unless-stopped
-    labels:
-      caddy: soulseek.bradserver.dev
-      caddy.reverse_proxy: "{{upstreams 5030}}" 
-      caddy.reverse_proxy.0_header_up: Upgrade websocket 
-      caddy.reverse_proxy.1_header_up: Connection Upgrade
-
 
   # lazylibrarian:
   #   <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -537,10 +570,13 @@ services:
   jellyfin:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
     user: 1000:1000
+    cpu_shares: 2000
+    blkio_config:
+      weight: 600
     image: jellyfin/jellyfin:latest
     container_name: jellyfin
     volumes:
-      - $DOCKERDIR/appdata/jellyfin:/config
+      - /home/brad/jellyfin:/config
       - $DATADIR:/data/tvshows
       - $DATADIR:/data/movies
       - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
@@ -572,9 +608,9 @@ services:
       PASSWORD: $CALIBRE_PASS
 #      CLI_ARGS: #optional
     volumes:
-      - '$DATADIR/ssd2tb/books:/config/Calibre Library'
+      - '$DATADIR/media3/books:/config/Calibre Library'
       #- '$DOCKERDIR/appdata/calibre/Calibre Library:/config/Calibre Library'
-      - $DOCKERDIR/appdata/calibre:/config
+      - $APPDATA/calibre:/config
       - $DATADIR/calibreimport:/media/import
     ports:
       - 8380:8080
@@ -586,13 +622,13 @@ services:
 
   calibre-web:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: linuxserver/calibre-web:latest
+    image: linuxserver/calibre-web:nightly
     container_name: calibre-web
     ports:
       - "8083:8083"
     volumes:
-      - $DOCKERDIR/appdata/calibre-web:/config
-      - $DATADIR/ssd2tb/books:/books
+      - $APPDATA/calibre-web:/config
+      - $DATADIR/media3/books:/books
     environment:
       <<: *default-tz-puid-pgid
       #DOCKER_MODS: DOCKER_MODS=linuxserver/mods:universal-calibre
@@ -600,6 +636,39 @@ services:
     labels:
       caddy: calibre-web.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8083}}"
+
+  calibre-ttrpg:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: linuxserver/calibre-web:latest
+    container_name: calibre-ttrpg
+    ports:
+      - "8084:8083"
+    volumes:
+      - $APPDATA/calibre-ttrpg:/config
+      - "$DATADIR/media3/ttrpg-library:/books"
+    environment:
+      <<: *default-tz-puid-pgid
+      #DOCKER_MODS: DOCKER_MODS=linuxserver/mods:universal-calibre
+    #  OAUTHLIB_RELAX_TOKEN_SCOPE: 1 #optional
+    labels:
+      caddy: ttrpg.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8083}}"
+
+#  audiobookrequest:
+#    <<: *common-keys-core # See EXTENSION FIELDS at the top
+#    container_name: audiobookrequest
+#    image: markbeep/audiobookrequest:1
+#    ports:
+#      - '8000:5432'
+#    volumes:
+#      - $APPDATA/audiobookrequest:/config
+#    environment:
+#      <<: *default-tz-puid-pgid
+#    #  ABR_APP__PORT: 5432
+#    #  ABR_APP__OPENAPI_ENABLED: true
+#    labels:
+#      caddy: audiobookrequest.bradserver.dev
+#      caddy.reverse_proxy: "{{upstreams 5432}}"
 
 
   audiobookshelf:
@@ -612,35 +681,41 @@ services:
       - $DATADIR/ssd2tb/audiobooks:/audiobooks
       - $DATADIR/media3/audiobooks:/audiobooks2
       #- </path/to/podcasts>:/podcasts
-      - $DOCKERDIR/appdata/audiobookshelf/config:/config
-      - $DOCKERDIR/appdata/audiobookshelf/metadata:/metadata
+      - $APPDATAPERFORMANCE/audiobookshelf/config:/config
+      - $APPDATAPERFORMANCE/audiobookshelf/metadata:/metadata
     environment:
       <<: *default-tz-puid-pgid
     labels:
       caddy: audiobooks.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 80}}"
 
-  navidrome:
-    <<: *common-keys-core # See EXTENSION FIELDS at the top
-    container_name: navidrome
-    image: deluan/navidrome:latest
+  wizarr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    container_name: wizarr
+    image: ghcr.io/wizarrrr/wizarr
     ports:
-      - "4533:4533"
-    restart: unless-stopped
-    environment:
-      # Optional: put your config options customization here. Examples:
-      ND_SCANSCHEDULE: 1h
-      ND_LOGLEVEL: info  
-      ND_SESSIONTIMEOUT: 24h
-      ND_BASEURL: ""
-      ND_SPOTIFY_ID: $SPOTIFY_ID
-      ND_SPOTIFY_SECRET: $SPOTIFY_SECRET
+      - 5690:5690
     volumes:
-      - $APPDATA/navidrome:/data
-      - $DATADIR/ssd128/music:/music:ro
+      - $APPDATA/wizarr:/data    environment
+    environment:
+      <<: *default-tz-puid-pgid
     labels:
-      caddy: music.bradserver.dev
-      caddy.reverse_proxy: "{{upstreams 4533}}"
+      caddy: wizarr.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 5690}}"
+
+  jellyseerr:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    ports:
+      - 5055:5055
+    environment:
+      <<: *default-tz-puid-pgid
+    labels:
+      caddy: requests.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 5055}}"
+    
+
 
 
 #   jellystat-db:
@@ -684,3 +759,7 @@ services:
 #   options:
 #     max-file: "5" # number of files or file count
 #     max-size: "10m" # file size
+
+
+volumes:
+  rreading_glasses_data:

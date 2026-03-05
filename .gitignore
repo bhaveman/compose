@@ -1,3 +1,41 @@
-*.swp
+# Ignore everything by default
+*
+
+# Keep directory structure so exceptions below can match
+!*/
+
+# Keep version-control metadata and this file
+!.gitignore
+
+# Keep editable config and script files
+!**/*.yml
+!**/*.yaml
+!**/*.xml
+!**/*.json
+!**/*.toml
+!**/*.ini
+!**/*.conf
+!**/*.cfg
+!**/*.sh
+!**/*.py
+!**/*.js
+!**/*.md
+!**/*.txt
+
+# Keep env files ignored by default (typically secrets/local settings)
 *.env
 *.env.*
+**/*.env
+**/*.env.*
+
+# Ignore editor/runtime artifacts
+*.swp
+*.swo
+*~
+
+# Ignore common logs and save/state files
+**/logs/**
+**/*.log
+**/*.sav
+**/*.save
+**/*.pid
