@@ -522,7 +522,7 @@ services:
       - "8988:8787"
     volumes:
       - $APPDATA/bookshelf-audio:/config
-      - $DATADIR/ssd2tb/audiobooks:/audiobooks
+      - $DATADIR/media3/audiobooks:/audiobooks
       - $DATADIR/media3/audiobooks:/audiobooks2
       - $DATADIR/downloads/torrents/completed/audiobooks:/downloads/completed/audiobooks
       - $DATADIR/downloads/torrents/Audiobooks:/downloads/completed/Audiobooks
@@ -678,7 +678,7 @@ services:
     ports:
       - "13378:80"
     volumes:
-      - $DATADIR/ssd2tb/audiobooks:/audiobooks
+      - $DATADIR/media3/audiobooks:/audiobooks
       - $DATADIR/media3/audiobooks:/audiobooks2
       #- </path/to/podcasts>:/podcasts
       - $APPDATAPERFORMANCE/audiobookshelf/config:/config
