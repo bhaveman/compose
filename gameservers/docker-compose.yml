@@ -1,0 +1,79 @@
+
+networks:
+   proxy-net:
+      name: proxy-net
+      external: true
+
+services:
+  # minecraft:
+  #   container_name: minecraft-server
+  #   image: itzg/minecraft-server:latest
+  #   tty: true
+  #   stdin_open: true
+  #   restart: unless-stopped
+  #   networks:
+  #     - proxy-net
+  #   ports:
+  #     - "25565:25565"
+  #   environment:
+  #     EULA: "TRUE"
+  #     DIFFICULTY: "3"
+  #     SEED: "-5838335156100759864"
+  #     MEMORY: 4G
+  #   volumes:
+  #     # attach the relative directory 'data' to the container's /data path
+  #     - /home/brad/docker/appdata/minecraft:/data
+  #   labels:
+  #     caddy: "minecraft.bradserver.dev"
+  #     caddy.reverse_proxy: "{{upstreams 25565}}"
+
+  crafty:
+    container_name: crafty_minecraft
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: always
+    networks:
+      - proxy-net
+    environment:
+        - TZ=Etc/UTC
+    ports:
+        - "8443:8443" # HTTPS
+        - "8123:8123" # DYNMAP
+        - "19132:19132/udp" # BEDROCK
+        - "25566-25600:25566-25600" # MC SERV PORT RANGE
+        - "24454:24454/udp" # simple voice chat
+    volumes:
+        - /home/brad/docker/appdata/crafty/backups:/crafty/backups
+        - /home/brad/docker/appdata/crafty/logs:/crafty/logs
+        - /home/brad/docker/appdata/crafty/servers:/crafty/servers
+        - /home/brad/docker/appdata/crafty/config:/crafty/app/config
+        - /home/brad/docker/appdata/crafty/import:/crafty/import
+    labels:
+      caddy: "minecraft.bradserver.dev"
+      caddy.reverse_proxy: "https://crafty_minecraft:8443"
+      caddy.reverse_proxy.header_up: "Host minecraft.bradserver.dev"
+      caddy.reverse_proxy.transport: "http"
+      caddy.reverse_proxy.transport.versions: "1.1"
+      caddy.reverse_proxy.transport.tls_insecure_skip_verify: ""
+      caddy_1: "dynmap.bradserver.dev"
+      caddy_1.reverse_proxy: "http://crafty_minecraft:8123"
+
+
+
+# docker-compose.yml with MariaDB backend for TeamSpeak
+# Recommended for servers with more than 50 regular users
+
+  teamspeak:
+    image: teamspeaksystems/teamspeak6-server:latest
+    container_name: teamspeak-server
+    restart: unless-stopped
+    ports:
+      - "9987:9987/udp"   # Voice Port
+      - "30033:30033/tcp" # File Transfer
+      # - "10080:10080/tcp" # Web Query
+    environment:
+      - TSSERVER_LICENSE_ACCEPTED=accept
+    volumes:
+      - /home/brad/media/ssd128/appdata/teamspeak6:/var/tsserver
+
+
+
