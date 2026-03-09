@@ -42,7 +42,7 @@ services:
         - "25566-25600:25566-25600" # MC SERV PORT RANGE
         - "24454:24454/udp" # simple voice chat
     volumes:
-        - /home/brad/docker/appdata/crafty/backups:/crafty/backups
+        - /home/brad/media/hdd8tb/backups/minecraft:/crafty/backups
         - /home/brad/docker/appdata/crafty/logs:/crafty/logs
         - /home/brad/docker/appdata/crafty/servers:/crafty/servers
         - /home/brad/docker/appdata/crafty/config:/crafty/app/config

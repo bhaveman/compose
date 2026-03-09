@@ -267,6 +267,25 @@ services:
       caddy: sonarr.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8989}}"
 
+  sonarr-4K:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: lscr.io/linuxserver/sonarr:develop
+    container_name: sonarr-4K
+    networks:
+      proxy-net:
+    ports:
+      - "8991:8989"
+    volumes:
+      - $APPDATA/sonarr-4K:/config
+      - $DATADIR/downloads:/downloads
+      - $DATADIR:/tv
+      - $DATADIR/downloads/completed/Series4K:/downloads/completed/Series4K
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      <<: *default-tz-puid-pgid
+    labels:
+      caddy: sonarr4k.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8989}}"
 
   # Sonarr - TV Shows management
   sonarr-anime:
@@ -532,40 +551,6 @@ services:
     labels:
       caddy: readarr-audio.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8787}}"
-
-
-  lazylibrarian:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: lscr.io/linuxserver/lazylibrarian:latest
-    container_name: lazylibrarian
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - DOCKER_MODS=linuxserver/mods:universal-calibre #|linuxserver/mods:lazylibrarian-ffmpeg #optional
-    volumes:
-      -  $APPDATA/lazylibrarian/data:/config
-      - $DATADIR/downloads/torrents:/downloads
-      - $DATADIR/ssd2tb/books:/books #optional
-    ports:
-      - 5299:5299
-    restart: unless-stopped
-
-  # lazylibrarian:
-  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
-  #   image: lscr.io/linuxserver/lazylibrarian:latest
-  #   container_name: lazylibrarian
-  #   environment:
-  #     <<: *default-tz-puid-pgid
-  #     DOCKER_MODS: linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
-  #   volumes:
-  #     - $DOCKERDIR/appdata/lazylibrarian:/config
-  #     - $DATADIR/downloads:/downloads
-  #     - $DATADIR/ssd2tb/books:/books #optional
-  #   ports:
-  #     - 5299:5299
-  #   restart: unless-stopped
-
 
   jellyfin:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
