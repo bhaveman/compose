@@ -5,27 +5,6 @@ networks:
       external: true
 
 services:
-  # minecraft:
-  #   container_name: minecraft-server
-  #   image: itzg/minecraft-server:latest
-  #   tty: true
-  #   stdin_open: true
-  #   restart: unless-stopped
-  #   networks:
-  #     - proxy-net
-  #   ports:
-  #     - "25565:25565"
-  #   environment:
-  #     EULA: "TRUE"
-  #     DIFFICULTY: "3"
-  #     SEED: "-5838335156100759864"
-  #     MEMORY: 4G
-  #   volumes:
-  #     # attach the relative directory 'data' to the container's /data path
-  #     - /home/brad/docker/appdata/minecraft:/data
-  #   labels:
-  #     caddy: "minecraft.bradserver.dev"
-  #     caddy.reverse_proxy: "{{upstreams 25565}}"
 
   crafty:
     container_name: crafty_minecraft
