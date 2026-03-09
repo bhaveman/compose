@@ -542,7 +542,7 @@ services:
     volumes:
       - $APPDATA/bookshelf-audio:/config
       - $DATADIR/media3/audiobooks:/audiobooks
-      - $DATADIR/media3/audiobooks:/audiobooks2
+      - $DATADIR/hdd8tb/audiobooks:/audiobooks2
       - $DOWNLOADDIR/torrents/completed/audiobooks:/downloads/completed/audiobooks
       - $DOWNLOADDIR/torrents/Audiobooks:/downloads/completed/Audiobooks
       - $DOWNLOADDIR/torrents:/downloads
@@ -664,7 +664,7 @@ services:
       - "13378:80"
     volumes:
       - $DATADIR/media3/audiobooks:/audiobooks
-      - $DATADIR/media3/audiobooks:/audiobooks2
+      - $DATADIR/hdd8tb/audiobooks:/audiobooks2
       #- </path/to/podcasts>:/podcasts
       - $APPDATAPERFORMANCE/audiobookshelf/config:/config
       - $APPDATAPERFORMANCE/audiobookshelf/metadata:/metadata
