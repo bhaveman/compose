@@ -64,11 +64,7 @@ services:
       - "6789:6789"
     volumes:
       - $APPDATA/nzbget:/config
-      - $SSDDOWNLOADDIR/queue:/downloads/queue
-      - $SSDDOWNLOADDIR/intermediate:/downloads/intermediate
-      - $SSDDOWNLOADDIR/nzb:/downloads/nzb
-      - $SSDDOWNLOADDIR/tmp:/downloads/tmp
-      - $SSDDOWNLOADDIR/scripts:/downloads/scripts
+      - $SSDDOWNLOADDIR:/downloads
       - /home/brad/media/hdd8tb/downloads/completed:/downloads/completed
     environment:
       <<: *default-tz-puid-pgid
@@ -168,16 +164,16 @@ services:
       caddy: sonarr.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8989}}"
 
-  sonarr-4K:
+  sonarr4k:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
     image: lscr.io/linuxserver/sonarr:develop
-    container_name: sonarr-4K
+    container_name: sonarr4k
     networks:
       proxy-net:
     ports:
       - "8991:8989"
     volumes:
-      - $APPDATA/sonarr-4K:/config
+      - $APPDATA/sonarr4k:/config
       - $DOWNLOADDIR:/downloads
       - $DATADIR:/tv
       - $DOWNLOADDIR/completed/Series4K:/downloads/completed/Series4K
@@ -325,6 +321,36 @@ services:
       # UN_CMDHOOK_0_EXCLUDE_0:
       # UN_CMDHOOK_0_EVENTS_0: 0
 
+  unpackerr4k:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: golift/unpackerr
+    container_name: unpackerr4k
+    volumes:
+      # You need at least this one volume mapped so Unpackerr can find your files to extract.
+      # Make sure this matches your Starr apps; the folder mount (/downloads or /data) should be identical.
+      - $DOWNLOADDIR:/downloads
+      - $DOWNLOADDIR/transmission/completed/books:/downloads/completed/books
+    # What you see below are defaults for this compose. You only need to modify things specific to your environment.
+    # Remove apps and feature configs you do not use or need.
+    # ie. Remove all lines that begin with UN_CMDHOOK, UN_WEBHOOK, UN_FOLDER, UN_WEBSERVER, and other apps you do not use.
+    environment:
+      <<: *default-tz-puid-pgid
+      # Sonarr Config
+      UN_SONARR_0_URL: http://sonarr4k:8989
+      UN_SONARR_0_API_KEY: $SONARR4K_API_KEY
+      UN_SONARR_0_PATHS_0: /downloads
+      UN_SONARR_0_PROTOCOLS: usenet
+      UN_SONARR_0_TIMEOUT: 10s
+      UN_SONARR_0_DELETE_ORIG: false
+      UN_SONARR_0_DELETE_DELAY: 5m
+      # Radarr Config
+      UN_RADARR_0_URL: http://radarr4k:7878
+      UN_RADARR_0_API_KEY: $RADARR4K_API_KEY
+      UN_RADARR_0_PATHS_0: /downloads
+      UN_RADARR_0_PROTOCOLS: usenet
+      UN_RADARR_0_TIMEOUT: 10s
+      UN_RADARR_0_DELETE_ORIG: false
+      UN_RADARR_0_DELETE_DELAY: 5m
 
 #################### Books
 
