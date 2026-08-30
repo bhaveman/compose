@@ -36,33 +36,48 @@ services:
       caddy.reverse_proxy: "{{upstreams 8080}}"
 
 
-  dockge:
-    image: louislam/dockge:1
-    container_name: dockge
-    restart: unless-stopped
-    networks:
-      - proxy-net
-    ports:
-      # Host Port : Container Port
-      - 5001:5001
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - $APPDATA/dockge:/app/data
+  # dockge:
+  #   image: louislam/dockge:1
+  #   container_name: dockge
+  #   restart: unless-stopped
+  #   networks:
+  #     - proxy-net
+  #   ports:
+  #     # Host Port : Container Port
+  #     - 5001:5001
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - $APPDATA/dockge:/app/data
         
-      # If you want to use private registries, you need to share the auth file with Dockge:
-      # - /root/.docker/:/root/.docker
+  #     # If you want to use private registries, you need to share the auth file with Dockge:
+  #     # - /root/.docker/:/root/.docker
 
-      # Your stacks directory in the host (The paths inside container must be the same as the host)
-      # ⚠️⚠️ If you did it wrong, your data could end up be written into a wrong path.
-      # ✔️✔️✔️✔️ CORRECT: - /my-stacks:/my-stacks (Both paths match)
-      # ❌❌❌❌ WRONG: - /docker:/my-stacks (Both paths do not match)
-      - $DOCKERDIR/compose:$DOCKERDIR/compose
-    environment:
-      # Tell Dockge where is your stacks directory
-      - DOCKGE_STACKS_DIR=$DOCKERDIR/compose
-    labels:
-      caddy: docker.bradserver.dev
-      caddy.reverse_proxy: "{{upstreams 5001}}"
+  #     # Your stacks directory in the host (The paths inside container must be the same as the host)
+  #     # ⚠️⚠️ If you did it wrong, your data could end up be written into a wrong path.
+  #     # ✔️✔️✔️✔️ CORRECT: - /my-stacks:/my-stacks (Both paths match)
+  #     # ❌❌❌❌ WRONG: - /docker:/my-stacks (Both paths do not match)
+  #     - $DOCKERDIR/compose:$DOCKERDIR/compose
+  #   environment:
+  #     # Tell Dockge where is your stacks directory
+  #     - DOCKGE_STACKS_DIR=$DOCKERDIR/compose
+  #   labels:
+  #     caddy: docker.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 5001}}"
+
+
+  # dockhand:
+  #   image: fnsys/dockhand:latest
+  #   container_name: dockhand
+  #   restart: unless-stopped
+  #   # ports:
+  #   #   - 3000:3000
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - $APPDATA/dockhand:/app/data
+  #   labels:
+  #     caddy: docker.bradserver.dev
+  #     caddy.reverse_proxy: "{{upstreams 3000}}"
+
 
   upsnap:
     container_name: upsnap
@@ -84,16 +99,15 @@ services:
     dns:
       - 192.168.0.1
     #   - 192.18.0.2
-    # # you can change the listen ip:port inside the container like this:
-    entrypoint: /bin/sh -c "./upsnap serve --http 0.0.0.0:9120"
+    # UpSnap v5 listens on 8090 in this image; keep upstream and healthcheck aligned.
     healthcheck:
-      test: curl -fs "http://172.17.0.1:9120/api/health" || exit 1
+      test: curl -fs "http://172.17.0.1:8090/api/health" || exit 1
       interval: 10s
     # # or install custom packages for shutdown
     # entrypoint: /bin/sh -c "apk update && apk add --no-cache <YOUR_PACKAGE> && rm -rf /var/cache/apk/* && ./upsnap serve --http 0.0.0.0:8090"
     labels:
       caddy: upsnap.bradserver.dev
-      caddy.reverse_proxy: 172.17.0.1:9120
+      caddy.reverse_proxy: 172.17.0.1:8090
 
 
 ######### Scrutiny ###############
@@ -182,7 +196,68 @@ services:
     #   caddy: drives.bradserver.dev
     #   caddy.reverse_proxy: "{{upstreams 5800}}"
 
+  glances:
+    # See all images tags here: https://hub.docker.com/r/nicolargo/glances/tags
+    image: nicolargo/glances:latest-full
+    container_name: glances
+    restart: always
 
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:61208/api/4/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    pid: "host"
+    network_mode: "host"
+
+    read_only: true
+    privileged: false
+    # Uncomment next line for SATA or NVME smartctl monitoring
+    # cap_add:
+      # Uncomment next line for SATA smartctl monitoring
+      # - SYS_RAWIO
+      # Uncomment next line for NVME smartctl monitoring
+      # - SYS_ADMIN
+    # devices:
+    #   - "/dev/nvme0"
+
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      # Uncomment for qemu/libvirt/kvm support with modular libvirt daemons
+      # - "/var/run/libvirt/virtqemud-sock:/var/run/libvirt/libvirt-sock:ro"
+      # OR monolithic libvirt daemon
+      # - "/var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock:ro"
+      - "/run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro"
+      - "./glances.conf:/glances/conf/glances.conf"
+      # Uncomment for proper distro information in upper panel.
+#     # Works only for distros that do have this file (most of distros do).
+#      - "/etc/os-release:/etc/os-release:ro"
+
+    tmpfs:
+      - /tmp
+
+    environment:
+      - GLANCES_OPT=-C /glances/conf/glances.conf -w --enable-mcp --enable-plugin smart
+      # Please set to your local timezone (or use local ${TZ} environment variable if set on your host)
+      - TZ=America/Edmonton
+      - PYTHONPYCACHEPREFIX=/tmp/py_caches
+
+    # Uncomment for GPU compatibility (Nvidia) inside the container
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+    # Uncomment to protect Glances WebUI by a login/password (add --password to GLANCES_OPT)
+    # secrets:
+    #   - source: glances_password
+    #     target: /root/.config/glances/<login>.pwd
 
 volumes:
   database:

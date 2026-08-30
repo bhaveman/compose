@@ -22,10 +22,10 @@ services:
         - "24454:24454/udp" # simple voice chat
     volumes:
         - /home/brad/media/hdd8tb/backups/minecraft:/crafty/backups
-        - /home/brad/docker/appdata/crafty/logs:/crafty/logs
-        - /home/brad/docker/appdata/crafty/servers:/crafty/servers
-        - /home/brad/docker/appdata/crafty/config:/crafty/app/config
-        - /home/brad/docker/appdata/crafty/import:/crafty/import
+        - /home/brad/media/ssd128/appdata/crafty/logs:/crafty/logs
+        - /home/brad/media/ssd128/appdata/crafty/servers:/crafty/servers
+        - /home/brad/media/ssd128/appdata/crafty/config:/crafty/app/config
+        - /home/brad/media/ssd128/appdata/crafty/import:/crafty/import
     labels:
       caddy: "minecraft.bradserver.dev"
       caddy.reverse_proxy: "https://crafty_minecraft:8443"
@@ -53,6 +53,76 @@ services:
       - TSSERVER_LICENSE_ACCEPTED=accept
     volumes:
       - /home/brad/media/ssd128/appdata/teamspeak6:/var/tsserver
+
+
+
+  palworld:
+    container_name: palworld
+    image: thijsvanloef/palworld-server-docker:latest
+    restart: unless-stopped
+    stop_grace_period: 30s   # give the server time to save on shutdown
+    networks:
+      - proxy-net
+    ports:
+      - "8211:8211/udp"    # game
+      - "27015:27015/udp"  # Steam server browser query
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - PORT=8211
+      - PLAYERS=16
+      - SERVER_NAME=Bradserver Palworld
+      - SERVER_DESCRIPTION=
+      - COMMUNITY=false                 # set true + SERVER_PASSWORD to list on community browser
+      - SERVER_PASSWORD=                 # optional join password
+      - ADMIN_PASSWORD=$PALWORLD_ADMIN_PASSWORD   # <-- change: in-game/admin + REST API password
+      - MULTITHREAD_ENABLED=true
+      - REST_API_ENABLED=true            # REST on 8212, consumed by the dashboard over proxy-net
+      - REST_API_PORT=8212
+      - RCON_ENABLED=false
+      - BACKUP_ENABLED=true
+      - BACKUP_CRON_EXPRESSION=0 */6 * * *   # backup every 6h
+      - AUTO_UPDATE_ENABLED=true
+      - AUTO_UPDATE_CRON_EXPRESSION=0 4 * * *
+      - AUTO_REBOOT_ENABLED=false
+      # --- Gameplay tuning (rewritten into PalWorldSettings.ini on every start) ---
+      - EXP_RATE=2.500000                             # ExpRate
+      - PAL_CAPTURE_RATE=1.200000                     # PalCaptureRate
+      - PAL_SPAWN_NUM_RATE=1.500000                   # PalSpawnNumRate
+      - PLAYER_DAMAGE_RATE_ATTACK=1.200000            # PlayerDamageRateAttack
+      - PAL_STAMINA_DECREASE_RATE=0.800000            # PalStaminaDecreaceRate (ini key misspelled; env var is DECREASE)
+      - COLLECTION_DROP_RATE=1.500000                 # CollectionDropRate
+      - COLLECTION_OBJECT_HP_RATE=0.800000            # CollectionObjectHpRate
+      - COLLECTION_OBJECT_RESPAWN_SPEED_RATE=0.700000 # CollectionObjectRespawnSpeedRate
+      - ENEMY_DROP_ITEM_RATE=1.500000                 # EnemyDropItemRate
+      - ENABLE_PLAYER_TO_PLAYER_DAMAGE=True           # bEnablePlayerToPlayerDamage
+      - BASE_CAMP_WORKER_MAX_NUM=50                   # BaseCampWorkerMaxNum
+      - ITEM_WEIGHT_RATE=0.000000                     # ItemWeightRate
+      - ENABLE_VOICE_CHAT=True                        # bEnableVoiceChat
+      - ALLOW_ENHANCE_STAT_WEIGHT=False               # bAllowEnhanceStat_Weight
+      - BASE_CAMP_MAX_NUM_IN_GUILD=10                 # BaseCampMaxNumInGuild
+    volumes:
+      - /home/brad/media/ssd128/appdata/palworld:/palworld/
+
+  palworld-dashboard:
+    container_name: palworld-dashboard
+    image: ghcr.io/rnz01/palworld-server-dashboard:latest
+    restart: unless-stopped
+    networks:
+      - proxy-net
+    depends_on:
+      - palworld
+    environment:
+      - PALWORLD_REST_URL=http://palworld:8212     # reaches the game server over proxy-net
+      - PALWORLD_ADMIN_PASSWORD=$PALWORLD_ADMIN_PASSWORD    # <-- must match palworld ADMIN_PASSWORD above
+      - PANEL_INITIAL_ADMIN_PASSWORD=$PALWORLD_PANEL_INITIAL_ADMIN_PASSWORD   # <-- change: dashboard login password
+    volumes:
+      # persists the dashboard's account DB; host dir must be owned by 1001:1001 (container's nextjs user)
+      - /home/brad/media/ssd128/appdata/palworld-dashboard/data:/app/data
+    labels:
+      caddy: "palworld.bradserver.dev"
+      caddy.reverse_proxy: "http://palworld-dashboard:3000"
 
 
 

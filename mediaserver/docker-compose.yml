@@ -57,6 +57,7 @@ services:
     <<: *common-keys-apps # See EXTENSION FIELDS at the top
     image: nzbgetcom/nzbget:latest
     container_name: nzbget
+    cpus: 2.0 # cap par2 repair/unpack so it can't saturate the box
     networks:
       proxy-net:
         ipv4_address: 192.168.89.216
@@ -64,8 +65,9 @@ services:
       - "6789:6789"
     volumes:
       - $APPDATA/nzbget:/config
-      - $SSDDOWNLOADDIR:/downloads
-      - /home/brad/media/hdd8tb/downloads/completed:/downloads/completed
+      - /home/brad/nzbdownloads:/downloads
+      #- /home/brad/media/hdd8tb/downloads/intermediate:/downloads/intermediate
+      - $DOWNLOADDIR/completed:/completed
     environment:
       <<: *default-tz-puid-pgid
     labels:
@@ -75,10 +77,11 @@ services:
 
   qbittorrent:
     #<<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: lscr.io/linuxserver/qbittorrent:5.1.4
     networks:
       proxy-net:
     container_name: qbittorrent
+    cpus: 2.0
     environment:
       - PUID=1000
       - PGID=1000
@@ -112,7 +115,7 @@ services:
       - "7878:7878"
     volumes:
       - $APPDATA/radarr:/config
-      - $DOWNLOADDIR:/downloads/
+      - $DOWNLOADDIR/completed:/completed
       - $DATADIR:/movies
       - "/etc/localtime:/etc/localtime:ro"
     environment:
@@ -132,7 +135,9 @@ services:
       - "7879:7878"
     volumes:
       - $APPDATA/radarr4k:/config
-      - $DOWNLOADDIR:/downloads/
+      - $DOWNLOADDIR:/completed/
+      - $DOWNLOADDIR/completed/Movies4k:/completed/Movies4k
+
       - $DATADIR:/movies
       - "/etc/localtime:/etc/localtime:ro"
     environment:
@@ -153,10 +158,11 @@ services:
       - "8989:8989"
     volumes:
       - $APPDATA/sonarr:/config
-      - $DOWNLOADDIR:/downloads
+      - $DOWNLOADDIR:/completed
       - $DATADIR:/tv
-      - $DOWNLOADDIR/transmission/completed/tv-shows:/downloads/completed/tv-shows
-      - $DOWNLOADDIR/completed/Series:/downloads/completed/Series
+      #- $DOWNLOADDIR/transmission/completed/tv-shows:/completed/tv-shows
+      - $DOWNLOADDIR/completed/Series:/completed/Series
+      - /home/brad/media/hdd8tb/downloads/completed:/completed/intermediate
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
@@ -175,8 +181,9 @@ services:
     volumes:
       - $APPDATA/sonarr4k:/config
       - $DOWNLOADDIR:/downloads
+      - $DOWNLOADDIR/completed:/completed
       - $DATADIR:/tv
-      - $DOWNLOADDIR/completed/Series4K:/downloads/completed/Series4K
+      - $DOWNLOADDIR/completed/Series4K:/completed/Series4K
       - "/etc/localtime:/etc/localtime:ro"
     environment:
       <<: *default-tz-puid-pgid
@@ -196,6 +203,7 @@ services:
     volumes:
       - $APPDATA/sonarr-anime:/config
       - $DOWNLOADDIR:/downloads
+      - $DOWNLOADDIR/completed:/completed
       - $DATADIR:/tv
       - "/etc/localtime:/etc/localtime:ro"
     environment:
@@ -206,16 +214,16 @@ services:
 
 
   # Recyclarr - handle trash-guides
-  recyclarr:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: ghcr.io/recyclarr/recyclarr
-    container_name: recyclarr
-    networks:
-      proxy-net:
-    volumes:
-      - $APPDATA/recyclarr:/config
-    environment:
-      <<: *default-tz-puid-pgid
+  # recyclarr:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: ghcr.io/recyclarr/recyclarr
+  #   container_name: recyclarr
+  #   networks:
+  #     proxy-net:
+  #   volumes:
+  #     - $APPDATA/recyclarr:/config
+  #   environment:
+  #     <<: *default-tz-puid-pgid
 
   # Bazarr - Subtitle Management
 #  bazarr:
@@ -249,6 +257,7 @@ services:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
     image: golift/unpackerr
     container_name: unpackerr
+    cpus: 1.5
     volumes:
       # You need at least this one volume mapped so Unpackerr can find your files to extract.
       # Make sure this matches your Starr apps; the folder mount (/downloads or /data) should be identical.
@@ -321,36 +330,36 @@ services:
       # UN_CMDHOOK_0_EXCLUDE_0:
       # UN_CMDHOOK_0_EVENTS_0: 0
 
-  unpackerr4k:
-    <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: golift/unpackerr
-    container_name: unpackerr4k
-    volumes:
-      # You need at least this one volume mapped so Unpackerr can find your files to extract.
-      # Make sure this matches your Starr apps; the folder mount (/downloads or /data) should be identical.
-      - $DOWNLOADDIR:/downloads
-      - $DOWNLOADDIR/transmission/completed/books:/downloads/completed/books
-    # What you see below are defaults for this compose. You only need to modify things specific to your environment.
-    # Remove apps and feature configs you do not use or need.
-    # ie. Remove all lines that begin with UN_CMDHOOK, UN_WEBHOOK, UN_FOLDER, UN_WEBSERVER, and other apps you do not use.
-    environment:
-      <<: *default-tz-puid-pgid
-      # Sonarr Config
-      UN_SONARR_0_URL: http://sonarr4k:8989
-      UN_SONARR_0_API_KEY: $SONARR4K_API_KEY
-      UN_SONARR_0_PATHS_0: /downloads
-      UN_SONARR_0_PROTOCOLS: usenet
-      UN_SONARR_0_TIMEOUT: 10s
-      UN_SONARR_0_DELETE_ORIG: false
-      UN_SONARR_0_DELETE_DELAY: 5m
-      # Radarr Config
-      UN_RADARR_0_URL: http://radarr4k:7878
-      UN_RADARR_0_API_KEY: $RADARR4K_API_KEY
-      UN_RADARR_0_PATHS_0: /downloads
-      UN_RADARR_0_PROTOCOLS: usenet
-      UN_RADARR_0_TIMEOUT: 10s
-      UN_RADARR_0_DELETE_ORIG: false
-      UN_RADARR_0_DELETE_DELAY: 5m
+  # unpackerr4k:
+  #   <<: *common-keys-media # See EXTENSION FIELDS at the top
+  #   image: golift/unpackerr
+  #   container_name: unpackerr4k
+  #   volumes:
+  #     # You need at least this one volume mapped so Unpackerr can find your files to extract.
+  #     # Make sure this matches your Starr apps; the folder mount (/downloads or /data) should be identical.
+  #     - $DOWNLOADDIR:/downloads
+  #     - $DOWNLOADDIR/transmission/completed/books:/downloads/completed/books
+  #   # What you see below are defaults for this compose. You only need to modify things specific to your environment.
+  #   # Remove apps and feature configs you do not use or need.
+  #   # ie. Remove all lines that begin with UN_CMDHOOK, UN_WEBHOOK, UN_FOLDER, UN_WEBSERVER, and other apps you do not use.
+  #   environment:
+  #     <<: *default-tz-puid-pgid
+  #     # Sonarr Config
+  #     UN_SONARR_0_URL: http://sonarr4k:8989
+  #     UN_SONARR_0_API_KEY: $SONARR4K_API_KEY
+  #     UN_SONARR_0_PATHS_0: /downloads
+  #     UN_SONARR_0_PROTOCOLS: usenet
+  #     UN_SONARR_0_TIMEOUT: 10s
+  #     UN_SONARR_0_DELETE_ORIG: false
+  #     UN_SONARR_0_DELETE_DELAY: 5m
+  #     # Radarr Config
+  #     UN_RADARR_0_URL: http://radarr4k:7878
+  #     UN_RADARR_0_API_KEY: $RADARR4K_API_KEY
+  #     UN_RADARR_0_PATHS_0: /downloads
+  #     UN_RADARR_0_PROTOCOLS: usenet
+  #     UN_RADARR_0_TIMEOUT: 10s
+  #     UN_RADARR_0_DELETE_ORIG: false
+  #     UN_RADARR_0_DELETE_DELAY: 5m
 
 #################### Books
 
@@ -394,7 +403,7 @@ services:
   jellyfin:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
     user: 1000:1000
-    cpu_shares: 2000
+    cpu_shares: 100000 # cgroup v2 cpu.weight 4340 vs default 100 -> ~43x priority under contention
     blkio_config:
       weight: 600
     image: jellyfin/jellyfin:latest
@@ -437,6 +446,7 @@ services:
       #- '$DOCKERDIR/appdata/calibre/Calibre Library:/config/Calibre Library'
       - $APPDATA/calibre:/config
       - $DATADIR/calibreimport:/media/import
+      - $DOWNLOADDIR/torrents/import:/readarr-import
     ports:
       - 8380:8080
       - 8381:8081
@@ -520,21 +530,31 @@ services:
     ports:
       - 5690:5690
     volumes:
-      - $APPDATA/wizarr:/data    environment
+      - $APPDATA/wizarr:/data
     environment:
       <<: *default-tz-puid-pgid
     labels:
       caddy: wizarr.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 5690}}"
 
-  jellyseerr:
+  seerr:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
-    image: fallenbagel/jellyseerr:latest
-    container_name: jellyseerr
-    ports:
-      - 5055:5055
+    container_name: seerr
+    init: true
+    image: seerr/seerr:latest
     environment:
+      LOG_LEVEL: debug
       <<: *default-tz-puid-pgid
+    ports: 
+      - 5055:5055
+    volumes:
+      - $APPDATA/seerr:/app/config
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/settings/public || exit 1"]
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     labels:
       caddy: requests.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 5055}}"

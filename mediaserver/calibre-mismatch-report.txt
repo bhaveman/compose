@@ -1,0 +1,1805 @@
+Discovering books in /home/brad/media/media3/books ...
+Found 12728 book directories
+
+Scanning with 4 workers (min-confidence: 50%) ...
+
+  [400/12728] scanning ...
+  [600/12728] scanning ...
+  [1/12728] A. C. Cobble / Betrayal
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [57/12728] A. N. Roquelaure / The Sleeping Beauty Trilogy
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['A. N. Roquelaure'] vs ['Anne Rice']
+  [64/12728] Aaron Rosenberg / Hour of the Daemon
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Aaron Rosenberg'] vs ['Warhammer']
+  [67/12728] Aaron Rosenberg / 42_ The Jackie Robinson Story_ The Movie Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [70/12728] Aaron Rosenberg / Night of the Daemon
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Aaron Rosenberg'] vs ['Warhammer']
+  [73/12728] Adam Higginbotham / Challenger_ A True Story of Heroism and Disaster on the Edge of Space
+    ⚠ TITLE_NOT_IN_TEXT
+  [99/12728] Adrian Tchaikovsky / Ironclads
+    ⚠ TITLE_NOT_IN_TEXT
+  [101/12728] Adrian Tchaikovsky / Ogres
+    ⚠ TITLE_NOT_IN_TEXT
+  [105/12728] Adrian Tchaikovsky / Saturation Point
+    ⚠ TITLE_NOT_IN_TEXT
+  [109/12728] Adrian Tchaikovsky / Spiderlight
+    ⚠ TITLE_NOT_IN_TEXT
+  [115/12728] Adrian Tchaikovsky / Firewalkers
+    ⚠ TITLE_NOT_IN_TEXT
+  [117/12728] Adrian Tchaikovsky / The Expert System's Brother
+    ⚠ TITLE_NOT_IN_TEXT
+  [122/12728] Adrian Tchaikovsky / Walking to Aldebaran
+    ⚠ TITLE_NOT_IN_TEXT
+  [124/12728] Agatha Christie / 4.50 From Paddington_ Miss Marple Series, Book 7
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: '4.50 From Paddington: Miss Marple Series, Book 7' vs '02 - Trein 1650 (16.50 From Paddington)'
+  [135/12728] Agatha Christie / Cards on the Table (Hercule Poirot, #15) (Colonel Race, #2)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Cards on the Table (Hercule Poirot, #15) (Colonel Race, #2)' vs 'Cards on the Table'
+  [138/12728] Agatha Christie / Clues to Christie_ The Definitive Guide to Miss Marple, Hercule Poirot, Tommy & Tuppence and Al
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Clues to Christie: The Definitive Guide to Miss Marple, Hercule Poirot, Tommy & Tuppence and All of Agatha Christie's Mysteries' vs 'Hercule Poirot: The Complete Short Stories: A Hercule Poirot Collection With Foreword by Charles Todd'
+  [153/12728] Agatha Christie / Hallowe'en Party_ Inspiration for the 20th Century Studios Major Motion Picture a Haunting in
+    ⚠ TITLE_NOT_IN_TEXT
+  [161/12728] Agatha Christie / Murder in the Mews
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Murder in the Mews' vs '28 - Het Derde Meisje (Third Girl)'
+  [174/12728] Agatha Christie / The Adventure of the Italian Nobleman_ A Hercule Poirot Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [181/12728] Agatha Christie / The Grand Tour_ Letters and photographs from the British Empire Expedition 1922
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Grand Tour: Letters and photographs from the British Empire Expedition 1922' vs 'Agatha Christie - 1997 SSC - The Harlequin Tea Set and Other Stories'
+  [186/12728] Agatha Christie / The Labors of Hercules_ Featuring Hercule Poirot
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Labors of Hercules: Featuring Hercule Poirot' vs '10 - De Werken Van Hercules (The Labours Of Hercules)'
+  [192/12728] Agatha Christie / The Mysterious Affair At Styles_ By Agatha Christie - Illustrated And Unabridged
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Mysterious Affair At Styles: By Agatha Christie - Illustrated And Unabridged' vs 'Agatha Christie - Hercule Poirot 31 - Hickory Dickory Dock (1955)'
+  [198/12728] Agatha Christie / The Seven Dials Mystery_ Classic Agatha Christie Novel
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Agatha Christie'] vs ['Unknown']
+  [200/12728] Agatha Christie / The Secret Adversary By Agatha Christie (Annotated)_ The Original Edition; Unabridged
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Secret Adversary By Agatha Christie (Annotated): The Original Edition; Unabridged' vs '73 - Het Geheim Van De Blauwe Trein (The Mystery Of The Blue Train)'
+  [217/12728] Alan Dean Foster / Codgerspace
+    ⚠ TITLE_NOT_IN_TEXT
+  [235/12728] Alan Dean Foster / Life Form
+    ⚠ ERROR: NO_EPUB_FOUND
+  [244/12728] Alan Dean Foster / Nor Crystal Tears
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Nor Crystal Tears' vs 'Alan Dean Foster'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Alan Dean Foster'] vs ['Humanx 3, Nor Crystal Tears']
+  [270/12728] Alan Dean Foster / The False Mirror
+    ⚠ ERROR: NO_EPUB_FOUND
+  [272/12728] Alan Dean Foster / The Hand of Dinotopia
+    ⚠ ERROR: NO_EPUB_FOUND
+  [285/12728] Alan Dean Foster / The Tar-aiym Krang_Orphan Star
+    ⚠ TITLE_NOT_IN_TEXT
+  [319/12728] Alan Gratz / Resist_ A Story of D-Day
+    ⚠ TITLE_NOT_IN_TEXT
+  [328/12728] Alex Archer / Destiny
+    ⚠ TITLE_NOT_IN_TEXT
+  [333/12728] Alex Archer / God of Thunder
+    ⚠ TITLE_NOT_IN_TEXT
+  [334/12728] Alex Archer / Forbidden City
+    ⚠ TITLE_NOT_IN_TEXT
+  [335/12728] Alex Archer / Solomon's Jar
+    ⚠ TITLE_NOT_IN_TEXT
+  [336/12728] Alex Archer / Secret of the Slaves
+    ⚠ TITLE_NOT_IN_TEXT
+  [339/12728] Alex Archer / The Spider Stone
+    ⚠ TITLE_NOT_IN_TEXT
+  [342/12728] Alex Archer / The Chosen
+    ⚠ TITLE_NOT_IN_TEXT
+  [343/12728] Alex Aster / Nightbane
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [344/12728] Alex Aster / Skyshade
+    ⚠ TITLE_NOT_IN_TEXT
+  [345/12728] Alex Archer / The Lost Scrolls
+    ⚠ TITLE_NOT_IN_TEXT
+  [351/12728] Alex Aster / Summer in the City
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [377/12728] Ally Carter / Double Crossed_ A Spies and Thieves Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [413/12728] America's Test Kitchen / Bread Illustrated_ A Step-By-Step Guide to Achieving Bakery-Quality Results at Home
+    ⚠ ERROR: NO_EPUB_FOUND
+  [414/12728] America's Test Kitchen / America's Test Kitchen - Best Baking Recipes - Over 300 Step by Step Photos
+    ⚠ INTERNAL_TITLE_MISMATCH: 'America's Test Kitchen - Best Baking Recipes - Over 300 Step by Step Photos' vs 'The Complete Vegetarian Cookbook: A Fresh Guide to Eating Well with 700 Foolproof Recipes'
+  [418/12728] America's Test Kitchen / DIY Cookbook_ Can It, Cure It, Churn It, Brew It
+    ⚠ TITLE_NOT_IN_TEXT
+  [426/12728] America's Test Kitchen / The How Can It Be Gluten Free Cookbook Volume 2_ New Whole-Grain Flour Blend, 75_ Dairy-Free R
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ["America's Test Kitchen"] vs ['Unknown']
+  [443/12728] Andre Norton / A Crown Disowned
+    ⚠ TITLE_NOT_IN_TEXT
+  [464/12728] Andre Norton / Knight or Knave
+    ⚠ TITLE_NOT_IN_TEXT
+  [488/12728] Andre Norton / The Andre Norton Megapack (R)_ 15 Classic Novels and Short Stories
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [518/12728] Andrew Gross / Don't Look Twice_ A Novel by Andrew Gross
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:nld
+  [527/12728] Andrew Loomis / Creative Illustration
+    ⚠ ERROR: NO_EPUB_FOUND
+  [528/12728] Andrew Loomis / Drawing the Head and Hands
+    ⚠ ERROR: NO_EPUB_FOUND
+  [533/12728] Andrew Rowe / Edge of the Woods_ An Epic Fantasy Adventure
+    ⚠ TITLE_NOT_IN_TEXT
+  [579/12728] Andy Mangels / Worlds of Star Trek Deep Space Nine, Volume Two
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Worlds of Star Trek Deep Space Nine, Volume Two' vs 'Star Trek'
+  [608/12728] Andy Weir / The Martian
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Martian' vs 'The Martain'
+  [618/12728] Angie Sage / Septimus Heap 06. Darke
+    ⚠ TITLE_NOT_IN_TEXT
+  [636/12728] Anne Hillerman / Shadow of the Solstice_ A Leaphorn, Chee & Manuelito Novel
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [656/12728] Anne McCaffrey / Acorna_ The Unicorn Girl
+    ⚠ TITLE_NOT_IN_TEXT
+  [660/12728] Anne McCaffrey / An Exchange of Gifts
+    ⚠ TITLE_NOT_IN_TEXT
+  [671/12728] Anne McCaffrey / Dragon's Time
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dragon's Time' vs 'Dragongirl'
+  [673/12728] Anne McCaffrey / Dragonbrood
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dragonbrood' vs 'Dragonsblood'
+  [680/12728] Anne McCaffrey / Freedom's Choice_ (The Catteni Sequence_ 2)_ a masterful display of storytelling and worldbuild
+    ⚠ TITLE_NOT_IN_TEXT
+  [685/12728] Anne McCaffrey / Honeymoon
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Anne McCaffrey'] vs ['Honeymoon']
+  [686/12728] Anne McCaffrey / Killashandra_ (The Crystal Singer_II)_ an awe-inspiring and epic fantasy from one of the most i  [800/12728] scanning ...
+  [1000/12728] scanning ...
+  [1200/12728] scanning ...
+  [1400/12728] scanning ...
+  [1600/12728] scanning ...
+
+    ⚠ TITLE_NOT_IN_TEXT
+  [697/12728] Anne McCaffrey / Red Star Rising
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Red Star Rising' vs 'Dragonseye'
+  [727/12728] Anne Rice / Angel Time_ The Songs of the Seraphim, Book One
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Angel Time: The Songs of the Seraphim, Book One' vs 'Anne Rice's Vampire Chronicles an Alphabettery'
+  [741/12728] Anthony Bourdain / Anthony Bourdain's Hungry Ghosts
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Anthony Bourdain's Hungry Ghosts' vs 'Anthony Bourdain: The Last Interview'
+  [776/12728] Anthony Horowitz / Scared to Death_ Ten Sinister Stories by the Master of the Macabre
+    ⚠ TITLE_NOT_IN_TEXT
+  [838/12728] Arthur C. Clarke / The Light of Other Days_ A Novel of the Transformation of Humanity
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Light of Other Days: A Novel of the Transformation of Humanity' vs 'Voices from the Sky (Author Portal Arthur C Clarke)'
+  [841/12728] Arthur C. Clarke / The View From Serendip by Arthur Charles Clarke
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The View From Serendip by Arthur Charles Clarke' vs 'The View from Serendip'
+  [899/12728] Barbara Hambly / The Ladies of Mandrigyn
+    ⚠ TITLE_NOT_IN_TEXT
+  [982/12728] Ben Bova / Privateers
+    ⚠ TITLE_NOT_IN_TEXT
+  [984/12728] Ben Bova / Powersat_ A Thriller of Technology, Terrorism, and Hope
+    ⚠ TITLE_NOT_IN_TEXT
+  [1022/12728] Bernard Cornwell / 1356
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:por
+  [1029/12728] Bernard Cornwell / Excalibur
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:por
+  [1082/12728] Bernard Cornwell / Wildtrack
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1084/12728] Bernard Cornwell / Warlord Trilogy (1-3)
+    ⚠ TITLE_NOT_IN_TEXT
+  [1092/12728] Blake Crouch / Killers
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1103/12728] Bob Altemeyer / The Authoritarians
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1120/12728] Bob Mayer / Assault on Atlantis
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Bob Mayer'] vs ['Robert Doherty']
+  [1128/12728] Bob Mayer / Who Dares Wins_ The Green Beret Way for You to Conquer Fear and Succeed
+    ⚠ TITLE_NOT_IN_TEXT
+  [1141/12728] Bobby Adair / Slow Burn Box Set_ The Complete Post Apocalyptic Series
+    ⚠ TITLE_NOT_IN_TEXT
+  [1146/12728] Bobby Akart / Asteroid Box Set_ Discovery, Diversion, Destruction_ A Gunner Fox Trilogy
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Asteroid Box Set: Discovery, Diversion, Destruction: A Gunner Fox Trilogy' vs 'Turning Point: A Post Apocalyptic EMP Survival Fiction Series (The Blackout Series Book 3)'
+  [1157/12728] Bobby Akart / Cyber Attack (The Boston Brahmin Series Book 2) (Volume 2) by Bobby Akart
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Cyber Attack (The Boston Brahmin Series Book 2) (Volume 2) by Bobby Akart' vs 'Lines in the Sand: Post Apocalyptic EMP Survival Fiction (The Lone Star Series Book 3)'
+  [1169/12728] Bobby Akart / Geostorm The Pulse_ A Post Apocalyptic EMP Survival Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Geostorm The Pulse: A Post Apocalyptic EMP Survival Thriller' vs 'Pandemic: Beginnings: A Post-Apocalyptic Medical Thriller Fiction Series (The Pandemic Series Book 1)'
+  [1176/12728] Bobby Akart / Nuclear Winter First Strike_ Post Apocalyptic Survival Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Nuclear Winter First Strike: Post Apocalyptic Survival Thriller' vs 'The Boston Brahmin Series Boxed Set: Boston Brahmin Political Thrillers Books 1 - 6'
+  [1180/12728] Bobby Akart / Pandemic_ The Innocents
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Pandemic: The Innocents' vs 'Nuclear Winter First Strike: Post-Apocalyptic Survival Thriller'
+  [1206/12728] Brad Meltzer / The House of Secrets
+    ⚠ TITLE_NOT_IN_TEXT
+  [1208/12728] Brad Meltzer / The Book of Fate
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [1211/12728] Brad Meltzer / The JFK Conspiracy_ The Secret Plot to Kill Kennedy--and Why It Failed
+    ⚠ TITLE_NOT_IN_TEXT
+  [1223/12728] Brad Thor / Dead Fall_ A Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+  [1224/12728] Brad Thor / Cold Zero
+    ⚠ TITLE_NOT_IN_TEXT
+  [1230/12728] Brad Thor / Edge of Honor_ A Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+  [1272/12728] Brandon Sanderson / Redemption
+    ⚠ TITLE_NOT_IN_TEXT
+  [1277/12728] Brandon Sanderson / Shadows Beneath_ The Writing Excuses Anthology
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Shadows Beneath: The Writing Excuses Anthology' vs 'Rhythm of War (9781429952040)'
+  [1281/12728] Brandon Sanderson / The Alloy of Law (Mistborn Book 4)
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1293/12728] Brandon Sanderson / Tress of the Emerald Sea
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Tress of the Emerald Sea' vs 'Secret Project #1'
+  [1295/12728] Brandon Sanderson / Wind and Truth
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1296/12728] Brandon Sanderson / The Way of Kings
+    ⚠ TITLE_NOT_IN_TEXT
+  [1330/12728] Brian Jacques / The Great Redwall Feast
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1397/12728] Brian M. Thomsen / Mob Magic
+    ⚠ TITLE_NOT_IN_TEXT
+  [1409/12728] Brian McClellan / Swords, Cider, and Other Distractions
+    ⚠ TITLE_NOT_IN_TEXT
+  [1438/12728] Brian W. Aldiss / Frankenstein Unbound
+    ⚠ TITLE_NOT_IN_TEXT
+  [1456/12728] Brian W. Aldiss / The Saliva Tree and Other Strange Growths
+    ⚠ TITLE_NOT_IN_TEXT
+  [1475/12728] Bruno Miller / Redemption_ A Post-Apocalyptic EMP Survival Series
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1476/12728] Bruno Miller / Escape
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Escape' vs 'Descent: The Durango Chronicles'
+  [1477/12728] Bruno Miller / Sanctuary_ A Post-Apocalyptic EMP Survival Series
+    ⚠ TITLE_NOT_IN_TEXT
+  [1510/12728] C. J. Cherryh / Angel With the Sword
+    ⚠ TITLE_NOT_IN_TEXT
+  [1586/12728] C. J. Tudor / The Other People
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Other People' vs 'The Gathering'
+  [1589/12728] C. Robert Cargill / Dreams and Shadows
+    ⚠ TITLE_NOT_IN_TEXT
+  [1602/12728] C. S. Lewis / The Humanitarian Theory of Punishment
+    ⚠ TITLE_NOT_IN_TEXT
+  [1609/12728] C.J. Cherryh / The Paladin
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1618/12728] Caitlin Starling / The Luminous Dead
+    ⚠ TITLE_NOT_IN_TEXT
+  [1637/12728] Carissa Broadbent / Daughter of No Worlds (War of Lost Hearts #1)
+    ⚠ TITLE_NOT_IN_TEXT
+  [1639/12728] Carissa Broadbent / Six Scorched Roses
+    ⚠ TITLE_NOT_IN_TEXT
+  [1642/12728] Carissa Broadbent / Children of Fallen Gods (War of Lost Hearts #2)
+    ⚠ TITLE_NOT_IN_TEXT
+  [1644/12728] Carol Berg / Breath and Bone
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Breath and Bone' vs 'Carol Berg'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Carol Berg'] vs ['Breath & Bone', 'Breath & Bone']
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:rus
+  [1646/12728] Carissa Broadbent / The Ashes & the Star-Cursed King
+    ⚠ TITLE_NOT_IN_TEXT
+  [1674/12728] Cassandra Clare / Angels Twice Descending
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1676/12728] Carrie Ryan / Divide and Conquer
+    ⚠ TITLE_NOT_IN_TEXT
+  [1677/12728] Cassandra Clare / Chain of Iron
+    ⚠ TITLE_NOT_IN_TEXT
+  [1678/12728] Cassandra Clare / A History of Notable Shadowhunters & Denizens of Downworld
+    ⚠ TITLE_NOT_IN_TEXT
+  [1723/12728] CasualFarmer / Beware of Chicken 4_ A Xianxia Cultivation Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [1726/12728] Catherine Coulter / Deadlock
+    ⚠ TITLE_NOT_IN_TEXT
+  [1744/12728] Catherine Coulter / Reckoning_ An FBI Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+  [1768/12728] Charles Dickens / A Tale of Two Cities
+    ⚠ TITLE_NOT_IN_TEXT
+  [1770/12728] Charles Dickens / A Christmas Carol_ (Unabridged) the Complete 5 Staves, by Charles Dickens (Illustrated by John
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Charles Dickens'] vs ['Standiford, Les']
+  [1772/12728] Charles Dickens / Great Expectations (Penguin Classics) by Charles Dickens
+    ⚠ TITLE_NOT_IN_TEXT
+  [1775/12728] Charles Dickens / 50_ Anthology of Christmas Stories and Poems. Classic Collection_ A Merry Christmas by Louisa
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: '50+ Anthology of Christmas Stories and Poems. Classic Collection: A Merry Christmas by Louisa May Alcott, a Christmas Carol by Charles Dickens, a Letter ... The Gift of the Magi by O. Henry and Others' vs 'The Pickwick Papers (AmazonClassics Edition)'  [1800/12728] scanning ...
+  [2000/12728] scanning ...
+  [2200/12728] scanning ...
+  [2400/12728] scanning ...
+
+  [1782/12728] Charles Glass / Tribes With Flags_ A Dangerous Passage Through the Chaos of the Middle East
+    ⚠ TITLE_NOT_IN_TEXT
+  [1791/12728] Charles Todd / A Fearsome Doubt
+    ⚠ TITLE_NOT_IN_TEXT
+  [1802/12728] Charles Todd / An Unmarked Grave_ A Bess Crawford Mystery
+    ⚠ TITLE_NOT_IN_TEXT
+  [1803/12728] Charles Todd / An Unwilling Accomplice
+    ⚠ TITLE_NOT_IN_TEXT
+  [1807/12728] Charles Todd / A Day of Judgment
+    ⚠ TITLE_NOT_IN_TEXT
+  [1808/12728] Charles Todd / Lucy the Pup and the Nighttime Shadow
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Lucy the Pup and the Nighttime Shadow' vs 'A Christmas Witness'
+  [1818/12728] Charles Todd / No Shred of Evidence
+    ⚠ TITLE_NOT_IN_TEXT
+  [1826/12728] Charlie N. Holmberg / Boy of Chaotic Making
+    ⚠ TITLE_NOT_IN_TEXT
+  [1845/12728] Chloe Neill / Charmfall
+    ⚠ TITLE_NOT_IN_TEXT
+  [1880/12728] Christie Golden / Hard Crash
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Hard Crash' vs 'Star Trek'
+  [1920/12728] Christopher Hart / Drawing Cutting Edge Comics
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1922/12728] Christopher Hart / Fashion Design Studio_ Learn to Draw Figures, Fashion, Hairstyles & More
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1923/12728] Christopher Hart / How to Draw Comic Book Heroes and Villains
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1924/12728] Christopher Hart / Drawing on the Funny Side of the Brain
+    ⚠ ERROR: NO_EPUB_FOUND
+  [1933/12728] Christopher L. Bennett / Shield of the Gods
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Shield of the Gods' vs 'Department of Temporal Investigations'
+  [1937/12728] Christopher L. Bennett / The Higher Frontier
+    ⚠ TITLE_NOT_IN_TEXT
+  [1958/12728] Christopher Moore / Secondhand Souls
+    ⚠ TITLE_NOT_IN_TEXT
+  [1967/12728] Christopher Paolini / The Inheritance Cycle (1-4)
+    ⚠ TITLE_NOT_IN_TEXT
+  [1984/12728] Christopher Stasheff / A Wizard and a Warlord
+    ⚠ TITLE_NOT_IN_TEXT
+  [2002/12728] Christopher Stasheff / The Haunted Wizard
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Christopher Stasheff'] vs ['The Haunted Wizard']
+  [2003/12728] Christopher Stasheff / The Crafters
+    ⚠ TITLE_NOT_IN_TEXT
+  [2004/12728] Christopher Stasheff / The Feline Wizard
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Christopher Stasheff'] vs ['The Feline Wizard']
+  [2006/12728] Christopher Stasheff / The Secular Wizard
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Christopher Stasheff'] vs ['The Secular Wizard']
+  [2029/12728] Cinda Williams Chima / The Heir Chronicles (1-3)
+    ⚠ TITLE_NOT_IN_TEXT
+  [2038/12728] Cinda Williams Chima / The Heir Chronicles
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2056/12728] Claudia Rowe / The Spider and the Fly_ A Reporter, a Serial Killer, and the Meaning of Murder
+    ⚠ TITLE_NOT_IN_TEXT
+  [2059/12728] Clive Barker / Books of Blood_ Volume One
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Books of Blood: Volume One' vs 'Livros de Sangue Volume 01'
+  [2065/12728] Clive Barker / Galilee_ A Novel of the Fantastic
+    ⚠ TITLE_NOT_IN_TEXT
+  [2166/12728] Connie Willis / All About Emily
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2205/12728] Cornelia Funke / Reckless
+    ⚠ TITLE_NOT_IN_TEXT
+  [2209/12728] Cornelia Funke / The Aurelia Curse
+    ⚠ TITLE_NOT_IN_TEXT
+  [2225/12728] Craig Andrews / Capture
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Capture' vs 'Martyr (The Machinists Book 3)'
+  [2270/12728] D. J. MacHale / The Merchant of Death
+    ⚠ TITLE_NOT_IN_TEXT
+  [2277/12728] D. K. Publishing / Avatar the Official Cookbook of Pandora
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['DK']
+  [2278/12728] D. K. Publishing / Super Simple Math
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['Dorling Kindersley']
+  [2279/12728] D. K. Publishing / The Architecture Book_ Big Ideas Simply Explained
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['DK']
+  [2280/12728] D. K. Publishing / Dutch Phrase Book
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dutch Phrase Book' vs 'How to be Good at Science, Technology & Engineering Workbook 2, Ages 11-14 (Key Stage 3): The Simplest-Ever Visual Workbook'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['Dorling Kindersley']
+  [2283/12728] D. K. Publishing / The Biology Book_ Big Ideas Simply Explained
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['DK']
+  [2284/12728] D. K. Publishing / Star Wars Character Encyclopedia
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['Hidalgo, Pablo']
+  [2285/12728] D. M. Arnold / The Lexal Affair
+    ⚠ TITLE_NOT_IN_TEXT
+  [2286/12728] D.K. Publishing / 365 Things to Do with LEGO(r) Bricks
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2287/12728] D.K. Publishing / 3D Printing Projects
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2288/12728] D.K. Publishing / Complete Running and Marathon Book (Dk Sports & Activities) by DK DK (2014) Paperback
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Complete Running and Marathon Book (Dk Sports & Activities) by DK DK (2014) Paperback' vs 'The Ancient Worlds Atlas: A Pictorial Guide to Past Civilizations'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D.K. Publishing'] vs ['Dorling Kindersley']
+  [2291/12728] D.K. Publishing / The Dinosaur Book
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2296/12728] D.K. Publishing / Pocket Genius Ocean
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2299/12728] Dale Brown / Brown, Dale - Air Battle Force
+    ⚠ TITLE_NOT_IN_TEXT
+  [2300/12728] D. K. Publishing / The Soup Book_ 200 Recipes, Season by Season
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D. K. Publishing'] vs ['Sophie Grigson', 'DK']
+  [2302/12728] Dale Brown / Brown, Dale - Day of the Cheetah
+    ⚠ TITLE_NOT_IN_TEXT
+  [2303/12728] D.K. Publishing / The Civil War
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['D.K. Publishing'] vs ['DK']
+  [2319/12728] Dale Brown / Drone Strike
+    ⚠ TITLE_NOT_IN_TEXT
+  [2333/12728] Dale Brown / Silver Tower
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Silver Tower' vs 'Brown, Dale - Independent 01'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Dale Brown'] vs ['Silver Tower (v1.1)']
+  [2340/12728] Dale Brown / The Kremlin Strike
+    ⚠ TITLE_NOT_IN_TEXT
+  [2342/12728] Dale Brown / Weapons of Opportunity
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:ara
+  [2346/12728] Dale Brown / The Moscow Offensive
+    ⚠ TITLE_NOT_IN_TEXT
+  [2440/12728] Daniel Silva / An Inside Job
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [2442/12728] Daniel Silva / House of Spies
+    ⚠ TITLE_NOT_IN_TEXT
+  [2444/12728] Daniel H. Wilson / The Andromeda Evolution
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Daniel H. Wilson'] vs ['Michael Crichton']
+  [2514/12728] Dave Barry / Dave Barry's Money Secrets_ Like_ Why Is There a Giant Eyeball on the Dollar_
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dave Barry's Money Secrets: Like: Why Is There a Giant Eyeball on the Dollar?' vs 'Live Right and Find Happiness (Although Beer is Much Faster)'
+  [2519/12728] Dave Barry / I'll Mature When I'm Dead_ Dave Barry's Amazing Tales of Adulthood [ I'll Mature When I'm Dead
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'I'll Mature When I'm Dead: Dave Barry's Amazing Tales of Adulthood [ I'll Mature When I'm Dead: Dave Barry's Amazing Tales of Adulthood by Barry, Dave ( Author ) Paperback Apr- 2011 ] Paperback Apr- 05- 2011' vs 'Dave Barry’s Homes and Other Black Holes: The Happy Homeowner’s Guide to Ritual Closing Ceremonies, Newton’s First Law of Furniture Buying, the Lethal Chemicals Man, and Other Perils of the American Dream'
+  [2529/12728] Dave Barry / Science Fair
+    ⚠ TITLE_NOT_IN_TEXT
+  [2565/12728] David Baldacci / Absolute Power _ Total Control
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Absolute Power / Total Control' vs 'David Baldacci'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['David Baldacci'] vs ['Total Control (v5)']
+  [2570/12728] David Baldacci / Day of Doom
+    ⚠ TITLE_NOT_IN_TEXT
+  [2573/12728] David Baldacci / Fries Alive!
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Fries Alive!' vs 'David Baldacci & Rudy Baldacci'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['David Baldacci', 'Rudy Baldacci'] vs ['Fries Alive!']  [2600/12728] scanning ...
+  [2800/12728] scanning ...
+  [3000/12728] scanning ...
+  [3200/12728] scanning ...
+  [3400/12728] scanning ...
+  [3600/12728] scanning ...
+  [3800/12728] scanning ...
+  [4000/12728] scanning ...
+
+  [2579/12728] David Baldacci / Redemption
+    ⚠ TITLE_NOT_IN_TEXT
+  [2586/12728] David Baldacci / The Forgotten
+    ⚠ TITLE_NOT_IN_TEXT
+  [2588/12728] David Baldacci / The Guilty
+    ⚠ TITLE_NOT_IN_TEXT
+  [2589/12728] David Baldacci / The Escape
+    ⚠ TITLE_NOT_IN_TEXT
+  [2613/12728] David Brin / Insistence of Vision_ Stories
+    ⚠ TITLE_NOT_IN_TEXT
+  [2664/12728] David Day / Alice's Adventures in Wonderland Decoded_ The Full Text of Lewis Carroll's Novel With Its Many
+    ⚠ ERROR: NO_EPUB_FOUND
+  [2685/12728] David Eddings / The Ruby Knight
+    ⚠ TITLE_NOT_IN_TEXT
+  [2688/12728] David Eddings / The Sapphire Rose
+    ⚠ TITLE_NOT_IN_TEXT
+  [2739/12728] David Mack / Best Defense
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Best Defense' vs 'Legacies #2'
+  [2747/12728] David Mack / Destiny_ The Complete Saga
+    ⚠ TITLE_NOT_IN_TEXT
+  [2755/12728] David Mack / Star Trek_ The Next Generation_ Cold Equations_ Silent Weapons
+    ⚠ TITLE_NOT_IN_TEXT
+  [2769/12728] David Mack / Warpath
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Warpath' vs 'Star Trek'
+  [2779/12728] David R. George III / Star Trek_ Deep Space Nine_ Sacraments of Fire
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Star Trek: Deep Space Nine: Sacraments of Fire' vs 'Sacraments of Fire'
+  [2793/12728] David Weber / Empire From the Ashes
+    ⚠ TITLE_NOT_IN_TEXT
+  [2850/12728] Dayton Ward / Drastic Measures
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Drastic Measures' vs 'Star Trek'
+  [2851/12728] Dayton Ward / Pliable Truths
+    ⚠ TITLE_NOT_IN_TEXT
+  [2977/12728] Dean Wesley Smith / Morning Song_ A Seeders Universe Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [3003/12728] Diana Wynne Jones / Castle in the Air
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [3004/12728] Diana Wynne Jones / Dark Lord of Derkholm
+    ⚠ TITLE_NOT_IN_TEXT
+  [3018/12728] Diana Wynne Jones / Year of the Griffin
+    ⚠ TITLE_NOT_IN_TEXT
+  [3026/12728] Diane Carey / Fire Ship
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Diane Carey'] vs ['Unknown']
+  [3035/12728] Diane Duane / EXILED_ Keeper of the City
+    ⚠ TITLE_NOT_IN_TEXT
+  [3046/12728] Diane Duane / Storm at Eldala
+    ⚠ ERROR: NO_EPUB_FOUND
+  [3051/12728] Diane Duane / Games Wizards Play
+    ⚠ TITLE_NOT_IN_TEXT
+  [3060/12728] Diane Duane / [A Wizard Alone (Young Wizards (Quality))] [Author_ Duane, Diane] [October, 2003]
+    ⚠ INTERNAL_TITLE_MISMATCH: '[A Wizard Alone (Young Wizards (Quality))] [Author: Duane, Diane] [October, 2003]' vs 'Owl Be Home For Christmas: A Christmas in the Young Wizards universe'
+  [3126/12728] Douglas Preston / Beyond the Ice Limit
+    ⚠ TITLE_NOT_IN_TEXT
+  [3131/12728] Douglas Preston / Bloodless
+    ⚠ TITLE_NOT_IN_TEXT
+  [3132/12728] Douglas Preston / Cities of Gold_ A Journey Across the American Southwest in Pursuit of Coronado
+    ⚠ TITLE_NOT_IN_TEXT
+  [3136/12728] Douglas Preston / Crimson Shore
+    ⚠ TITLE_NOT_IN_TEXT
+  [3139/12728] Douglas Preston / Crooked River
+    ⚠ TITLE_NOT_IN_TEXT
+  [3157/12728] Douglas Preston / The Pharaoh Key
+    ⚠ TITLE_NOT_IN_TEXT
+  [3163/12728] Dragonlance / 1 - The Covenant of The Forge
+    ⚠ ERROR: NO_EPUB_FOUND
+  [3170/12728] Drew Hayes / A Decade of Death and Decisions
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [3193/12728] Drew Hayes / Undeath and Taxes
+    ⚠ TITLE_NOT_IN_TEXT
+  [3212/12728] Duncan M. Hamilton / The Privateer
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Privateer' vs 'The Frontier Lord: Previously published as The Marcher Lord'
+  [3218/12728] Duncan M. Hamilton / The Tattered Banner
+    ⚠ TITLE_NOT_IN_TEXT
+  [3229/12728] E.E. Knight / Dragon Champion
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [3285/12728] Elaine Cunningham / Elfshadow
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Elfshadow' vs 'D&D - Forgotten Realms - Starlight & Shadows 02'
+  [3292/12728] Elaine Cunningham / The Illusionist
+    ⚠ TITLE_NOT_IN_TEXT
+  [3410/12728] Erin Hunter / Blood and Bone
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Blood and Bone' vs 'Bravelands #3'
+  [3437/12728] Erin Hunter / Forest of Secrets
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [3473/12728] Erin Hunter / Shifting Shadows
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Shifting Shadows' vs 'Bravelands #4'
+  [3484/12728] Erin Hunter / Survivors_ Sweet's Journey
+    ⚠ TITLE_NOT_IN_TEXT
+  [3518/12728] Erin M. Evans / Lesser Evils
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Lesser Evils' vs 'Brimstone Angels'
+  [3545/12728] Ernest Dempsey / The Lost Canvas
+    ⚠ TITLE_NOT_IN_TEXT
+  [3548/12728] Ernest Dempsey / The Jerusalem Creed_ A Sean Wyatt Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+  [3550/12728] Ernest Dempsey / The Relic Runner Origin Story Box Set_ Books 1-6_ A Dak Harper Serial Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Relic Runner Origin Story Box Set: Books 1-6: A Dak Harper Serial Thriller' vs 'The Cairo Vendetta: A Sean Wyatt Thriller (Sean Wyatt Action & Adventure Thrillers Book 9)'
+  [3553/12728] Ernest Dempsey / The Sean Wyatt Series_ Books 7-9 Box Set
+    ⚠ TITLE_NOT_IN_TEXT
+  [3565/12728] Ernest Dempsey / War of Thieves Trilogy Box Set Edition
+    ⚠ TITLE_NOT_IN_TEXT
+  [3598/12728] F. Paul Wilson / Secret Histories
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['F. Paul Wilson'] vs ['Repairman Jack 20 - Early Years 01 - Cold City (v5.0)']
+  [3603/12728] F. Paul Wilson / The Complete Adversary Cycle_ The Keep, the Tomb, the Touch, Reborn, Reprisal, Nightworld
+    ⚠ TITLE_NOT_IN_TEXT
+  [3608/12728] F. Paul Wilson / The Keep_ A Novel of the Adversary Cycle
+    ⚠ TITLE_NOT_IN_TEXT
+  [3646/12728] Faye Kellerman / The Theory of Death
+    ⚠ TITLE_NOT_IN_TEXT
+  [3675/12728] Frank Herbert / Dune (Dune Chronicles, Book 1) 25th (twenty fifth) edition Text Only
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dune (Dune Chronicles, Book 1) 25th (twenty fifth) edition Text Only' vs 'Saga Dune 1-6. La mayor epopeya de todos los tiempos'
+  [3706/12728] Garth Nix / Blood Ties
+    ⚠ TITLE_NOT_IN_TEXT
+  [3729/12728] Garth Nix / The Old Kingdom Chronicles
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Old Kingdom Chronicles' vs 'The Abhorsen Trilogy Box Set'
+  [3734/12728] Gena Showalter / Atlantis Series Complete Collection
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Atlantis Series Complete Collection' vs 'Enslave Me Sweetly'
+  [3744/12728] Gena Showalter / Kingdom of Today
+    ⚠ ERROR: NO_EPUB_FOUND
+  [3776/12728] Geoffrey A. Landis / Launch Pad
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Geoffrey A. Landis', 'Matthew Kressel', 'Mary Turzillo', 'Jay Lake', 'Tiffany Trent', 'Jake Kerr', 'Michael Kruland', 'Sandra McDonald', 'Doug Farren', 'Matthew Rotundo'] vs ['Jody Lynn Nye', 'Mike Brotherton']
+  [3785/12728] George Orwell / The Penguin Complete Novels of George Orwell
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Penguin Complete Novels of George Orwell' vs 'The Complete Novels'
+  [3861/12728] Glen Cook / Whispering Nickel Idols
+    ⚠ TITLE_NOT_IN_TEXT
+  [3866/12728] Glenn Fabry / Anatomy for Fantasy Artists_ An Essential Guide to Creating Action Figures and Fantastical For
+    ⚠ ERROR: NO_EPUB_FOUND
+  [3891/12728] Gordon Korman / Schooled
+    ⚠ TITLE_NOT_IN_TEXT
+  [3898/12728] Gordon Korman / Supergifted
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [3905/12728] Gordon Korman / The Summit
+    ⚠ TITLE_NOT_IN_TEXT
+  [3912/12728] Gordon Korman / Flashpoint
+    ⚠ TITLE_NOT_IN_TEXT
+  [3932/12728] Greg Bear / Halo_ Silentium
+    ⚠ TITLE_NOT_IN_TEXT
+  [3940/12728] Greg Bear / Quantico
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Quantico' vs 'Greg Bear'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Greg Bear'] vs ['Quantico']
+  [3958/12728] Greg Donegan / Battle for Atlantis
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Greg Donegan', 'Bob Mayer'] vs ['Robert Doherty']
+  [3959/12728] Greg Donegan / Bermuda Triangle
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Greg Donegan', 'Bob Mayer'] vs ['Robert Doherty']
+  [3987/12728] Gregory Benford / Furious Gulf
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Gregory Benford'] vs ['J.N. Chaney', 'Terry Maggert']
+  [4045/12728] Gwen White / Perspective_ A Guide for Artists, Architects and Designers
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4078/12728] H. R. F. Keating / The Iciest Sin
+    ⚠ ERROR: NO_TEXT_EXTRACTED  [4200/12728] scanning ...
+  [4400/12728] scanning ...
+  [4600/12728] scanning ...
+  [4800/12728] scanning ...
+
+  [4089/12728] Hairy Bikers / The Hairy Bikers' Meat Feasts_ With Over 120 Delicious Recipes - a Meaty Modern Classic
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Hairy Bikers'] vs ['Si King and Dave Myers']
+  [4091/12728] Hairy Bikers / The Hairy Bikers' Mediterranean Adventure_ 150 Easy and Tasty Recipes to Cook at Home
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Hairy Bikers'] vs ['Si King', 'Dave Myers']
+  [4092/12728] Hairy Bikers / The Hairy Bikers' Chicken & Egg
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Hairy Bikers'] vs ['Chloe Neill']
+  [4106/12728] Hairy Bikers / The Hairy Bikers' Perfect Pies_ The Ultimate Pie Bible From the Kings of Pies
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Hairy Bikers'] vs ['Si King', 'Dave Myers']
+  [4143/12728] Harry Harrison / Astounding John W. Campbell Memoria
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4151/12728] Harry Harrison / Deathworld 3
+    ⚠ TITLE_NOT_IN_TEXT
+  [4156/12728] Harry Harrison / Planet of the Damned by Harry Harrison (Unexpurgated Edition)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Planet of the Damned by Harry Harrison (Unexpurgated Edition)' vs 'Planet of the Damned and Other Stories: A Science Fiction Anthology (Five Books in One Volume!)'
+  [4161/12728] Harry Harrison / The Stainless Steel Rat
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4226/12728] Harry Turtledove / Swords of the Legion
+    ⚠ TITLE_NOT_IN_TEXT
+  [4240/12728] Harry Turtledove / The Grapple
+    ⚠ TITLE_NOT_IN_TEXT
+  [4265/12728] Harvard Lampoon / The Best of the Harvard Lampoon_ 140 Years of American Humor
+    ⚠ TITLE_NOT_IN_TEXT
+  [4302/12728] Holly Black / The Queen of Nothing
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Queen of Nothing' vs 'Thief of Night'
+  [4308/12728] Holly Black / Valiant
+    ⚠ TITLE_NOT_IN_TEXT
+  [4315/12728] Holly Jackson / A Good Girl's Guide to Murder
+    ⚠ TITLE_NOT_IN_TEXT
+  [4319/12728] Holly Lisle / It Happened in a Flash_ An Anthology of 64 Bite-Sized Stories
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Holly Lisle', 'Katharina Gerlach', 'Tom Vetter', 'Joyce Sully', 'Marya Miller', 'Sallie Olson', 'Barbara Lund', 'Eileen Mueller', 'Charlotte Henley Babb', 'Connie Cockrell', 'Rachel Kovaciny', 'Moira K. Brennan', 'Rachel Hobbs'] vs ['Alex F. Fayle']
+  [4333/12728] Hugh Howey / The Balloon Hunter_ A Found Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [4336/12728] Hugh Howey / Shift Omnibus Edition
+    ⚠ TITLE_NOT_IN_TEXT
+  [4357/12728] Idw / Tales From the Darkside #2 Sub
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4361/12728] Ilsa J. Bick / Mechwarrior_ Dark Age #24_ Dragon Rising
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Mechwarrior: Dark Age #24: Dragon Rising' vs 'Dragon Rising'
+  [4363/12728] Ilsa J. Bick / Mechwarrior_ Dark Age #19_ Blood Avatar
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Mechwarrior: Dark Age #19: Blood Avatar' vs 'Blood Avatar'
+  [4381/12728] Isaac Asimov / Asimov's Chronology of the World_ The History of the World From the Big Bang to Modern Times
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4384/12728] Isaac Asimov / Azazel
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:spa
+  [4387/12728] Isaac Asimov / Beginnings, the Story of Origins-Of Mankind, Life, the Earth, the Universe
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Beginnings, the Story of Origins-Of Mankind, Life, the Earth, the Universe' vs 'Asimov's Mirage : The New Isaac Asimov's Robot Mystery'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Isaac Asimov'] vs ['Mark W. Tiedmann']
+  [4388/12728] Isaac Asimov / Best of the Sci-Fi Vintage Pulp - 1952 Short Stories Illustrated & Annotated
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Best of the Sci-Fi Vintage Pulp – 1952 Short Stories Illustrated & Annotated' vs 'Ring Around the Sun: And Other Stories (The Complete Stories)'
+  [4396/12728] Isaac Asimov / Liar!
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Liar!' vs 'Alliance'
+  [4404/12728] Isaac Asimov / Realm of Algebra
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4413/12728] Isaac Asimov / Foundation and Earth
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Isaac Asimov'] vs ['Greg Bear']
+  [4416/12728] Isaac Asimov / Robots in Time
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Robots in Time' vs 'Dictator'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Isaac Asimov'] vs ['William F. Wu']
+  [4417/12728] Isaac Asimov / The Far Ends of Time and Earth
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Far Ends of Time and Earth' vs 'Foundation and Empire (The Isaac Asimov Collection)'
+  [4418/12728] Isaac Asimov / The Foundation Trilogy
+    ⚠ TITLE_NOT_IN_TEXT
+  [4419/12728] Isaac Asimov / The Left Hand of the Electron
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4422/12728] Isaac Asimov / The Sun
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Sun' vs 'The currents of space'
+  [4423/12728] Isaac Asimov / Triangle
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Triangle' vs 'Changeling'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Isaac Asimov'] vs ['Stephen Leigh']
+  [4424/12728] Isaac Asimov / Worlds Within Worlds_ The Story of Nuclear Energy, Volume 2 (Of 3) Mass and Energy; The Neutro
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Worlds Within Worlds: The Story of Nuclear Energy, Volume 2 (Of 3) Mass and Energy; The Neutron; The Structure of the Nucleus' vs 'Science fiction, the early days: discussion between H.H.Broun, Isaac Asimov and Frederick Pohl. Phonotape'
+  [4425/12728] Isaac Asimov / The Robot Novels_ The Caves of Steel, the Naked Sun, the Robots of Dawn
+    ⚠ TITLE_NOT_IN_TEXT
+  [4426/12728] Ivy Manning / Crackers & Dips_ More Than 50 Handmade Snacks
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4449/12728] J. G. Ballard / The Four-Dimensional Nightmare
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Four-Dimensional Nightmare' vs 'The Complete Stories of J.G. Ballard'
+  [4464/12728] J. Kenji Lopez-Alt / Every Night Is Pizza Night
+    ⚠ TITLE_NOT_IN_TEXT
+  [4465/12728] J. K. Rowling / Pocket Potters_ Hermione Granger_ Little Guides to the Harry Potter Stories
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4470/12728] J. N. Chaney / Sharp Allies
+    ⚠ TITLE_NOT_IN_TEXT
+  [4549/12728] J.N. Chaney / Children of Angels
+    ⚠ TITLE_NOT_IN_TEXT
+  [4642/12728] J.N. Chaney / Nature of War_ An Intergalactic Scifi Adventure
+    ⚠ TITLE_NOT_IN_TEXT
+  [4783/12728] Jack Campbell / The Last Full Measure
+    ⚠ ERROR: NO_EPUB_FOUND
+  [4794/12728] Jack Du Brul / River of Ruin
+    ⚠ TITLE_NOT_IN_TEXT
+  [4811/12728] Jack McKinney / The Complete Robotech 1-18
+    ⚠ TITLE_NOT_IN_TEXT
+  [4823/12728] Jack Vance / Lurulu
+    ⚠ TITLE_NOT_IN_TEXT
+  [4828/12728] Jack Vance / Jack Vance - Lyonesse Complete Trilogy Lyonesse, The Green Pearl and Madouc
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Jack Vance - Lyonesse Complete Trilogy Lyonesse, The Green Pearl and Madouc' vs 'The Gray Prince aka The Grey Prince aka The Domains of Koryphon'
+  [4829/12728] Jack Vance / Madouc
+    ⚠ TITLE_NOT_IN_TEXT
+  [4830/12728] Jack Vance / Morreion_ A Tale of the Dying Earth
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:nld
+  [4839/12728] Jack Vance / Servants of the Wankh_ Planet of Adventure #2
+    ⚠ TITLE_NOT_IN_TEXT
+  [4842/12728] Jack Vance / Suldrun's Garden
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Suldrun's Garden' vs 'Elder Isles 1 Lyonesse'
+  [4853/12728] Jack Vance / The Insufferable Red-headed Daughter of Commander Tynott O.T.E_
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Insufferable Red-headed Daughter of Commander Tynott O.T.E.' vs 'The Five Gold Bands aka The Rapparee aka The Space Pirate'
+  [4858/12728] Jack Vance / The Magnificent Showboats of the Lower Vissel River, Lune XXIII South, Big Planet
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Magnificent Showboats of the Lower Vissel River, Lune XXIII South, Big Planet' vs 'Dying Earth Book 2 - The Eyes of the Overworld aka Cugel the Clever'
+  [4876/12728] Jak Koke / Forgotten Realms_ The Edge of Chaos (The Wilds Series)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Forgotten Realms: The Edge of Chaos (The Wilds Series)' vs 'The Edge of Chaos'
+  [4879/12728] Jake Tapper / Down & Dirty_ The Plot to Steal the Presidency  [5000/12728] scanning ...
+  [5200/12728] scanning ...
+  [5400/12728] scanning ...
+  [5600/12728] scanning ...
+  [5800/12728] scanning ...
+  [6000/12728] scanning ...
+
+    ⚠ TITLE_NOT_IN_TEXT
+  [4883/12728] Jake Tapper / The Devil May Dance
+    ⚠ TITLE_NOT_IN_TEXT
+  [4892/12728] James Axler / Apocalypse Unseen
+    ⚠ TITLE_NOT_IN_TEXT
+  [4896/12728] James Axler / Awakening
+    ⚠ TITLE_NOT_IN_TEXT
+  [4903/12728] James Axler / Cerberus Storm
+    ⚠ TITLE_NOT_IN_TEXT
+  [4910/12728] James Axler / Closing the Cosmic Eye
+    ⚠ TITLE_NOT_IN_TEXT
+  [4934/12728] James Axler / Dragoneye
+    ⚠ TITLE_NOT_IN_TEXT
+  [4941/12728] James Axler / Equinox Zero
+    ⚠ TITLE_NOT_IN_TEXT
+  [4943/12728] James Axler / Evil Abyss
+    ⚠ TITLE_NOT_IN_TEXT
+  [4968/12728] James Axler / Mad God's Wrath
+    ⚠ TITLE_NOT_IN_TEXT
+  [4974/12728] James Axler / Mask of the Sphinx
+    ⚠ TITLE_NOT_IN_TEXT
+  [5007/12728] James Axler / Sea of Plague_ Outlanders, Book 26
+    ⚠ TITLE_NOT_IN_TEXT
+  [5028/12728] James Axler / Successors_ Outlanders, Book 34
+    ⚠ TITLE_NOT_IN_TEXT
+  [5029/12728] James Axler / Sun Lord
+    ⚠ TITLE_NOT_IN_TEXT
+  [5038/12728] James Axler / Uluru Destiny
+    ⚠ TITLE_NOT_IN_TEXT
+  [5072/12728] James Dashner / The Iron Empire
+    ⚠ TITLE_NOT_IN_TEXT
+  [5078/12728] James Dashner / War of the Black Curtain
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:nld
+  [5121/12728] James Lee Burke / Dixie City Jam
+    ⚠ TITLE_NOT_IN_TEXT
+  [5149/12728] James Lovegrove / Big Damn Hero
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['James Lovegrove'] vs ['Nancy Holder']
+  [5152/12728] James Lowder / Madness on the Orient Express
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['James Lowder'] vs ['Dennis Detwiller', 'Geoff Gillan', 'Lisa Morton', 'Kenneth Hite', 'Elaine Cunningham', 'Robin D. Laws', 'Ari Marmell', 'Lucien Soulban']
+  [5163/12728] James Luceno / Star Wars_ The New Jedi Order_ Agents of Chaos II_ Jedi Eclipse
+    ⚠ TITLE_NOT_IN_TEXT
+  [5189/12728] James Patterson / 2 Sisters Detective Agency
+    ⚠ TITLE_NOT_IN_TEXT
+  [5191/12728] James Patterson / 21st Birthday
+    ⚠ TITLE_NOT_IN_TEXT
+  [5207/12728] James Patterson / Alert
+    ⚠ TITLE_NOT_IN_TEXT
+  [5209/12728] James Patterson / Angel
+    ⚠ TITLE_NOT_IN_TEXT
+  [5215/12728] James Patterson / Blindside
+    ⚠ TITLE_NOT_IN_TEXT
+  [5219/12728] James Patterson / Ambush
+    ⚠ TITLE_NOT_IN_TEXT
+  [5221/12728] James Patterson / Chase
+    ⚠ TITLE_NOT_IN_TEXT
+  [5227/12728] James Patterson / Countdown
+    ⚠ TITLE_NOT_IN_TEXT
+  [5239/12728] James Patterson / Bullseye
+    ⚠ TITLE_NOT_IN_TEXT
+  [5252/12728] James Patterson / Escape
+    ⚠ TITLE_NOT_IN_TEXT
+  [5253/12728] James Patterson / Death of the Black Widow
+    ⚠ TITLE_NOT_IN_TEXT
+  [5264/12728] James Patterson / From Hero to Zero
+    ⚠ TITLE_NOT_IN_TEXT
+  [5266/12728] James Patterson / Haunted
+    ⚠ TITLE_NOT_IN_TEXT
+  [5268/12728] James Patterson / Hidden
+    ⚠ TITLE_NOT_IN_TEXT
+  [5269/12728] James Patterson / Fang
+    ⚠ TITLE_NOT_IN_TEXT
+  [5296/12728] James Patterson / Kill or Be Killed
+    ⚠ TITLE_NOT_IN_TEXT
+  [5301/12728] James Patterson / Malicious_ A Mitchum Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [5319/12728] James Patterson / Murder in Paradise
+    ⚠ TITLE_NOT_IN_TEXT
+  [5327/12728] James Patterson / Missing_ A Private Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [5332/12728] James Patterson / Obsessed
+    ⚠ TITLE_NOT_IN_TEXT
+  [5350/12728] James Patterson / Private Vegas
+    ⚠ TITLE_NOT_IN_TEXT
+  [5354/12728] James Patterson / Quest for the City of Gold
+    ⚠ TITLE_NOT_IN_TEXT
+  [5361/12728] James Patterson / Santakid
+    ⚠ TITLE_NOT_IN_TEXT
+  [5367/12728] James Patterson / Secret of the Forbidden City
+    ⚠ TITLE_NOT_IN_TEXT
+  [5371/12728] James Patterson / Steal
+    ⚠ TITLE_NOT_IN_TEXT
+  [5372/12728] James Patterson / Shattered
+    ⚠ TITLE_NOT_IN_TEXT
+  [5382/12728] James Patterson / The 24th Hour
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The 24th Hour' vs 'The Idaho Four'
+  [5394/12728] James Patterson / The Coast-To-Coast Murders
+    ⚠ TITLE_NOT_IN_TEXT
+  [5409/12728] James Patterson / The Inn
+    ⚠ TITLE_NOT_IN_TEXT
+  [5432/12728] James Patterson / The Shadow
+    ⚠ TITLE_NOT_IN_TEXT
+  [5434/12728] James Patterson / The Warning
+    ⚠ TITLE_NOT_IN_TEXT
+  [5439/12728] James Patterson / The Russian
+    ⚠ TITLE_NOT_IN_TEXT
+  [5446/12728] James Patterson / Unlucky 13
+    ⚠ TITLE_NOT_IN_TEXT
+  [5447/12728] James Patterson / Unsolved
+    ⚠ TITLE_NOT_IN_TEXT
+  [5450/12728] James Patterson / Triple Threat
+    ⚠ TITLE_NOT_IN_TEXT
+  [5454/12728] James Patterson / Witch & Wizard_ The Lost_
+    ⚠ TITLE_NOT_IN_TEXT
+  [5457/12728] James Patterson / Zoo 2_ A Zoo Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [5460/12728] James Patterson (29422361) / Python_ A Beginner's Guide to Learning the Basics of Python Programming
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Python: A Beginner's Guide to Learning the Basics of Python Programming' vs 'The Secret Lives of Booksellers and Librarians: True Stories of the Magic of Reading'
+  [5475/12728] James Rollins / Innocent Blood_ The Order of the Sanguines
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Innocent Blood: The Order of the Sanguines' vs 'A Dragon of Black Glass'
+  [5484/12728] James Rollins / The Bone Labyrinth
+    ⚠ TITLE_NOT_IN_TEXT
+  [5498/12728] James Rollins / The Kill Switch
+    ⚠ TITLE_NOT_IN_TEXT
+  [5508/12728] James S.A. Corey / Drive_ An Expanse Short Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [5511/12728] James S.A. Corey / Memory's Legion_ The Complete Expanse Story Collection
+    ⚠ TITLE_NOT_IN_TEXT
+  [5515/12728] James S.A. Corey / Star Wars_ Empire and Rebellion_ Honor Among Thieves
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Star Wars: Empire and Rebellion: Honor Among Thieves' vs 'Leviathan Wakes'
+  [5522/12728] James Tiptree Jr_ / Byte Beautiful_ Eight Science Fiction Stories
+    ⚠ ERROR: NO_EPUB_FOUND
+  [5546/12728] Jamie Davis / Cyber's Underground
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Jamie Davis'] vs ['425188419']
+  [5595/12728] Janny Wurts / Sorcerer's Legacy
+    ⚠ TITLE_NOT_IN_TEXT
+  [5628/12728] Jean Long / Chinese Ink Painting_ Techniques in Shades of Black
+    ⚠ ERROR: NO_EPUB_FOUND
+  [5647/12728] Jeff Kirkham / America Invaded
+    ⚠ TITLE_NOT_IN_TEXT
+  [5648/12728] Jeff Friesen / The LEGO(r) Engineer
+    ⚠ TITLE_NOT_IN_TEXT
+  [5659/12728] Jeff Lindsay / Double Dexter_ A Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [5660/12728] Jeff Lindsay / Dylematy Dextera
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [5707/12728] Jeffery Deaver / The Cutting Edge
+    ⚠ TITLE_NOT_IN_TEXT
+  [5708/12728] Jeffery Deaver / The Cold Moon_ A Lincoln Rhyme Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [5769/12728] Jeffrey Archer / The Gospel According to Judas by Benjamin Iscariot
+    ⚠ TITLE_NOT_IN_TEXT
+  [5823/12728] Jen Calonita / Summer State of Mind (Whispering Pines) by Jen Calonita
+    ⚠ TITLE_NOT_IN_TEXT
+  [5839/12728] Jenna Helland / Forgotten Realms_ The Fanged Crown (The Wilds Series)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Forgotten Realms: The Fanged Crown (The Wilds Series)' vs 'The Fanged Crown'
+  [5859/12728] Jennifer Lynn Barnes / The Inheritance Games - Der letzte Schachzug
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Inheritance Games - Der letzte Schachzug' vs 'The Same Backward as Forward'
+  [5868/12728] Jerome Preisler / Net Force_ Dark Web
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Net Force: Dark Web' vs 'Night Moves'
+  [5908/12728] Jim Butcher / The Dresden Files Collection 1-6
+    ⚠ TITLE_NOT_IN_TEXT
+  [5968/12728] Joe Haldeman / The Forever War
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Forever War' vs 'Razboiul Etern'
+  [5971/12728] Joe Haldeman / Tool of the Trade_ Signed
+    ⚠ TITLE_NOT_IN_TEXT
+  [5983/12728] Joe Hill / Strange Weather_ Four Short Novels
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [5997/12728] John Birmingham / Final Impact
+    ⚠ TITLE_NOT_IN_TEXT
+  [6025/12728] John E. Douglas / When a Killer Calls_ A Haunting Story of Murder, Criminal Profiling, and Justice in a Small To
+    ⚠ TITLE_NOT_IN_TEXT
+  [6101/12728] John Grisham / The Firm
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Firm' vs 'The Widow'
+  [6126/12728] John Gwynne / Gwynne, John - The Faithful and the Fallen Book 04 - Wrath
+    ⚠ TITLE_NOT_IN_TEXT  [6200/12728] scanning ...
+  [6400/12728] scanning ...
+  [6600/12728] scanning ...
+  [6800/12728] scanning ...
+  [7000/12728] scanning ...
+  [7200/12728] scanning ...
+
+  [6134/12728] John Kennedy Toole / A Confederacy of Dunces (Pulitzer Prize Winner)
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'A Confederacy of Dunces (Pulitzer Prize Winner)' vs 'A Confederacy of Dunces'
+  [6247/12728] John Sandford / Secret Prey
+    ⚠ TITLE_NOT_IN_TEXT
+  [6258/12728] John Sandford / The Hanged Man's Song
+    ⚠ TITLE_NOT_IN_TEXT
+  [6284/12728] John Vornholt / River Quest
+    ⚠ ERROR: NO_EPUB_FOUND
+  [6285/12728] John Vornholt / Sabertooth Mountain
+    ⚠ ERROR: NO_EPUB_FOUND
+  [6311/12728] Jonathan Kellerman / Bad Love
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Bad Love' vs 'Half Moon Bay: A Novel'
+  [6328/12728] Jonathan Kellerman / Gone_ An Alex Delaware Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [6347/12728] Jonathan Kellerman / Survival of the Fittest
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Jonathan Kellerman'] vs ['Unknown']
+  [6366/12728] Jonathan R Eller / The Collected Stories of Ray Bradbury_ A Critical Edition_ Volume I_ 1938-1943
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Jonathan R Eller', 'William Touponce'] vs ['Ray Bradbury']
+  [6418/12728] Jude Watson / Nowhere to Run
+    ⚠ TITLE_NOT_IN_TEXT
+  [6442/12728] Julianna Sweeney / 365 Pressure Cooker Recipes_ Pressure Cooker Meals, Pressure Cooker Recipes, Pressure Cooker R
+    ⚠ TITLE_NOT_IN_TEXT
+  [6445/12728] Julianna Sweeney / Mediterranean Diet_ 365 Days of Easy, Delicious, and Healthy Mediterranean Diet (Mediterranean
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Mediterranean Diet: 365 Days of Easy, Delicious, and Healthy Mediterranean Diet (Mediterranean Diet Cookbook, Mediterranean Diet for Weight Loss) by Julianna Sweeney' vs 'Casseroles: 365 Days of Casserole Recipes for Quick and Easy Meals (Casserole Cookbook, Party Recipes, Family Meals, One Dish Recipes, Dump Dinner, Make Ahead Meals)'
+  [6451/12728] Jules Verne / The English at the North Pole
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The English at the North Pole' vs 'Around the World in Eighty Days (AmazonClassics Edition)'
+  [6467/12728] Julie Kagawa / The Iron Queen
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Iron Queen' vs 'Julie Kagawa'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Julie Kagawa'] vs ['The Iron Queen']
+  [6505/12728] K. W. Jeter / Dr. Adder
+    ⚠ TITLE_NOT_IN_TEXT
+  [6531/12728] K.J. Parker / Prosper's Demon
+    ⚠ TITLE_NOT_IN_TEXT
+  [6534/12728] K.J. Parker / Pulling the Wings Off Angels
+    ⚠ TITLE_NOT_IN_TEXT
+  [6547/12728] K.J. Parker / The Last Witness
+    ⚠ TITLE_NOT_IN_TEXT
+  [6564/12728] Kage Baker / The Best of Kage Baker
+    ⚠ TITLE_NOT_IN_TEXT
+  [6590/12728] Karl Schroeder / Ventus
+    ⚠ TITLE_NOT_IN_TEXT
+  [6603/12728] Kate Elliott / Cold Magic
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:rus
+  [6621/12728] Kate Elliott / The Keeper's Six
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Keeper's Six' vs 'The Nameless Land'
+  [6628/12728] Kate Khavari / A Botanist's Guide to Flowers and Fatality
+    ⚠ TITLE_NOT_IN_TEXT
+  [6629/12728] Kate Khavari / A Botanist's Guide to Society and Secrets
+    ⚠ TITLE_NOT_IN_TEXT
+  [6631/12728] Kate Khavari / A Botanist's Guide to Parties and Poisons
+    ⚠ TITLE_NOT_IN_TEXT
+  [6661/12728] Katherine Kurtz / The Adept, Book Three_ The Templar Treasure
+    ⚠ TITLE_NOT_IN_TEXT
+  [6662/12728] Katherine Kurtz / The Adept
+    ⚠ TITLE_NOT_IN_TEXT
+  [6673/12728] Katherine Kurtz / The Lodge of the Lynx
+    ⚠ TITLE_NOT_IN_TEXT
+  [6675/12728] Kathleen O'Neal Gear / People of the Canyons_ A Novel of North America's Forgotten Past
+    ⚠ TITLE_NOT_IN_TEXT
+  [6733/12728] Keith R. A. Decandido / Serenity
+    ⚠ ERROR: NO_EPUB_FOUND
+  [6766/12728] Kelley Armstrong / Dangerous
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dangerous' vs 'First Sign of Danger'
+  [6807/12728] Kelley Armstrong / Soupcons_ Pouvoirs Obscurs, T5
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Soupçons: Pouvoirs Obscurs, T5' vs 'The Haunting of Paynes Hollow'
+  [6831/12728] Ken Follett / Lie Down With Lions
+    ⚠ ERROR: NO_EPUB_FOUND
+  [6850/12728] Ken Forkish / The Elements of Pizza_ Unlocking the Secrets to World-Class Pies at Home
+    ⚠ ERROR: NO_EPUB_FOUND
+  [6883/12728] Keri Arthur / Dangerous Games
+    ⚠ TITLE_NOT_IN_TEXT
+  [6890/12728] Keri Arthur / Embraced by Darkness
+    ⚠ TITLE_NOT_IN_TEXT
+  [6904/12728] Keri Arthur / The Darkest Kiss
+    ⚠ TITLE_NOT_IN_TEXT
+  [6950/12728] Kevin J. Anderson / Prisons
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Prisons' vs 'Prisoner of War'
+  [6979/12728] Kevin J. Anderson / [Star Wars_ Darksaber] (By_ Kevin J. Anderson) [Published_ October, 1998]
+    ⚠ TITLE_NOT_IN_TEXT
+  [7019/12728] Kim Harrison / The Turn_ The Hollows Begins With Death
+    ⚠ TITLE_NOT_IN_TEXT
+  [7024/12728] Kim Harrison / The Witch with No Name
+    ⚠ TITLE_NOT_IN_TEXT
+  [7032/12728] King Arthur Baking Company / The King Arthur Baking Company Essential Cookie Companion
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7045/12728] Kristen Britain / Blackveil
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:deu
+  [7046/12728] Kristen Britain / Green Rider
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Green Rider' vs 'Kristen Britain'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Kristen Britain'] vs ['Green Rider']
+  [7055/12728] Kristen Britain / The High King's Tomb
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The High King's Tomb' vs 'Kristen Britain - [Rider 03]'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Kristen Britain'] vs ["The High King's Tomb"]
+  [7063/12728] Kristine Kathryn Rusch / Fiction River_ Fantasy Adrift
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Kristine Kathryn Rusch'] vs ['Fiction River']
+  [7069/12728] Kristine Kathryn Rusch / Fiction River Presents_ Cats!
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Kristine Kathryn Rusch', 'Annie Reed', 'Kent Patterson', 'Lisa Silverthorne', 'Jamie McNabb', 'Kari Kilgore', 'Stefon Mears'] vs ['Fiction River']
+  [7074/12728] Kristine Kathryn Rusch / Squishy's Teams_ A Diving Series Stand-Alone
+    ⚠ TITLE_NOT_IN_TEXT
+  [7077/12728] Kristine Kathryn Rusch / Spinning
+    ⚠ TITLE_NOT_IN_TEXT
+  [7104/12728] L. A. Graf / Caretaker
+    ⚠ TITLE_NOT_IN_TEXT
+  [7105/12728] Kyle Mills / The Survivor
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Kyle Mills'] vs ['Vince Flynn']
+  [7119/12728] L. Frank Baum / The Complete Collection Wizard of OZ Series 15 Books Collection Box Set by L. Frank Baum(3 in
+    ⚠ TITLE_NOT_IN_TEXT
+  [7123/12728] L. Frank Baum / Ozma of Oz A Record of Her Adventures with Dorothy Gale of Kansas, the Yellow Hen, the Scarecro
+    ⚠ TITLE_NOT_IN_TEXT
+  [7126/12728] L. Frank Baum / The Glass Dog
+    ⚠ TITLE_NOT_IN_TEXT
+  [7138/12728] L. Frank Baum / The WONDERFUL WIZARD OF OZ - Complete 16 Book Collection (Fantasy Classics Series)_ The Most Be
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The WONDERFUL WIZARD OF OZ – Complete 16 Book Collection (Fantasy Classics Series): The Most Beloved Children's Books About the Adventures in the Magical Land of Oz' vs 'OZ - THE COMPLETE COLLECTION: With 15 Images and Free Audio Files to All Books.'
+  [7158/12728] L.E. Modesitt Jr_ / Flash
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Flash' vs 'Legalist'
+  [7166/12728] L.E. Modesitt Jr_ / Imager
+    ⚠ TITLE_NOT_IN_TEXT
+  [7170/12728] L.E. Modesitt Jr_ / Lady-Protector
+    ⚠ TITLE_NOT_IN_TEXT
+  [7195/12728] L.E. Modesitt Jr_ / The Fires of Paratime
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['L.E. Modesitt Jr.'] vs ['Unknown Author']
+  [7204/12728] L.E. Modesitt Jr_ / The One-Eyed Man_ A Fugue, With Winds and Accompaniment
+    ⚠ TITLE_NOT_IN_TEXT
+  [7219/12728] L.T. Ryan / Afterschock
+    ⚠ TITLE_NOT_IN_TEXT
+  [7294/12728] Larry Niven / Man of Steel, Woman of Kleenex
+    ⚠ TITLE_NOT_IN_TEXT
+  [7340/12728] Lauren Roberts / Powerful
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Powerful' vs 'Fearful'
+  [7347/12728] Lawrence Block / A Walk Among the Tombstones
+    ⚠ TITLE_NOT_IN_TEXT
+  [7368/12728] Lawrence Block / Keller in Des Moines_ A Keller Short Story
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Keller in Des Moines: A Keller Short Story' vs 'Keller in Dallas'
+  [7369/12728] Lawrence Block / Killer  [7400/12728] scanning ...
+  [7600/12728] scanning ...
+  [7800/12728] scanning ...
+  [8000/12728] scanning ...
+  [8200/12728] scanning ...
+  [8400/12728] scanning ...
+  [8600/12728] scanning ...
+
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Killer' vs 'Keller on the Spot'
+  [7375/12728] Lawrence Block / Speaking of Greed - the novella
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Speaking of Greed - the novella' vs 'The Liar's Companion: A Field Guide for Fiction Writers'
+  [7415/12728] Lawrence Watt-Evans / Tales of Ethshar
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [7445/12728] Lee Child / How to Write a Mystery_ A Handbook From Mystery Writers of America
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Lee Child'] vs ['Mystery Writers of America']
+  [7485/12728] Leigh Bardugo / Ruin and Rising (Shadow and Bone Trilogy #3)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Ruin and Rising (Shadow and Bone Trilogy #3)' vs 'Ruin and Rising'
+  [7486/12728] Leigh Bardugo / Rule of Wolves (King of Scars Duology #2)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Rule of Wolves (King of Scars Duology #2)' vs 'Rule of Wolves'
+  [7487/12728] Leigh Bardugo / Siege and Storm (Shadow and Bone Trilogy #2)
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Siege and Storm (Shadow and Bone Trilogy #2)' vs 'Siege and Storm'
+  [7505/12728] Lemony Snicket / The End
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The End' vs 'A Series of Unfortunate Events 9: The Carnivorous Carnival'
+  [7530/12728] Lewis Carroll / Alice in Wonderland
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7533/12728] Lewis Carroll / Alice's Adventures in Wonderland_ Dual Language Edition
+    ⚠ TITLE_NOT_IN_TEXT
+  [7535/12728] Lewis Carroll / The Hunting of the Snark an Agony, in Eight Fits
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7536/12728] Lewis Carroll / Alice's adventures in Wonderland. ( NOVEL ) BY_ Lewis Carroll AND ( illustrator ) John Tenniel
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Lewis Carroll'] vs ['David Day']
+  [7647/12728] Lindsay Buroker / Star Heroes_ 9 Novels of Space Exploration, Aliens, and Adventure
+    ⚠ TITLE_NOT_IN_TEXT
+  [7708/12728] Lisa Jewell / Don't Let Him In
+    ⚠ TITLE_NOT_IN_TEXT
+  [7712/12728] Lisa Jewell / The Family Upstairs
+    ⚠ TITLE_NOT_IN_TEXT
+  [7772/12728] Lisa Scottoline / Courting Trouble
+    ⚠ TITLE_NOT_IN_TEXT
+  [7794/12728] Lisa Scottoline / My Nest Isn't Empty, It Just Has More Closet Space_ The Amazing Adventures of an Ordinary Woma
+    ⚠ TITLE_NOT_IN_TEXT
+  [7848/12728] Lloyd Alexander / The Iron Ring
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7852/12728] Lloyd Alexander / The Prydain Chronicles
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7869/12728] Lois McMaster Bujold / Captain Vorpatril's Alliance
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Captain Vorpatril's Alliance' vs 'Bujold, Lois McMaster - Vorkosigan 17'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Lois McMaster Bujold'] vs ["Captain Vorpatril's Alliance (v5.0)"]
+  [7873/12728] Lois McMaster Bujold / Borders of Infinity
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Borders of Infinity' vs 'Lois McMaster Bujold'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Lois McMaster Bujold'] vs ['Borders of Infinity']
+  [7907/12728] Lois McMaster Bujold / The Orphans of Raspay_ A Penric and Desdemona Novella in the World of the Five Gods
+    ⚠ TITLE_NOT_IN_TEXT
+  [7912/12728] Lois McMaster Bujold / Winterfair Gifts (Vorkosigan Saga)
+    ⚠ TITLE_NOT_IN_TEXT
+  [7917/12728] Lorenzo Etherington / How to THINK when you DRAW Volume 1
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7936/12728] Louise Penny / The Cruelest Month_ A Chief Inspector Gamache Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [7946/12728] Lynette Noni / A Very Medoran Kaldoras
+    ⚠ ERROR: NO_EPUB_FOUND
+  [7954/12728] Lynn Abbey / Daughter of the Bright Moon
+    ⚠ TITLE_NOT_IN_TEXT
+  [8152/12728] Margaret Rogerson / Vespertine
+    ⚠ TITLE_NOT_IN_TEXT
+  [8166/12728] Margaret Weis / Dragons of Spring Dawning
+    ⚠ TITLE_NOT_IN_TEXT
+  [8226/12728] Marie Brennan / Cold-Forged Flame
+    ⚠ TITLE_NOT_IN_TEXT
+  [8231/12728] Marie Brennan / Lightning in the Blood
+    ⚠ TITLE_NOT_IN_TEXT
+  [8232/12728] Marie Brennan / New Worlds, Year Three_ More Essays on the Art of Worldbuilding
+    ⚠ INTERNAL_TITLE_MISMATCH: 'New Worlds, Year Three: More Essays on the Art of Worldbuilding' vs 'The Tropic of Serpents: A Memoir by Lady Trent (A Natural History of Dragons)'
+  [8259/12728] Mark Anthony / Curse of the Shadowmage_ A Harpers Novel
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Mark Anthony'] vs ['Monte Cook']
+  [8268/12728] Mark Greaney / Commander-in-Chief
+    ⚠ TITLE_NOT_IN_TEXT
+  [8290/12728] Mark Lawrence / King of Thorns (Broken Empire 2) by Lawrence, Mark on 16_08_2012 1st (first) edition
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'King of Thorns (Broken Empire 2) by Lawrence, Mark on 16/08/2012 1st (first) edition' vs 'Missing Pages: A Collection of Short Stories Associated With the Library Trilogy'
+  [8304/12728] Mark Lawrence / The Visitor_ Kill or Cure
+    ⚠ TITLE_NOT_IN_TEXT
+  [8330/12728] Mark Twain / The Adventures of Huckleberry Finn
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Adventures of Huckleberry Finn' vs 'The Prince and the Pauper (AmazonClassics Edition)'
+  [8332/12728] Mark Twain / The Adventures of Tom Sawyer
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Mark Twain'] vs ['Monica Kulling']
+  [8349/12728] Mark Walden / Earthfall
+    ⚠ TITLE_NOT_IN_TEXT
+  [8350/12728] Mark Walden / Earthfall_ Retribution
+    ⚠ TITLE_NOT_IN_TEXT
+  [8377/12728] Martha Wells / Stories of the Raksura, Volume 2_ The Dead City & the Dark Earth Below
+    ⚠ TITLE_NOT_IN_TEXT
+  [8379/12728] Martha Wells / Stories of the Raksura, Volume 1_ The Falling World & the Tale of Indigo and Cloud
+    ⚠ TITLE_NOT_IN_TEXT
+  [8393/12728] Mary Norton / Are All the Giants Dead_
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8413/12728] Mary Stewart / Airs Above the Ground
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8416/12728] Mary Stewart / Nine Coaches Waiting
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8417/12728] Mary Stewart / The Gabriel Hounds
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8420/12728] Mary Stewart / The Ivy Tree
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8421/12728] Mary Stewart / The Moonspinners
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8423/12728] Mary Stewart / The Stormy Petrel
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8426/12728] Mary Stewart / This Rough Magic
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8427/12728] Mary Stewart / Thornyhold
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8429/12728] Mary Stewart / Thunder on the Right
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8430/12728] Mary Stewart / Touch Not the Cat
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8451/12728] Matthew Quirk / The Night Agent_ A Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [8511/12728] Mel Odom / Forgotten Realms_ Wrath of the Blue Lady (The Wilds Series)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Forgotten Realms: Wrath of the Blue Lady (The Wilds Series)' vs 'Wrath of the Blue Lady'
+  [8512/12728] Mel Odom / Guerilla
+    ⚠ TITLE_NOT_IN_TEXT
+  [8515/12728] Megan Goldin / The Escape Room_ Squid Game meets The Traitors, a debut thriller about a reality TV show that t
+    ⚠ TITLE_NOT_IN_TEXT
+  [8560/12728] Mercedes Lackey / Arcanum 101_ Welcome New Students
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Arcanum 101: Welcome New Students' vs 'Novel - Arcanum 101 (with Rosemary Edghill)'
+  [8587/12728] Mercedes Lackey / Flights of Fantasy
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Flights of Fantasy' vs 'Mercedes Lackey - Anthology'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Mercedes Lackey', 'Martin Harry Greenberg'] vs ['Flights of Fantasy']
+  [8672/12728] Michael A. Stackpole / The Crusader Road
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Crusader Road' vs 'The Grand Crusade'
+  [8693/12728] Michael Connelly / Connelly, Michael - Dark Sacred Night
+    ⚠ TITLE_NOT_IN_TEXT
+  [8699/12728] Michael Connelly / Connelly, Michael - Harry Bosch 17 - The Burning Room
+    ⚠ TITLE_NOT_IN_TEXT
+  [8707/12728] Michael Connelly / Connelly, Michael - The Crossing
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Crossing' vs 'The Proving Ground'
+  [8709/12728] Michael Connelly / Crime Beat_ A Decade of Covering Cops and Killers
+    ⚠ TITLE_NOT_IN_TEXT
+  [8710/12728] Michael Connelly / Connelly, Michael - Two Kinds of Truth
+    ⚠ TITLE_NOT_IN_TEXT
+  [8711/12728] Michael Connelly / Connelly, Michael - The Gods of Guilt
+    ⚠ TITLE_NOT_IN_TEXT
+  [8717/12728] Michael Connelly / Nightshade
+    ⚠ TITLE_NOT_IN_TEXT
+  [8730/12728] Michael Connelly / The Poet_ A Novel  [8800/12728] scanning ...
+  [9000/12728] scanning ...
+  [9200/12728] scanning ...
+  [9400/12728] scanning ...
+  [9600/12728] scanning ...
+
+    ⚠ TITLE_NOT_IN_TEXT
+  [8733/12728] Michael Connelly / Void Moon
+    ⚠ TITLE_NOT_IN_TEXT
+  [8742/12728] Michael Crichton / Micro_ A Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [8770/12728] Michael Grant / the-magnificent-12
+    ⚠ TITLE_NOT_IN_TEXT
+  [8796/12728] Michael Jan Friedman / My Brother's Keeper_ Constitution
+    ⚠ INTERNAL_TITLE_MISMATCH: 'My Brother's Keeper: Constitution' vs 'Constitution'
+  [8804/12728] Michael Mammay / Darkside
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [8812/12728] Michael Moorcock / Corum - the Oak and the Ram_ The Eternal Champion
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Corum - the Oak and the Ram: The Eternal Champion' vs 'The Oak and the Ram'
+  [8824/12728] Michael Moorcock / Legendes de la fin des temps (Presence du futur) [Broche] by Moorcock, Michael
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Légendes de la fin des temps (Présence du futur) [Broché] by Moorcock, Michael' vs 'The War Amongst the Angels #2 - Fabulous Harbours (SF Gateway)'
+  [8834/12728] Michael Moorcock / The Chinese Agent
+    ⚠ TITLE_NOT_IN_TEXT
+  [8841/12728] Michael Moorcock / The City of the Beast or Warriors of Mars
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The City of the Beast or Warriors of Mars' vs 'Moorcock, Michael - Michael Kane 01'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Michael Moorcock'] vs ['Warriors Of Mars (v2.0)']
+  [8859/12728] Michael Moorcock / The Russian Intelligence
+    ⚠ TITLE_NOT_IN_TEXT
+  [8958/12728] Mira Grant / Square3
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Mira Grant'] vs ['Seanan McGuire']
+  [8960/12728] Monte Cook / The Ghosts of Broken Blades
+    ⚠ TITLE_NOT_IN_TEXT
+  [8961/12728] Motu Haruka / How to Draw Anime for Beginner_ Male and Female Character
+    ⚠ ERROR: NO_EPUB_FOUND
+  [8970/12728] N.K. Jemisin / Initiation
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Initiation' vs 'Mass Effect'
+  [8977/12728] N.K. Jemisin / The Kingdom of Gods
+    ⚠ TITLE_NOT_IN_TEXT
+  [9022/12728] Nathan Myhrvold / Modernist Cuisine 1_ History and Fundamentals
+    ⚠ TITLE_NOT_IN_TEXT
+  [9023/12728] Nathan Myhrvold / Modernist Cuisine 3_ Animals and Plants
+    ⚠ TITLE_NOT_IN_TEXT
+  [9024/12728] Nathan Myhrvold / Modernist Cuisine 2_ Techniques and Equipment
+    ⚠ TITLE_NOT_IN_TEXT
+  [9025/12728] Neal Stephenson / Anathem
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Anathem' vs 'Anatema'
+  [9026/12728] Nathan Myhrvold / Modernist Cuisine 5_ Plated-Dish Recipes
+    ⚠ TITLE_NOT_IN_TEXT
+  [9028/12728] Nathan Myhrvold / Modernist Cuisine 4_ Ingredients and Preparations
+    ⚠ TITLE_NOT_IN_TEXT
+  [9029/12728] Nathan Myhrvold / Modernist Cuisine 6_ Kitchen Manual
+    ⚠ TITLE_NOT_IN_TEXT
+  [9039/12728] Neal Stephenson / The Diamond Age_ or, A Young Lady's Illustrated Primer
+    ⚠ TITLE_NOT_IN_TEXT
+  [9045/12728] Neil Bimbeau / Star Vixens 2_ Babes of the Death Ray
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9046/12728] Neil Bimbeau / Star Vixens 3_ Nymphs of Planet X
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9047/12728] Neil Bimbeau / Star Vixens 4_ Goddesses of the Galaxy
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9048/12728] Neil Bimbeau / Star Vixens_ A Sci-Fi Harem Series
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9054/12728] Neal Stephenson / The Rise and Fall of D.O.D.O_
+    ⚠ TITLE_NOT_IN_TEXT
+  [9073/12728] Neil Gaiman / Smoke and Mirrors_ Short Fictions and Illusions
+    ⚠ TITLE_NOT_IN_TEXT
+  [9084/12728] Neil Gaiman / Unnatural Creatures_ Stories Selected by Neil Gaiman
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Unnatural Creatures: Stories Selected by Neil Gaiman' vs 'Sculpture Stories'
+  [9087/12728] Nelson DeMille / Blood Lines
+    ⚠ TITLE_NOT_IN_TEXT
+  [9098/12728] Nelson DeMille / The Deserter
+    ⚠ TITLE_NOT_IN_TEXT
+  [9117/12728] Nicholas Sparks / The Return
+    ⚠ TITLE_NOT_IN_TEXT
+  [9121/12728] Nick Offerman / Where the Deer and the Antelope Play_ The Pastoral Observations of One Ignorant American Who Lo
+    ⚠ TITLE_NOT_IN_TEXT
+  [9125/12728] Niloufer Ichaporia King / My Bombay Kitchen
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9173/12728] Orson Scott Card / InterGalactic Medicine Show_ Big Book of SF Novelettes
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'InterGalactic Medicine Show: Big Book of SF Novelettes' vs 'IGMS Issue 41'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Orson Scott Card'] vs ['IGMS']
+  [9188/12728] Orson Scott Card / Sarah
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Sarah' vs 'Hot Sleep: The Worthing Chronicle'
+  [9196/12728] Orson Scott Card / Stonefather
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Stonefather' vs 'Stone Tables'
+  [9205/12728] Orson Scott Card / The Gold Bug
+    ⚠ TITLE_NOT_IN_TEXT
+  [9231/12728] P.N. Elrod / A Chill in the Blood
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9233/12728] P.N. Elrod / Jonathan Barrett - Gentleman Vampire
+    ⚠ TITLE_NOT_IN_TEXT
+  [9234/12728] P.N. Elrod / The Adventures of Myhr
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9236/12728] P.N. Elrod / The Time of the Vampires
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9245/12728] Pamela Sargent / Climb the Wind_ A Journey Into Another Past
+    ⚠ TITLE_NOT_IN_TEXT
+  [9248/12728] Pamela Sargent / Heart of the Sun
+    ⚠ TITLE_NOT_IN_TEXT
+  [9279/12728] Patricia A. McKillip / Wonders of the Invisible World
+    ⚠ TITLE_NOT_IN_TEXT
+  [9287/12728] Patricia C. Wrede / The Seven Towers
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9346/12728] Patrick Carman / Floors
+    ⚠ TITLE_NOT_IN_TEXT
+  [9363/12728] Patrick H. Adkins / Master of the Fearful Depths
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [9365/12728] Patrick H. Adkins / Sons Of The Titans
+    ⚠ TITLE_NOT_IN_TEXT
+  [9379/12728] Patrick Ness / The Rest of Us Just Live Here
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Patrick Ness'] vs ['Ness,Patrick']
+  [9387/12728] Patrick O'Brian / The Commodore
+    ⚠ TITLE_NOT_IN_TEXT
+  [9391/12728] Patrick O'Brian / The Final Unfinished Voyage of Jack Aubrey
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Final Unfinished Voyage of Jack Aubrey' vs '21'
+  [9413/12728] Patrick Tilley / The Amtrak Wars_ Iron Master_ The Talisman Prophecies
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Amtrak Wars: Iron Master: The Talisman Prophecies' vs 'Iron Master'
+  [9424/12728] Paul Hanson / Hard Rock Solos for Guitar
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9425/12728] Paul Hoffman / The Beating of His Wings
+    ⚠ TITLE_NOT_IN_TEXT
+  [9448/12728] Paul Kearney / The Wolf in the Attic
+    ⚠ TITLE_NOT_IN_TEXT
+  [9522/12728] Peter David / Armies of Light and Dark
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Armies of Light and Dark' vs 'Avengers: Road to Marvel's The Avengers'
+  [9526/12728] Peter David / Babylon 5_ In the Beginning
+    ⚠ TITLE_NOT_IN_TEXT
+  [9536/12728] Peter David / The Rift
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Rift' vs 'Swamp Thing 2 - The Return of Swamp Thing'
+  [9577/12728] Peter Lerangis / Seven Wonders - Books 1-3 Plus 2 Novellas)
+    ⚠ TITLE_NOT_IN_TEXT
+  [9578/12728] Peter Lerangis / Seven Wonders Book 3_ The Tomb of Shadows
+    ⚠ TITLE_NOT_IN_TEXT
+  [9581/12728] Peter Lerangis / The Dead of Night
+    ⚠ TITLE_NOT_IN_TEXT
+  [9582/12728] Peter Lerangis / Seven Wonders Complete - Books 1-5 Plus 3 Novellas
+    ⚠ TITLE_NOT_IN_TEXT
+  [9595/12728] Peter Straub / Houses Without Doors
+    ⚠ TITLE_NOT_IN_TEXT
+  [9622/12728] Phaedra Weldon / Battletech_ The Unkindest Cut of All_
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Phaedra Weldon'] vs ['Jason Schmetzer']
+  [9655/12728] Philip Jose Farmer / Father to the Stars
+    ⚠ TITLE_NOT_IN_TEXT
+  [9663/12728] Philip Jose Farmer / Tales of the Wold Newton Universe
+    ⚠ ERROR: NO_EPUB_FOUND
+  [9687/12728] Philip Pullman / The Golden Compass
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Golden Compass' vs 'Philip Pullman_His Dark Materials 01'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Philip Pullman'] vs ['The Golden Compass']
+  [9695/12728] Philip Pullman / The Subtle Knife
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Subtle Knife' vs 'Philip Pullman_His Dark Materials 02'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Philip Pullman'] vs ['The Subtle Knife']
+  [9703/12728] Philip Reeve / A Darkling Plain (Mortal Engines, Book 4)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'A Darkling Plain (Mortal Engines, Book 4)' vs 'A Darkling Plain'
+  [9708/12728] Philip Reeve / Goblins vs Dwarves  [9800/12728] scanning ...
+  [10000/12728] scanning ...
+  [10200/12728] scanning ...
+  [10600/12728] scanning ...
+  [10800/12728] scanning ...
+
+    ⚠ TITLE_NOT_IN_TEXT
+  [9712/12728] Philip Reeve / Infernal Devices (Mortal Engines, Book 3)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Infernal Devices (Mortal Engines, Book 3)' vs 'Infernal Devices'
+  [9719/12728] Philip Reeve / Scrivener's Moon (Fever Crumb, Book 3)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Scrivener's Moon (Fever Crumb, Book 3)' vs 'Scrivener's Moon'
+  [9874/12728] Pittacus Lore / Sam's Journal
+    ⚠ TITLE_NOT_IN_TEXT
+  [9881/12728] Pittacus Lore / The Fugitive
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Fugitive' vs 'The Lost Files # 10'
+  [9886/12728] R. A. Salvatore / Attack of the Clones_ Star Wars_ Episode II
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Attack of the Clones: Star Wars: Episode II' vs 'Child of a Mad God--A Tale of the Coven'
+  [9901/12728] R. A. Salvatore / Homeland - The Dark Elf Trilogy #1
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Homeland - The Dark Elf Trilogy #1' vs 'Forgotten Realms: Homeland - The Legend of Drizzt Book I'
+  [9902/12728] R. A. Salvatore / Immortalis
+    ⚠ TITLE_NOT_IN_TEXT
+  [9955/12728] R. A. Salvatore / Timeless - Drizzt Trilogy #1
+    ⚠ TITLE_NOT_IN_TEXT
+  [9967/12728] R. Scott Bakker / The Warrior Prophet
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Warrior Prophet' vs 'The Unholy Consult: Book Four of the Aspect-Emperor series (Aspect Emperor 4)'
+  [9970/12728] R.A. Salvatore / The Dame
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Dame' vs 'The Finest Edge of Twilight'
+  [10024/12728] Ralph Waldo Emerson / The Complete Works of Ralph Waldo Emerson
+    ⚠ TITLE_NOT_IN_TEXT
+  [10032/12728] Ramsey Campbell / Somebody's Voice
+    ⚠ TITLE_NOT_IN_TEXT
+  [10058/12728] Ray Bradbury / Bradbury Speaks_ Too Soon From the Cave, Too Far From the Stars
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ray Bradbury'] vs ['The Wonderful Ice Cream Suit (v1.1)']
+  [10073/12728] Ray Bradbury / Dinosaur Tales
+    ⚠ TITLE_NOT_IN_TEXT
+  [10090/12728] Ray Bradbury / Twice 22_ The Golden Apples of the Sun _ a Medicine for Melancholy
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Twice 22: The Golden Apples of the Sun / a Medicine for Melancholy' vs 'The Science Fiction Collection. 15+ Sci-Fi Books'
+  [10099/12728] Raymond E. Feist / A Darkness Returns
+    ⚠ LIKELY_NON_ENGLISH: text_heuristic
+  [10118/12728] Raymond E. Feist / Midkemia_ The Chronicles of Pug
+    ⚠ TITLE_NOT_IN_TEXT
+  [10130/12728] Raymond E. Feist / The Chaoswar Saga_ A Kingdom Besieged, a Crown Imperilled, Magician's End
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Chaoswar Saga: A Kingdom Besieged, a Crown Imperilled, Magician’s End' vs 'A Kingdom Besieged'
+  [10145/12728] Rebecca Yarros / Onyx Storm
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:hun
+  [10153/12728] Richard A. Knaak / Birthright
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Birthright' vs 'Diablo'
+  [10181/12728] Richard Awlinson / Waterdeep
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Richard Awlinson'] vs ['Troy Denning']
+  [10223/12728] Richard Kadrey / The Wrong Dead Guy
+    ⚠ TITLE_NOT_IN_TEXT
+  [10228/12728] Richard Lee Byers / Murder in Corvis
+    ⚠ TITLE_NOT_IN_TEXT
+  [10267/12728] Richard Paul Evans / Fall of Hades
+    ⚠ TITLE_NOT_IN_TEXT
+  [10277/12728] Richard Paul Evans / Storm of Lightning
+    ⚠ TITLE_NOT_IN_TEXT
+  [10280/12728] Richard Paul Evans / The Broken Road
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Broken Road' vs 'A Novel'
+  [10283/12728] Richard Paul Evans / The Final Spark
+    ⚠ TITLE_NOT_IN_TEXT
+  [10298/12728] Richard S. Meyers / Murder in Halruaa
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Murder in Halruaa' vs 'Marvel Novel Series 03 - The Incredible Hulk - Cry Of The Beast'
+  [10301/12728] Richard Paul Evans / The Walk_ A Novel
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Walk: A Novel' vs 'The Christmas Box Miracle: My Spiritual Journey of Destiny, Healing and Hope'
+  [10315/12728] Rick Riordan / Daughter of the Deep
+    ⚠ TITLE_NOT_IN_TEXT
+  [10335/12728] Rick Riordan / The Lightning Thief
+    ⚠ TITLE_NOT_IN_TEXT
+  [10349/12728] Rick Riordan / The Titan's Curse
+    ⚠ TITLE_NOT_IN_TEXT
+  [10383/12728] Ridley Pearson / Power Play
+    ⚠ TITLE_NOT_IN_TEXT
+  [10384/12728] Ridley Pearson / Shell Game
+    ⚠ TITLE_NOT_IN_TEXT
+  [10386/12728] Ridley Pearson / Peter and the Sword of Mercy
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Peter and the Sword of Mercy' vs 'Dave Barry; Ridley Pearson'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ridley Pearson', 'Dave Barry'] vs ['Peter', 'the Sword of Mercy']
+  [10400/12728] Ridley Pearson / The Syndrome
+    ⚠ TITLE_NOT_IN_TEXT
+  [10403/12728] Roald Dahl / Beware of the Dog (A Roald Dahl Short Story)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Beware of the Dog (A Roald Dahl Short Story)' vs 'Beware of the Dog'
+  [10419/12728] Roald Dahl / Matilda
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:spa
+  [10441/12728] Robert Adams / A Cat of Silvery Hue
+    ⚠ TITLE_NOT_IN_TEXT
+  [10449/12728] Robert Adams / Horseclans Odyssey
+    ⚠ TITLE_NOT_IN_TEXT
+  [10453/12728] Robert Adams / Revenge of the Horseclans
+    ⚠ TITLE_NOT_IN_TEXT
+  [10455/12728] Robert Adams / Of Myths and Monsters
+    ⚠ TITLE_NOT_IN_TEXT
+  [10456/12728] Robert Adams / Of Chiefs and Champions
+    ⚠ TITLE_NOT_IN_TEXT
+  [10459/12728] Robert Adams / The Memories of Milo Morai
+    ⚠ TITLE_NOT_IN_TEXT
+  [10464/12728] Robert Adams / The Seven Magical Jewels of Ireland
+    ⚠ TITLE_NOT_IN_TEXT
+  [10466/12728] Robert B. Parker / Appaloosa
+    ⚠ ERROR: NO_EPUB_FOUND
+  [10467/12728] Robert B. Parker / Back Story
+    ⚠ ERROR: NO_EPUB_FOUND
+  [10481/12728] Robert B. Parker / Gunman's Rhapsody - a Novel of the Old West
+    ⚠ TITLE_NOT_IN_TEXT
+  [10516/12728] Robert B. Parker / Wilderness
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Wilderness' vs 'Robert B. Parker'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Robert B. Parker'] vs ['Wilderness']
+  [10534/12728] Robert Crais / Suspect
+    ⚠ TITLE_NOT_IN_TEXT
+  [10554/12728] Robert Frost / The Poetry of Robert Frost_ The Collected Poems
+    ⚠ TITLE_NOT_IN_TEXT
+  [10560/12728] Robert Harris / Lustrum
+    ⚠ TITLE_NOT_IN_TEXT
+  [10564/12728] Robert Harris / Munich (Movie Tie-In)
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Munich (Movie Tie-In)' vs 'Munich'
+  [10578/12728] Robert J. Crane / Broken
+    ⚠ TITLE_NOT_IN_TEXT
+  [10639/12728] Robert J. Crane / The Girl in the Box_ Box Set 1-3
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Girl in the Box: Box Set 1-3' vs 'Alone, Untouched, Soulless'
+  [10692/12728] Robert Lynn Asprin / Myth-Told Tales
+    ⚠ TITLE_NOT_IN_TEXT
+  [10763/12728] Robyn Wideman / Dragon Magic
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Dragon Magic' vs 'Heroic Deeds: An Epic Litrpg Fantasy'
+  [10766/12728] Robyn Wideman / Errol Amberdane_ The Library of Silvermire
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Errol Amberdane: The Library of Silvermire' vs 'Apocalypse Online 3: An apocalyptic gamelit adventure'
+  [10780/12728] Robyn Wideman / Stoneblood Saga Complete Boxset_ An epic coming of age sword and sorcery adventure
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Stoneblood Saga Complete Boxset: An epic coming of age sword and sorcery adventure' vs 'The Missing Orc: An Epic Fantasy Gamelit Adventure (Darkthorn Academy Book 6)'
+  [10816/12728] Roger Zelazny / Roger Zelazny's Visual Guide to Castle Amber
+    ⚠ ERROR: NO_EPUB_FOUND
+  [10843/12728] Roland Smith / Cryptid Hunters
+    ⚠ TITLE_NOT_IN_TEXT
+  [10849/12728] Roland Smith / Shatterproof
+    ⚠ TITLE_NOT_IN_TEXT
+  [10905/12728] S. A. Chakraborty / The City of Brass
+    ⚠ TITLE_NOT_IN_TEXT
+  [10908/12728] S. A. Chakraborty / The Kingdom of Copper (The Daevabad Trilogy, Book 2)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Kingdom of Copper (The Daevabad Trilogy, Book 2)' vs 'The Kingdom of Copper'
+  [10913/12728] S.A. Bodeen / The Raft
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [10915/12728] S.A. Bodeen / The Fallout
+    ⚠ TITLE_NOT_IN_TEXT
+  [10940/12728] S.M. Stirling / Conan - Blood of the Serpent_ The All-New Chronicles of the Worlds Greatest Barbarian Hero
+    ⚠ TITLE_NOT_IN_TEXT
+  [10944/12728] S.M. Stirling / Ice, Iron, and Gold
+    ⚠ ERROR: NO_EPUB_FOUND
+  [10954/12728] S.M. Stirling / Stone Dogs_ A Draka Novel  [11000/12728] scanning ...
+  [11200/12728] scanning ...
+  [11400/12728] scanning ...
+  [11600/12728] scanning ...
+  [11800/12728] scanning ...
+  [12000/12728] scanning ...
+  [12200/12728] scanning ...
+
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['S.M. Stirling'] vs ['Unknown']
+  [10976/12728] S.M. Stirling / Theater of Spies
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [10978/12728] S.M. Stirling / Under the Yoke
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['S.M. Stirling'] vs ['Unknown']
+  [10987/12728] Sandy Mitchell / Fight or Flight - Short Story
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [10998/12728] Sandy Mitchell / Traitor's Gambit - Short Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [11001/12728] Sara Raasch / Sleeping Beauty
+    ⚠ TITLE_NOT_IN_TEXT
+  [11082/12728] Sarah K.L. Wilson / Paths of Deception
+    ⚠ TITLE_NOT_IN_TEXT
+  [11085/12728] Sarah K.L. Wilson / Phoenix Heart_ Season Three, Episode Five _For Those We Love_
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Phoenix Heart: Season Three, Episode Five "For Those We Love"' vs 'Fly with the Arrow: A Bluebeard Inspired Fantasy (Bluebeard's Secret Book 1)'
+  [11131/12728] Scott Ciencin / Lost City
+    ⚠ TITLE_NOT_IN_TEXT
+  [11134/12728] Scott Ciencin / Sky Dance
+    ⚠ TITLE_NOT_IN_TEXT
+  [11135/12728] Scott Ciencin / The Explorers
+    ⚠ TITLE_NOT_IN_TEXT
+  [11137/12728] Scott Ciencin / Windchaser
+    ⚠ TITLE_NOT_IN_TEXT
+  [11139/12728] Scott Ciencin / Thunder Falls
+    ⚠ TITLE_NOT_IN_TEXT
+  [11146/12728] Scott Meyer / Fight and Flight
+    ⚠ TITLE_NOT_IN_TEXT
+  [11154/12728] Scott Meyer / The Vexed Generation
+    ⚠ TITLE_NOT_IN_TEXT
+  [11229/12728] Shami Stovall / The Nexus Games_ A litRPG Thriller Adventure
+    ⚠ TITLE_NOT_IN_TEXT
+  [11232/12728] Shami Stovall / Words of Power_ A Progression Fantasy Epic
+    ⚠ TITLE_NOT_IN_TEXT
+  [11252/12728] Shannon Messenger / Unlocked
+    ⚠ TITLE_NOT_IN_TEXT
+  [11297/12728] Sherry Sontag / Blind Man's Bluff_ The Untold Story Of American Submarine Espionage
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Sherry Sontag'] vs ['Christopher Drew']
+  [11413/12728] Stephen Baxter / Coalescent_ Homo Superior
+    ⚠ TITLE_NOT_IN_TEXT
+  [11426/12728] Stephen Baxter / Manifold_ Time
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Stephen Baxter'] vs ['Time']
+  [11477/12728] Stephen King / Holly
+    ⚠ TITLE_NOT_IN_TEXT
+  [11479/12728] Stephen King / In the Tall Grass
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [11486/12728] Stephen King / Needful Things
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Needful Things' vs 'Never Flinch'
+  [11490/12728] Stephen King / On Writing_ A Memoir of the Craft
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Stephen King'] vs ['scribner']
+  [11492/12728] Stephen King / Pet Sematary_ A Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [11497/12728] Stephen King / Screenplays by Stephen King_ Rose Red, Kingdom Hospital, Creepshow, the Stand, Children of the
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Screenplays by Stephen King: Rose Red, Kingdom Hospital, Creepshow, the Stand, Children of the Corn, Cat's Eye, Pet Sematary' vs 'Red Screen'
+  [11500/12728] Stephen King / Misery
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ LIKELY_NON_ENGLISH: calibre_metadata:spa
+  [11514/12728] Stephen King / Treachery
+    ⚠ ERROR: NO_EPUB_FOUND
+  [11523/12728] Stephen R. Donaldson / A Man Rides Through
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'A Man Rides Through' vs 'Stephen R. Donaldson - Mordant's Need 02'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Stephen R. Donaldson'] vs ['A Man Rides Through']
+  [11539/12728] Stephen R. Donaldson / The Mirror of Her Dreams
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Mirror of Her Dreams' vs 'Stephen R. Donaldson - Mordant's Need 01'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Stephen R. Donaldson'] vs ['Mirror of Her Dreams']
+  [11606/12728] Steve Berry / The Lost Order
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Lost Order' vs 'The List'
+  [11611/12728] Steve Berry / The Tudor Plot _ A Novella
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [11613/12728] Steve Berry / The Third Secret
+    ⚠ TITLE_NOT_IN_TEXT
+  [11615/12728] Steve Martini / Blood Flag_ A Paul Madriani Novel
+    ⚠ TITLE_NOT_IN_TEXT
+  [11626/12728] Steve Perry / Breaking Point
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Steve Perry'] vs ['Tom Clancy']
+  [11633/12728] Steve Perry / Night Moves
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Steve Perry'] vs ['Tom Clancy']
+  [11640/12728] Steve Perry / The Musashi Flex
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Musashi Flex' vs 'The Machiavelli Interface'
+  [11654/12728] Steven Brust / Jhegaala
+    ⚠ TITLE_NOT_IN_TEXT
+  [11656/12728] Steven Brust / The Book of Athyra (6-7)
+    ⚠ ERROR: NO_EPUB_FOUND
+  [11657/12728] Steven Brust / The Book of Dragon (8-9)
+    ⚠ ERROR: NO_EPUB_FOUND
+  [11683/12728] Steven Erikson / The Complete Malazan Book of the Fallen (1-10)
+    ⚠ TITLE_NOT_IN_TEXT
+  [11717/12728] Stuart Woods / Dirt
+    ⚠ TITLE_NOT_IN_TEXT
+  [11768/12728] Sun Tzu / The Art of War, by Sun Tzu_ Illustrated - Translated by Lionel Giles (1910), Large Print Legac
+    ⚠ TITLE_NOT_IN_TEXT
+  [11787/12728] Susan J. Morris / Realms of the Dead
+    ⚠ AUTHOR_NOT_IN_TEXT
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Susan J. Morris'] vs ['Unknown']
+  [11789/12728] Susanna Clarke / Piranesi
+    ⚠ LIKELY_NON_ENGLISH: epub_metadata:cs
+  [11799/12728] Suzanne Collins / The Ballad of Songbirds and Snakes
+    ⚠ TITLE_NOT_IN_TEXT
+  [11803/12728] T. Kingfisher / Snake-Eater
+    ⚠ TITLE_NOT_IN_TEXT
+  [11905/12728] Tanith Lee / Lycanthia_ Or the Children of Wolves
+    ⚠ TITLE_NOT_IN_TEXT
+  [11911/12728] Tanith Lee / Red Unicorn
+    ⚠ ERROR: NO_EPUB_FOUND
+  [11933/12728] Ted Dekker / Blink of an Eye
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Blink of an Eye' vs 'Ted Dekker'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ted Dekker'] vs ['Blink of an Eye']
+  [11966/12728] Ted Dekker / The Sanctuary
+    ⚠ TITLE_NOT_IN_TEXT
+  [11984/12728] Terry Brooks / Antrax
+    ⚠ TITLE_NOT_IN_TEXT
+  [12009/12728] Terry Brooks / The Elf Queen of Shannara
+    ⚠ TITLE_NOT_IN_TEXT
+  [12020/12728] Terry Brooks / The Scions of Shannara
+    ⚠ TITLE_NOT_IN_TEXT
+  [12065/12728] Terry Pratchett / Shaking Hands With Death (scanned)
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12115/12728] Tess Gerritsen / Gerritsen, Tess - Body Double
+    ⚠ TITLE_NOT_IN_TEXT
+  [12123/12728] Tess Gerritsen / Gerritsen, Tess - The Mephisto Club
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Mephisto Club' vs 'Tess Gerritsen'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Tess Gerritsen'] vs ['Jane Rizzoli - Maura Isles 06 - The Mephisto Club\n (v5)']
+  [12140/12728] Tess Gerritsen / The Summer Guests
+    ⚠ TITLE_NOT_IN_TEXT
+  [12141/12728] The Detection Club / Six Against the Yard
+    ⚠ ERROR: NO_TEXT_EXTRACTED
+  [12145/12728] The Society For The Study Of Manga Techniques / How to Draw Manga, Volume 4_ Dressing Your Characters in Casual Wear
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12149/12728] The Harvard Lampoon / The Best of the Harvard Lampoon_ 140 Years of American Humor
+    ⚠ TITLE_NOT_IN_TEXT
+  [12152/12728] Thomas E. Sniegoski / Aerie and Reckoning
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Aerie and Reckoning' vs 'The Fallen 2'
+  [12157/12728] Thomas E. Sniegoski / In the House of the Wicked
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Thomas E. Sniegoski'] vs ['Unknown']
+  [12187/12728] Thomas Perry / Death Benefits
+    ⚠ TITLE_NOT_IN_TEXT
+  [12309/12728] Tracy Deonn / Oathbound
+    ⚠ TITLE_NOT_IN_TEXT
+  [12310/12728] Tracy Hickman / Lincoln's Wizard_ Dragons of the Confederacy Book 1
+    ⚠ TITLE_NOT_IN_TEXT
+  [12328/12728] Troy Denning / The Ogre's Pact (Forgotten Realms_ The Twilight Giants) by Troy Denning
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Ogre's Pact (Forgotten Realms: The Twilight Giants) by Troy Denning' vs 'Waterdeep: Avatar Series, Book III (The Avatar Series)'
+  [12347/12728] Tsr Inc_ / Realms of the Arcane
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Tsr Inc.'] vs ['Brian M. Thomsen']
+  [12360/12728] Ursula K. Le Guin / Annals of the Western Shore
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Annals of the Western Shore' vs 'Ursula K. Le Guin'
+  [12361/12728] Ursula K. Le Guin / Catwings
+    ⚠ TITLE_NOT_IN_TEXT
+  [12368/12728] Ursula K. Le Guin / Hainish Novels & Stories, Vol. 1_ Rocannon's World _ Planet of Exile _ City of Illusions _ the
+    ⚠ ERROR: NO_EPUB_FOUND  [12400/12728] scanning ...
+  [12600/12728] scanning ...
+
+  [12373/12728] Ursula K. Le Guin / Malafrena
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12375/12728] Ursula K. Le Guin / Nebula Award Stories 11
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12378/12728] Ursula K. Le Guin / Mountain Ways
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ursula K. Le Guin'] vs ['Unknown']
+  [12380/12728] Ursula K. Le Guin / Old Music and the Slave Women
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Old Music and the Slave Women' vs 'Ursula K. LeGuin - The Ekumen'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ursula K. Le Guin'] vs ['Old Music', 'the Slave Women']
+  [12388/12728] Ursula K. Le Guin / Steering the Craft_ A Twenty-First-Century Guide to Sailing the Sea of Story
+    ⚠ TITLE_NOT_IN_TEXT
+  [12390/12728] Ursula K. Le Guin / The Complete Orsinia_ Malafrena _ Stories and Songs
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Complete Orsinia: Malafrena / Stories and Songs' vs 'Ursula K. Le Guin'
+  [12405/12728] Ursula K. Le Guin / The Visionary_ The Life Story of Flicker of the Serpentine_Wonders Hidden _ Audubon's Early Ye
+    ⚠ TITLE_NOT_IN_TEXT
+  [12412/12728] Ursula K. Le Guin / Worlds of Exile and Illusion_ Rocannon's World, Planet of Exile, City of Illusions
+    ⚠ TITLE_NOT_IN_TEXT
+  [12413/12728] Ursula K. Le Guin / Winter's King
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Winter's King' vs 'Ursula K. LeGuin'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Ursula K. Le Guin'] vs ["Winter's King"]
+  [12416/12728] Ursula K. le Guin / The Visionary_ The Life Story of Flicker of the Serpentine_Wonders Hidden _ Audubon's Early Year
+    ⚠ TITLE_NOT_IN_TEXT
+  [12427/12728] Veronica Roth / Divergent Series Four-Book Paperback Box Set_ Divergent, Insurgent, Allegiant, Four
+    ⚠ TITLE_NOT_IN_TEXT
+  [12428/12728] Veronica Roth / Divergent Series (Books 1-3) Plus Free Four, the Transfer and World of Divergent (Divergent)
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Divergent Series (Books 1-3) Plus Free Four, the Transfer and World of Divergent (Divergent)' vs 'The Transfer'
+  [12463/12728] Victoria Schwab / The Unbound
+    ⚠ TITLE_NOT_IN_TEXT
+  [12464/12728] Victoria Schwab / The Archived
+    ⚠ TITLE_NOT_IN_TEXT
+  [12473/12728] Vince Flynn / Kill Shot_ An American Assassin Thriller
+    ⚠ TITLE_NOT_IN_TEXT
+  [12478/12728] Vince Flynn / Separation of Power
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Separation of Power' vs 'Oath of Loyalty'
+  [12490/12728] Vonda N. McIntyre / Outcasts Three Stories
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Outcasts Three Stories' vs 'Outcasts'
+  [12516/12728] W. Michael Gear / People Of The Earth - A Novel Of Prehistoric America
+    ⚠ INTERNAL_TITLE_MISMATCH: 'People Of The Earth - A Novel Of Prehistoric America' vs 'Raising Abel: An International Thriller'
+  [12540/12728] W. Michael Gear / The Summoning God_ A Native American Historical Mystery Series
+    ⚠ TITLE_NOT_IN_TEXT
+  [12545/12728] W. Michael Gear / The Morning River
+    ⚠ INTERNAL_TITLE_MISMATCH: 'The Morning River' vs 'Gear, W Michael - Novel 05'
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['W. Michael Gear'] vs ['The Morning River (v2.1)']
+  [12552/12728] Walter Jon Williams / Hardwired_ 30th Anniversary Edition
+    ⚠ TITLE_NOT_IN_TEXT
+  [12559/12728] Walter Jon Williams / Impersonations
+    ⚠ TITLE_NOT_IN_TEXT
+  [12561/12728] Walter Jon Williams / Quillifer the Knight
+    ⚠ TITLE_NOT_IN_TEXT
+  [12569/12728] Walter Jon Williams / Voice of the Whirlwind_ Author's Preferred Edition
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Voice of the Whirlwind: Author's Preferred Edition' vs 'The Green Leopard Plague and Other Stories'
+  [12576/12728] Walter Mosley / Down the River Unto the Sea
+    ⚠ TITLE_NOT_IN_TEXT
+  [12581/12728] Walter Mosley / The Gift of Fire and on the Head of a Pin_ Two Short Novels From Crosstown to Oblivion
+    ⚠ TITLE_NOT_IN_TEXT
+  [12582/12728] Walter Mosley / Stepping Stone_ A Novel From Crosstown to Oblivion
+    ⚠ TITLE_NOT_IN_TEXT
+  [12583/12728] Walter Mosley / The Gift of Fire_ A Novel From Crosstown to Oblivion
+    ⚠ TITLE_NOT_IN_TEXT
+  [12584/12728] Walter Mosley / On the Head of a Pin_ A Novel From Crosstown to Oblivion
+    ⚠ TITLE_NOT_IN_TEXT
+  [12586/12728] Wesley Chu / Robert Kirkman's the Walking Dead_ Typhoon
+    ⚠ TITLE_NOT_IN_TEXT
+  [12623/12728] Wilbur Smith / Nemesis
+    ⚠ TITLE_NOT_IN_TEXT
+  [12630/12728] Wilbur Smith / Prey Zone
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Prey Zone' vs 'an explosive, action-packed teen thriller to sink your teeth into!'
+  [12668/12728] Will Elliott / The Pilo Traveling Show
+    ⚠ TITLE_NOT_IN_TEXT
+  [12672/12728] Will Wight / Dreadgod
+    ⚠ TITLE_NOT_IN_TEXT
+  [12674/12728] Will Wight / Ghostwater (6x9 Trade Paperback)
+    ⚠ TITLE_NOT_IN_TEXT
+  [12677/12728] Will Wight / Reaper
+    ⚠ TITLE_NOT_IN_TEXT
+    ⚠ INTERNAL_TITLE_MISMATCH: 'Reaper' vs 'Reape'
+  [12681/12728] Will Wight / Soulsmith
+    ⚠ INTERNAL_AUTHOR_MISMATCH: ['Will Wight'] vs ['Wight,Will']
+  [12683/12728] Will Wight / The Captain
+    ⚠ TITLE_NOT_IN_TEXT
+  [12686/12728] Will Wight / The Pilot
+    ⚠ TITLE_NOT_IN_TEXT
+  [12703/12728] Wizards Of The Coast / Tales From the Yawning Portal
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12704/12728] Wizards Of The Coast / The Book of Many Things
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12705/12728] Wizards Of The Coast / Xanathar's Guide to Everything
+    ⚠ ERROR: NO_EPUB_FOUND
+  [12720/12728] Zoraida Cordova / Reclaim the Stars_ 17 Tales Across Realms & Space
+    ⚠ TITLE_NOT_IN_TEXT
+
+======================================================================
+SCAN COMPLETE
+======================================================================
+  Total book dirs:              12728
+  Successfully scanned:         12623
+  Errors (corrupt/missing):     105
+  Title not in text:            503
+  Author not in text:           23
+  Internal title mismatch:      178
+  Internal author mismatch:     91
+  Likely non-English:           27
+  Total flagged:                796
+
+CSV report written to: calibre-mismatch-report.csv
+
