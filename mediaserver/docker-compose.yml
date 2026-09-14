@@ -102,6 +102,22 @@ services:
         #caddy.reverse_proxy: "192.168.0.5:8091"
 
 
+  # Mousehole - keeps the MAM dynamic-seedbox IP pointed at this server so
+  # browsing MAM from another IP (e.g. work) doesn't break the tracker passkey.
+  mousehole:
+    <<: *common-keys-apps # See EXTENSION FIELDS at the top
+    image: tmmrtn/mousehole:latest
+    container_name: mousehole
+    ports:
+      - "5010:5010"
+    volumes:
+      - $APPDATA/mousehole:/var/lib/mousehole
+    environment:
+      TZ: $TZ
+      MOUSEHOLE_UPDATE_INTERVAL_SECONDS: 300
+      MOUSEHOLE_AUTH_PASSWORD: $MOUSEHOLE_AUTH_PASSWORD # set in .env
+
+
 ########################## PVRs
 
   # Radarr - Movie management

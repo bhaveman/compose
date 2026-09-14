@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(docker exec *)"
+      "Bash(docker exec *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
