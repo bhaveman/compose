@@ -229,6 +229,22 @@ services:
       caddy.reverse_proxy: "{{upstreams 8989}}"
 
 
+  pinchflat:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: ghcr.io/kieraneglin/pinchflat:latest
+    container_name: pinchflat-youtube
+    environment:
+      <<: *default-tz-puid-pgid
+    ports:
+      - '8945:8945'
+    volumes:
+      - $APPDATA/pinchflat:/config
+      - $DOWNLOADDIR/youtube:/downloads
+    # labels:
+    #   caddy: youtube.bradserver.dev 
+    #   caddy.reverse_proxy: "{{upstreams 8945}}"
+
+
   # Recyclarr - handle trash-guides
   # recyclarr:
   #   <<: *common-keys-media # See EXTENSION FIELDS at the top
@@ -379,6 +395,32 @@ services:
 
 #################### Books
 
+  # Bindery - Readarr replacement (single instance handles ebooks + audiobooks).
+  # Distroless image: no shell/entrypoint, so user must be set here (PUID env alone won't switch it).
+  bindery:
+    <<: *common-keys-media # See EXTENSION FIELDS at the top
+    image: ghcr.io/vavallee/bindery:latest
+    container_name: bindery
+    user: "1000:1000"
+    ports:
+      - "8789:8787"
+    volumes:
+      - $APPDATA/bindery:/config
+      - $DATADIR/media3/books:/books
+      - $DATADIR/hdd8tb/audiobooks:/audiobooks
+      # Same /downloads layout as bookshelf + bookshelf-audio so migrated download-client paths still resolve
+      - $DOWNLOADDIR/torrents:/downloads
+      - $DOWNLOADDIR/completed/eBooks:/downloads/completed/eBooks
+      - $DOWNLOADDIR/torrents/Audiobooks:/downloads/completed/Audiobooks
+    environment:
+      <<: *default-tz-puid-pgid
+      BINDERY_AUDIOBOOK_DIR: /audiobooks
+      BINDERY_EBOOK_DIR: /books
+      BINDERY_DOWNLOAD_DIR: /downloads
+    labels:
+      caddy: bindery.bradserver.dev readarr.bradserver.dev readarr-audio.bradserver.dev
+      caddy.reverse_proxy: "{{upstreams 8787}}"
+
   bookshelf:
     <<: *common-keys-media # See EXTENSION FIELDS at the top
     image: ghcr.io/pennydreadful/bookshelf:softcover 
@@ -395,7 +437,7 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     labels:
-      caddy: readarr.bradserver.dev
+      caddy: bookshelf.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8787}}"
 
   bookshelf-audio:
@@ -413,7 +455,7 @@ services:
     environment:
       <<: *default-tz-puid-pgid
     labels:
-      caddy: readarr-audio.bradserver.dev
+      caddy: bookshelf-audio.bradserver.dev
       caddy.reverse_proxy: "{{upstreams 8787}}"
 
   jellyfin:
@@ -458,6 +500,7 @@ services:
 #      CLI_ARGS: #optional
     volumes:
       - '$DATADIR/media3/books:/config/Calibre Library'
+      - $DATADIR/media3/books:/books # same path as bindery so Bindery Bridge plugin can resolve POSTed file paths
       - "$DATADIR/media3/ttrpg-library:/config/TTRPG Library"
       #- '$DOCKERDIR/appdata/calibre/Calibre Library:/config/Calibre Library'
       - $APPDATA/calibre:/config
