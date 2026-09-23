@@ -4,7 +4,16 @@
       "WebSearch",
       "Bash(docker exec *)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.tp-link.com)",
+      "WebFetch(domain:www.digitalcitizen.life)",
+      "WebFetch(domain:manuals.plus)",
+      "Read(//home/brad/docker/appdata/bindery/**)",
+      "Bash(journalctl --no-pager -u docker --since '2026-09-16 18:05' --until '2026-09-16 18:15')",
+      "Bash(sqlite3 /home/brad/docker/appdata/bookshelf/readarr.db '.backup '\\\\''/home/brad/docker/appdata/bindery/readarr-ebooks.db'\\\\''')",
+      "Bash(sqlite3 /home/brad/docker/appdata/bookshelf-audio/readarr.db '.backup '\\\\''/home/brad/docker/appdata/bindery/readarr-audio.db'\\\\''')",
+      "Bash(sqlite3 -readonly /home/brad/docker/appdata/bindery/readarr-ebooks.db 'select count\\(*\\) from Authors;')",
+      "Bash(sqlite3 -readonly /home/brad/docker/appdata/bindery/readarr-audio.db 'select count\\(*\\) from Authors;')"
     ]
   }
 }
